@@ -1,40 +1,52 @@
 setwd("~/drive/sw")
 library(ggplot2)
+library(dplyr)
 source("func.R")
 
 # https://www.datacamp.com/community/tutorials/r-tutorial-apply-family#codelapplycode
 # http://www.footballdb.com/fantasy-football/index.html
 
-
+baseDir = "~/drive/sw/"
 lsz = 10 # league size, future proof
-scor = read.csv(file="qb_rb_wr_te_scoring.csv",head=TRUE,sep=",",stringsAsFactors = FALSE)
 
-# get qb info
-setwd("~/drive/sw/qb")               # change dir to qb csv folder
-qbfiles = list.files(pattern="*.csv") # find all csv file names
-qb = list()                         # initialize the qb list
-for (i in 1:length(qbfiles)) { qb[[i]] = read.csv(qbfiles[i]) } # read in the files to a multidimensional list
+# read in csv stats by folder name
+qb = readInRawStats(baseDir, "qb")
+rb = readInRawStats(baseDir, "rb")
+wr = readInRawStats(baseDir, "wr")
+te = readInRawStats(baseDir, "te")
 
-# get rb info
-setwd("~/drive/sw/rb")               # change dir to qb csv folder
-rbfiles = list.files(pattern="*.csv") # find all csv file names
-rb = list()                         # initialize the qb list
-for (i in 1:length(rbfiles)) { rb[[i]] = read.csv(rbfiles[i]) } # read in the files to a multidimensional list
+# move back to original directory
+setwd(baseDir)                          
 
+# apply the scoring values then sum the total points and reorder most to least
+qbTiersByYear   = calcFptsReorder(qb)
+rbTiersByYear   = calcFptsReorder(rb)
+wrTiersByYear   = calcFptsReorder(wr) 
+teTiersByYear   = calcFptsReorder(te)
 
-
-setwd("~/drive/sw")                          # move back to original directory
-
-qbTiers   = calcFptsReorder(qb, scor) # apply the scoring values then sum the total points and reorder most to least
-# QB1tier0  = returnTierAverage(qbTiers, 0*lsz+1)
-# QB1tier1  = returnTierAverage(qbTiers, 1*lsz+1)
-# QB1tier2  = returnTierAverage(qbTiers, 2*lsz+1)
-
-rbTiers  = calcFptsReorder(rb, scor) # apply the scoring values then sum the total points and reorder most to least
-# RBtier0  = (returnTierAverage(rbTiers, 0*lsz+1) + returnTierAverage(rbTiers, 0*lsz+2))/2
-# RBtier1  = returnTierAverage(rbTiers, 1*lsz+1)
-# RBtier2  = returnTierAverage(rbTiers, 2*lsz+1)
-# RBtier3  = returnTierAverage(rbTiers, 3*lsz+1)
-# RBtier4  = returnTierAverage(rbTiers, 4*lsz+1)
+## TIERS for ten person league
+# elite  = xxTiersMean[1]
+# tier 1 = xxTiersMean[11]
+# tier 2 = xxTiersMean[21]
+# tier 3 = xxTiersMean[31] *rb/wr only
+# tier 4 = xxTiersMean[41] *rb/wr only
+# ten best available flex is flexTiersMean[41:50]
 
 
+qbTiersMean     = returnTiersByMean(qbTiersByYear)
+rbTiersMean     = returnTiersByMean(rbTiersByYear)
+wrTiersMean     = returnTiersByMean(wrTiersByYear)
+teTiersMean     = returnTiersByMean(teTiersByYear)
+flexTiersMean   = sort(c(rbTiersMean, wrTiersMean, teTiersMean),decreasing = TRUE)
+
+qbTiersStdev    = returnTiersByStdev(qbTiersByYear)
+rbTiersStdev    = returnTiersByStdev(rbTiersByYear)
+wrTiersStdev    = returnTiersByStdev(wrTiersByYear)
+teTiersStdev    = returnTiersByStdev(teTiersByYear)
+flexTiersStdev  = sort(c(rbTiersStdev, wrTiersStdev, teTiersStdev),decreasing = TRUE)
+
+
+# tieredPlot(qbTiersMean, qbTiersStdev)
+# plot(rbTiersMean)
+# points(wrTiersMean, col= 2)
+# points(teTiersMean, col= 3)
