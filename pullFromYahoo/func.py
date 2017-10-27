@@ -2,23 +2,21 @@ import json
 from yahoo_oauth import OAuth2
 
 
-def oauthSession():
+def beginOauth2Session():
     oauth = OAuth2(None, None, from_file='oauth2.json')
     if not oauth.token_is_valid():
         oauth.refresh_access_token()
     return oauth;
     
-def jsonQuery(url) :
+def jsonQuery(url, oauthToken) :
     #json viewer http://jsonviewer.stack.hu/
     #json formatter https://jsonformatter.curiousconcept.com/
-    
-    oauth = oauthSession()
-    response = oauth.session.get(url)
+    response = oauthToken.session.get(url)
     jsondata =json.loads(str(response.content,'utf-8'))
     #print(json.dumps(jsondata, indent=2))
     return jsondata;
 
-def getGameKey():
+def getGameKey(oauthToken):
     #nfl_game_id
     #2001 - 57
     #2002 - 49
@@ -37,7 +35,7 @@ def getGameKey():
     #2016 - 359
     #2017 - 371
     url = 'https://fantasysports.yahooapis.com/fantasy/v2/game/nfl?format=json'
-    jsondata = jsonQuery(url)
+    jsondata = jsonQuery(url, oauthToken)
     return jsondata['fantasy_content']['game'][0]['game_key'];
   
  
@@ -53,12 +51,12 @@ def YahooIsGarbage(jsondata, i):
     playerData  = playerData0 + playerData1
     return playerData;
 
-def getWeeklyRoster(game_key, league_id, team_id, week):
+def getWeeklyRoster(game_key, league_id, team_id, week, oauthToken):
     url     = 'https://fantasysports.yahooapis.com/fantasy/v2/teams;team_keys='  \
                 + str(game_key) +'.l.' + str(league_id) + '.t.' + str(team_id) + \
                 '/roster;week='+str(week)+'?format=json'
                         
-    jsondata = jsonQuery(url)
+    jsondata = jsonQuery(url, oauthToken)
     
     roster = [];
     
@@ -83,11 +81,11 @@ def getWeeklyRoster(game_key, league_id, team_id, week):
 
     return roster;
 
-def getLeagueSettings(game_key,league_id):
+def getLeagueSettings(game_key, league_id, oauthToken):
     url     = 'https://fantasysports.yahooapis.com/fantasy/v2/leagues;league_keys=' \
                 + str(game_key) + '.l.' + str(league_id) + '/settings?format=json'
                 
-    jsondata = jsonQuery(url)
+    jsondata = jsonQuery(url, oauthToken)
     return jsondata;
 
 def printCleanRoster(roster):
