@@ -1,7 +1,12 @@
 import json  
 from yahoo_oauth import OAuth2
 
-
+###############################################################################
+## beginOauth2Session
+## input: file path to the oauth.json file
+## output: reusable token for queries to the Yahoo API
+##
+###############################################################################
 def beginOauth2Session(filePath):
 ##  For your Oauth2 JSON file, please use the following format
 ##  {
@@ -13,7 +18,13 @@ def beginOauth2Session(filePath):
     if not oauth.token_is_valid():
         oauth.refresh_access_token()
     return oauth;
-    
+
+###############################################################################
+## jsonQuery
+## input: query url, oauthToken
+## output: result from query in raw JSON format
+##
+###############################################################################  
 def jsonQuery(url, oauthToken) :
 ##  json viewer http://jsonviewer.stack.hu/
 ##  json formatter https://jsonformatter.curiousconcept.com/
@@ -23,6 +34,30 @@ def jsonQuery(url, oauthToken) :
 #    print(json.dumps(jsondata, indent=2))
     return jsondata;
 
+###############################################################################
+## YahooIsGarbage
+##
+##
+##
+############################################################################### 
+def YahooIsGarbage(jsondata, i):
+    class Struct(object):
+            def __init__(self, **entries):
+                self.__dict__.update(entries)
+    
+    playerData0 = jsondata['fantasy_content']['teams']['0']['team'][1]['roster']['0']['players'][str(i)]['player'][0]
+    tmp         = jsondata['fantasy_content']['teams']['0']['team'][1]['roster']['0']['players'][str(i)]['player'][1]
+    tmp         = Struct(**tmp)
+    playerData1 = tmp.selected_position
+    playerData  = playerData0 + playerData1
+    return playerData;
+
+###############################################################################
+## getSeasonGameKey
+##
+##
+##
+############################################################################### 
 def getSeasonGameKey(season):
 ##   season_ids
 ##   2001 - 57    2002 - 49    2003 - 79    2004 - 101   2005 - 124
@@ -41,19 +76,12 @@ def getSeasonGameKey(season):
     season_id = ids[season - 2001]
     return season_id;
   
- 
-def YahooIsGarbage(jsondata, i):
-    class Struct(object):
-            def __init__(self, **entries):
-                self.__dict__.update(entries)
-    
-    playerData0 = jsondata['fantasy_content']['teams']['0']['team'][1]['roster']['0']['players'][str(i)]['player'][0]
-    tmp         = jsondata['fantasy_content']['teams']['0']['team'][1]['roster']['0']['players'][str(i)]['player'][1]
-    tmp         = Struct(**tmp)
-    playerData1 = tmp.selected_position
-    playerData  = playerData0 + playerData1
-    return playerData;
-
+###############################################################################
+## getWeeklyRoster
+##
+##
+##
+###############################################################################  
 def getWeeklyRoster(season, league_id, team_id, week, oauthToken):
     game_key    = getSeasonGameKey(season)
     url     = 'https://fantasysports.yahooapis.com/fantasy/v2/teams;team_keys='  \
@@ -85,13 +113,27 @@ def getWeeklyRoster(season, league_id, team_id, week, oauthToken):
 
     return roster;
 
-def getLeagueSettings(game_key, league_id, oauthToken):
+###############################################################################
+## getLeagueSettings
+## input: season, league_id, oauthToken
+## output: 
+##
+############################################################################### 
+def getLeagueSettings(season, league_id, oauthToken):
+    game_key    = getSeasonGameKey(season)    
     url     = 'https://fantasysports.yahooapis.com/fantasy/v2/leagues;league_keys=' \
                 + str(game_key) + '.l.' + str(league_id) + '/settings?format=json'
                 
     jsondata = jsonQuery(url, oauthToken)
+    
     return jsondata;
 
+###############################################################################
+## printCleanRoster
+## input: roster,class of classes
+## output: a clean and formatted display of the roster query
+##
+############################################################################### 
 def printCleanRoster(roster):
     print(    '{:<12} {:<24} {:<10} {:<10} {:<10}'.format(\
           'Player ID', 'Name', 'Team', 'Position', 'Roster'))
