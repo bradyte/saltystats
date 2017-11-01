@@ -1,16 +1,37 @@
-from func import getGameKey, getWeeklyRoster, printCleanRoster, beginOauth2Session
+import time
+from func import *
+
+# This is the path to your Yahoo API consumer and secret key
+filePath    = '/Users/tbrady/drive/sw/oauth2.json'
+oauthToken  = beginOauth2Session(filePath)
+
+# For my personal history:
+# 2014 - 455893
+# 2015 - 898971
+# 2016 - 247388
+# 2017 - 470610
 
 
-oauthToken  = beginOauth2Session()
-
-game_key    = getGameKey(oauthToken)
+season      = 2017
 league_id   = 470610
 team_id     = 1
 week        = 1
 
-roster      = getWeeklyRoster(game_key, league_id, team_id, week, oauthToken)
-printCleanRoster(roster)
+roster      = getWeeklyRoster(season, league_id, team_id, week, oauthToken)
 
+#for i in range(273,331):
+#    league_id   = 470610
+#    team_id     = 1
+#    
+#    url     = 'https://fantasysports.yahooapis.com/fantasy/v2/teams;team_keys='  \
+#                    + str(i) +'.l.' + str(league_id) + '.t.' + str(team_id) + \
+#                    '/roster;week=1?format=json'                        
+#    jsondata = jsonQuery(url, oauthToken)
+#    print (jsondata)
+#    print (i)
+#    time.sleep(1)
+
+printCleanRoster(roster)
 #leagueSettings = getLeagueSettings(game_key,league_id)
 
 

@@ -2,41 +2,44 @@ import json
 from yahoo_oauth import OAuth2
 
 
-def beginOauth2Session():
-    oauth = OAuth2(None, None, from_file='oauth2.json')
+def beginOauth2Session(filePath):
+##  For your Oauth2 JSON file, please use the following format
+##  {
+##      "consumer_key":    "<CONSUMER_KEY>",
+##      "consumer_secret": "<CONSUMER_SECRET>",
+##  }
+    
+    oauth = OAuth2(None, None, from_file=filePath)
     if not oauth.token_is_valid():
         oauth.refresh_access_token()
     return oauth;
     
 def jsonQuery(url, oauthToken) :
-    #json viewer http://jsonviewer.stack.hu/
-    #json formatter https://jsonformatter.curiousconcept.com/
+##  json viewer http://jsonviewer.stack.hu/
+##  json formatter https://jsonformatter.curiousconcept.com/
+    
     response = oauthToken.session.get(url)
     jsondata =json.loads(str(response.content,'utf-8'))
-    #print(json.dumps(jsondata, indent=2))
+#    print(json.dumps(jsondata, indent=2))
     return jsondata;
 
-def getGameKey(oauthToken):
-    #nfl_game_id
-    #2001 - 57
-    #2002 - 49
-    #2003 - 79
-    #2004 - 101
-    #2005 - 124
-    #2006 - 153
-    #2007 - 175
-    #2008 - 199
-    #2009 - 222
-    #2010 - 242
-    #2011 - 257
-    #2012 - 273
-    #2014 - 331
-    #2015 - 348
-    #2016 - 359
-    #2017 - 371
-    url = 'https://fantasysports.yahooapis.com/fantasy/v2/game/nfl?format=json'
-    jsondata = jsonQuery(url, oauthToken)
-    return jsondata['fantasy_content']['game'][0]['game_key'];
+def getSeasonGameKey(season):
+##   season_ids
+##   2001 - 57    2002 - 49    2003 - 79    2004 - 101   2005 - 124
+##   2006 - 153   2007 - 175   2008 - 199   2009 - 222   2010 - 242
+##   2011 - 257   2012 - 273   2013 - 999   2014 - 331   2015 - 348
+##   2016 - 359   2017 - 371
+##   This will get the current year game key
+#     url = 'https://fantasysports.yahooapis.com/fantasy/v2/game/nfl?format=json'
+#     jsondata = jsonQuery(url, oauthToken)
+#     return jsondata['fantasy_content']['game'][0]['game_key'];
+    
+    ids = [ 57,  49,  79, 101, 124, \
+           153, 175, 199, 222, 242, \
+           257, 273, 999, 331, 348, \
+           359, 371]
+    season_id = ids[season - 2001]
+    return season_id;
   
  
 def YahooIsGarbage(jsondata, i):
@@ -51,7 +54,8 @@ def YahooIsGarbage(jsondata, i):
     playerData  = playerData0 + playerData1
     return playerData;
 
-def getWeeklyRoster(game_key, league_id, team_id, week, oauthToken):
+def getWeeklyRoster(season, league_id, team_id, week, oauthToken):
+    game_key    = getSeasonGameKey(season)
     url     = 'https://fantasysports.yahooapis.com/fantasy/v2/teams;team_keys='  \
                 + str(game_key) +'.l.' + str(league_id) + '.t.' + str(team_id) + \
                 '/roster;week='+str(week)+'?format=json'
