@@ -93,8 +93,7 @@ def getWeeklyRoster(season, league_id, team_id, week, oauthToken):
     roster = [];
     
     class Player(object):
-        def __init__(self, player_id, name_full, editorial_team_abbr, \
-                     display_position, elected_position=None):
+        def __init__(self, player_id, name_full, editorial_team_abbr, display_position, elected_position=None):
             self.player_id              = player_id
             self.name_full              = name_full
             self.editorial_team_abbr    = editorial_team_abbr
@@ -124,9 +123,72 @@ def getLeagueSettings(season, league_id, oauthToken):
     url     = 'https://fantasysports.yahooapis.com/fantasy/v2/leagues;league_keys=' \
                 + str(game_key) + '.l.' + str(league_id) + '/settings?format=json'
                 
-    jsondata = jsonQuery(url, oauthToken)
+    leaguedata = jsonQuery(url, oauthToken)
     
-    return jsondata;
+    class LeagueSettings(object):
+        class About(object):
+            def __init__(self, name, num_teams, game_code, url, roster_positions=None):
+                self.name               = name
+                self.num_teams          = num_teams
+                self.game_code          = game_code
+                self.url                = url
+                self.roster_positions   = roster_positions
+        class Dates(object):
+            def __init__(self, season, start_week, start_date, end_week, end_date, current_week=None):
+                self.season             = season
+                self.start_week         = start_week
+                self.start_date         = start_date
+                self.end_week           = end_week
+                self.end_date           = end_date
+                self.current_week       = current_week
+        class Scoring(object):
+            def __init__(self, stat_categories, stat_modifiers, uses_fractional_points, uses_negative_points=None):
+                self.stat_categories    = stat_categories
+                self.stat_modifiers     = stat_modifiers
+                self.uses_fractional_points = uses_fractional_points
+                self.uses_negative_points   = uses_negative_points
+     
+    leagueSettings = LeagueSettings()
+        
+    ##about
+    leagueSettings.About.name                       \
+        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['name']
+    leagueSettings.About.num_teams                  \
+        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['num_teams']
+    leagueSettings.About.game_code                  \
+        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['game_code']
+    leagueSettings.About.url                        \
+        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['url']
+    leagueSettings.About.roster_positions           \
+        = leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['roster_positions']
+    
+    ##dates
+    leagueSettings.Dates.season                     \
+        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['season']
+    leagueSettings.Dates.start_week                 \
+        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['start_week']
+    leagueSettings.Dates.start_date                 \
+        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['start_date']
+    leagueSettings.Dates.end_week                   \
+        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['end_week']
+    leagueSettings.Dates.end_date                   \
+        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['end_date']
+    leagueSettings.Dates.current_week               \
+        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['current_week']
+    
+    ##scoring
+    leagueSettings.Scoring.stat_categories          \
+        = leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['stat_categories']['stats']
+    leagueSettings.Scoring.stat_modifiers           \
+        = leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['stat_modifiers']['stats']
+    leagueSettings.Scoring.uses_fractional_points   \
+        = leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['uses_fractional_points']
+    leagueSettings.Scoring.uses_negative_points     \
+        = leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['uses_negative_points']
+    
+
+    
+    return leagueSettings;
 
 ###############################################################################
 ## printCleanRoster
