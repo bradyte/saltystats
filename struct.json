@@ -1,65 +1,55 @@
 {
-    "seasons":[
-        {
-            "years":[
-                {
-                    "year": 2017,
-                    "leagues":[
+    "season":{
+        "year": 2017,
+        "league_id": 470610,
+        "league_name": "The Salty Spitoon",
+        "num_teams": 10,
+        "roster_positions": [
+            {
+
+            }
+        ],
+        "stat_categories": [
+            {
+
+            }
+        ],
+        "stat_modifiers": [
+            {
+
+            }
+        ],
+        "uses_fractional_points": 1,
+        "uses_negative_points": 1,
+        "weeks":[
+            {
+                "week": 1,
+                "teams":[
+                    {
+                        "team_id": "<team_id>",
+                        "team_name": "<team_name>",
+                        "team_manager": "<team_manager>",
+                        "roster":
                         {
-                            "league_id": 470610,
-                            "league_name": "The Salty Spitoon",
-                            "num_teams": 10,
-                            "roster_positions": [
+                            "players":
+                            [
                                 {
-
-                                }
-                            ],
-                            "stat_categories": [
-                                {
-
-                                }
-                            ],
-                            "stat_modifiers": [
-                                {
-
-                                }
-                            ],
-                            "uses_fractional_points": 1,
-                            "uses_negative_points": 1,
-                            "weeks":[
-                                {
-                                    "week": 1,
-                                    "teams":[
-                                        {
-                                            "team_id": "<team_id>",
-                                            "team_name": "<team_name>",
-                                            "team_manager": "<team_manager>",
-                                            "roster":
-                                            {
-                                                "players":
-                                                [
-                                                    {
-                                                        "roster_index": 0,
-                                                        "player_id": "<player_id>",
-                                                        "name_full": "<name_full>",
-                                                        "team": "<editorial_team_abbr>",
-                                                        "display_position": "<display_position>",
-                                                        "selected_position": "<selected_position>",
-                                                        "fantasy_points": 0
-                                                    }
-                                                ]
-                                            },
-                                            "opponent_id": "<opponent_id>",
-                                            "opponent_name": "<opponent_name>",
-                                            "opponent_manager": "<opponent_manager>"
-                                        }
-                                    ]
+                                    "roster_index": 0,
+                                    "player_id": "<player_id>",
+                                    "name_full": "<name_full>",
+                                    "team": "<editorial_team_abbr>",
+                                    "display_position": "<display_position>",
+                                    "selected_position": "<selected_position>",
+                                    "fantasy_points": 0
                                 }
                             ]
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
+                        },
+                        "opponent_id": "<opponent_id>",
+                        "opponent_name": "<opponent_name>",
+                        "opponent_manager": "<opponent_manager>"
+                    }
+                ]
+            }
+        ]
+    }
 }

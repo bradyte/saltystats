@@ -142,9 +142,10 @@ def getLeagueSettings(season, league_id, oauthToken):
                 self.end_date           = end_date
                 self.current_week       = current_week
         class Scoring(object):
-            def __init__(self, stat_categories, stat_modifiers, uses_fractional_points, uses_negative_points=None):
+            def __init__(self, stat_categories, stat_modifiers, stat_values, uses_fractional_points, uses_negative_points=None):
                 self.stat_categories    = stat_categories
                 self.stat_modifiers     = stat_modifiers
+                self.stat_values        = stat_values
                 self.uses_fractional_points = uses_fractional_points
                 self.uses_negative_points   = uses_negative_points
      
