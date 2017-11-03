@@ -8,16 +8,16 @@ from yahoo_oauth import OAuth2
 ##
 ###############################################################################
 def beginOauth2Session(filePath):
+    
 ##  For your Oauth2 JSON file, please use the following format
 ##  {
 ##      "consumer_key":    "<CONSUMER_KEY>",
 ##      "consumer_secret": "<CONSUMER_SECRET>",
 ##  }
-    
-    oauth = OAuth2(None, None, from_file=filePath)
-    if not oauth.token_is_valid():
-        oauth.refresh_access_token()
-    return oauth;
+    oauthToken = OAuth2(None, None, from_file=filePath)
+    if not oauthToken.token_is_valid():
+        oauthToken.refresh_access_token()
+    return oauthToken;
 
 ###############################################################################
 ## jsonQuery
@@ -26,8 +26,6 @@ def beginOauth2Session(filePath):
 ##
 ###############################################################################  
 def jsonQuery(url, oauthToken) :
-##  json viewer http://jsonviewer.stack.hu/
-##  json formatter https://jsonformatter.curiousconcept.com/
     
     response = oauthToken.session.get(url)
     jsondata =json.loads(str(response.content,'utf-8'))
@@ -36,26 +34,33 @@ def jsonQuery(url, oauthToken) :
 
 ###############################################################################
 ## YahooIsGarbage
-##
+## Meant to clean up the player data from four seperate lists into one list
 ##
 ##
 ############################################################################### 
 def YahooIsGarbage(jsondata, i):
+    
     class Struct(object):
-            def __init__(self, **entries):
-                self.__dict__.update(entries)
+        def __init__(self, **entries):
+            self.__dict__.update(entries)
     
     playerData0 = jsondata['fantasy_content']['teams']['0']['team'][1]['roster']['0']['players'][str(i)]['player'][0]
     tmp         = jsondata['fantasy_content']['teams']['0']['team'][1]['roster']['0']['players'][str(i)]['player'][1]
     tmp         = Struct(**tmp)
     playerData1 = tmp.selected_position
+    playerData2 = jsondata['fantasy_content']['teams']['0']['team'][1]['roster']['0']['players'][str(i)]['player'][2]
+    playerData3 = jsondata['fantasy_content']['teams']['0']['team'][1]['roster']['0']['players'][str(i)]['player'][3]
+
     playerData  = playerData0 + playerData1
+    
+    playerData.append(dict(playerData2))
+    playerData.append(dict(playerData3))
     return playerData;
 
 ###############################################################################
 ## getSeasonGameKey
-##
-##
+## This is the key that identifies the fantasy season and fantasy sport
+## Made by Yahoo but I had to brute force to get most of these numbers
 ##
 ############################################################################### 
 def getSeasonGameKey(season):
@@ -64,10 +69,6 @@ def getSeasonGameKey(season):
 ##   2006 - 153   2007 - 175   2008 - 199   2009 - 222   2010 - 242
 ##   2011 - 257   2012 - 273   2013 - 999   2014 - 331   2015 - 348
 ##   2016 - 359   2017 - 371
-##   This will get the current year game key
-#     url = 'https://fantasysports.yahooapis.com/fantasy/v2/game/nfl?format=json'
-#     jsondata = jsonQuery(url, oauthToken)
-#     return jsondata['fantasy_content']['game'][0]['game_key'];
     
     ids = [ 57,  49,  79, 101, 124, \
            153, 175, 199, 222, 242, \
@@ -78,47 +79,54 @@ def getSeasonGameKey(season):
   
 ###############################################################################
 ## getWeeklyRoster
-##
-##
+## This returns a roster class that has the roster based on week and 
+## team_id
 ##
 ###############################################################################  
-def getWeeklyRoster(season, league_id, team_id, week, oauthToken):
+def getWeeklyRoster(season, league_id, team_id, week, roster_size, oauthToken):
+    
     game_key    = getSeasonGameKey(season)
-    url     = 'https://fantasysports.yahooapis.com/fantasy/v2/teams;team_keys='  \
-                + str(game_key) +'.l.' + str(league_id) + '.t.' + str(team_id) + \
-                '/roster;week='+str(week)+'?format=json'
+    url     = 'https://fantasysports.yahooapis.com/fantasy/v2/teams;team_keys=' \
+                + str(game_key) +'.l.' + str(league_id) + '.t.' + str(team_id)  \
+                + '/roster;week=' + str(week) + '/players/stats;type=week;week='\
+                + str(week) + '?format=json'
                         
     jsondata = jsonQuery(url, oauthToken)
     
     roster = [];
     
     class Player(object):
-        def __init__(self, player_id, name_full, editorial_team_abbr, display_position, elected_position=None):
+        def __init__(self, player_id, name_full, editorial_team_abbr, display_position, \
+                     selected_position, player_points, player_stats=None):
             self.player_id              = player_id
             self.name_full              = name_full
             self.editorial_team_abbr    = editorial_team_abbr
             self.display_position       = display_position
             self.selected_position      = selected_position
-            
-    for i in range(0,14):
+            self.player_points          = player_points
+            self.player_stats           = player_stats  # raw stats if we ever want to do more analysis on the stats
+           
+    for i in range(0,roster_size):
         playerData          = YahooIsGarbage(jsondata, i)
-        player_id           = [d['player_id']           for d in playerData if 'player_id'              in d][0]
-        name_full           = [d['name']['full']        for d in playerData if 'name'                   in d][0]
-        editorial_team_abbr = [d['editorial_team_abbr'] for d in playerData if 'editorial_team_abbr'    in d][0]
-        display_position    = [d['display_position']    for d in playerData if 'display_position'       in d][0]
-        selected_position   = [d['position']            for d in playerData if 'position'               in d][0]
-        
-        roster.append(Player(player_id, name_full, editorial_team_abbr, display_position, selected_position))
+        player_id           = [d['player_id']               for d in playerData if 'player_id'              in d][0]
+        name_full           = [d['name']['full']            for d in playerData if 'name'                   in d][0]
+        editorial_team_abbr = [d['editorial_team_abbr']     for d in playerData if 'editorial_team_abbr'    in d][0]
+        display_position    = [d['display_position']        for d in playerData if 'display_position'       in d][0]
+        selected_position   = [d['position']                for d in playerData if 'position'               in d][0]
+        player_points       = [d['player_points']['total']  for d in playerData if 'player_points'          in d][0]
+
+        roster.append(Player(player_id, name_full, editorial_team_abbr, display_position, selected_position, float(player_points)))
 
     return roster;
 
 ###############################################################################
 ## getLeagueSettings
-## input: season, league_id, oauthToken
-## output: 
+## Similar to the getWeeklyRoster function, I am just picking through the messy
+## JSON structure and looking for the only data relevant to me
 ##
 ############################################################################### 
 def getLeagueSettings(season, league_id, oauthToken):
+    
     game_key    = getSeasonGameKey(season)    
     url     = 'https://fantasysports.yahooapis.com/fantasy/v2/leagues;league_keys=' \
                 + str(game_key) + '.l.' + str(league_id) + '/settings?format=json'
@@ -127,23 +135,23 @@ def getLeagueSettings(season, league_id, oauthToken):
     
     class LeagueSettings(object):
         class About(object):
-            def __init__(self, name, num_teams, game_code, url, roster_positions=None):
-                self.name               = name
-                self.num_teams          = num_teams
-                self.game_code          = game_code
-                self.url                = url
-                self.roster_positions   = roster_positions
+            def __init__(self, name=None, num_teams=None, game_code=None, url=None, roster_positions=None):
+                self.name                   = name
+                self.num_teams              = num_teams
+                self.game_code              = game_code
+                self.url                    = url
+                self.roster_positions       = roster_positions
         class Dates(object):
-            def __init__(self, season, start_week, start_date, end_week, end_date, current_week=None):
-                self.season             = season
-                self.start_week         = start_week
-                self.start_date         = start_date
-                self.end_week           = end_week
-                self.end_date           = end_date
-                self.current_week       = current_week
+            def __init__(self, season=None, start_week=None, start_date=None, end_week=None, end_date=None, current_week=None):
+                self.season                 = season
+                self.start_week             = start_week
+                self.start_date             = start_date
+                self.end_week               = end_week
+                self.end_date               = end_date
+                self.current_week           = current_week
         class Scoring(object):
-            def __init__(self, statInfo, uses_fractional_points, uses_negative_points=None):
-                self.statInfo           = statInfo
+            def __init__(self, statInfo=None, uses_fractional_points=None, uses_negative_points=None):
+                self.statInfo               = statInfo
                 self.uses_fractional_points = uses_fractional_points
                 self.uses_negative_points   = uses_negative_points
      
@@ -184,74 +192,24 @@ def getLeagueSettings(season, league_id, oauthToken):
     leagueSettings.Scoring.statInfo                 \
         = cleanStats(leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['stat_modifiers']['stats'],\
                      leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['stat_categories']['stats'])
-    
 
-    
     return leagueSettings;
 
 ###############################################################################
-## printCleanRoster
-## input: roster,class of classes
-## output: a clean and formatted display of the roster query
-##
-############################################################################### 
-def printCleanRoster(roster):
-    print('{:<12} {:<24} {:<10} {:<10} {:<10}'.format(\
-          'Player ID', 'Name', 'Team', 'Position', 'Roster'))
-    
-    for j in range(0,14):
-        print('{:<12} {:<24} {:<10} {:<10} {:<10}'.format(\
-              roster[j].player_id, \
-              roster[j].name_full, \
-              roster[j].editorial_team_abbr, \
-              roster[j].display_position, \
-              roster[j].selected_position))
-
-###############################################################################
-## printCleanSettings
-## input: 
-## output: 
-##
-############################################################################### 
-def printCleanSettings(leagueSettings, seeAbout, seeDates, seeScoring):
-## prints about league  
-    if seeAbout == 1:
-        print('{:<22} {:<30}'.format('League Type:', leagueSettings.About.game_code.upper()))
-        print('{:<22} {:<30}'.format('League Name:', leagueSettings.About.name))
-        print('{:<22} {:<30}'.format('League Size:', leagueSettings.About.num_teams))
-        print('{:<22} {:<30}'.format('League URL:' , leagueSettings.About.url))
-        print('{:<20}'.format('Positions:'))
-
-        for i in range(0, len(leagueSettings.About.roster_positions)):
-            print(' {:<2}- {:<6}'.format(leagueSettings.About.roster_positions[i].count,\
-                                         leagueSettings.About.roster_positions[i].position))
-        print('\r')
-        
-## prints league dates
-    if seeDates == 1:
-        print('{:<22} {:<30}'.format('Season:', leagueSettings.Dates.season)) 
-        print('{:<22} {:<30}\n'.format('Current Week:', leagueSettings.Dates.current_week))
-        
-## prints the scoring settings
-    if seeScoring == 1:
-        for k in range(0,len(leagueSettings.Scoring.statInfo.value)):
-            if(leagueSettings.Scoring.statInfo.display_name[k] != None):
-                print('{:-<20} {:6.2f}'.format(\
-                      str(leagueSettings.Scoring.statInfo.display_name[k]), \
-                      float(leagueSettings.Scoring.statInfo.value[k])))
-
-###############################################################################
 ## cleanStats
-## input: 
-## output: 
+## Searches for stat info based on stat_id. Very confusing because the stat_id
+## is not the index number so I make a new list indexed by the stat_id
 ##
 ############################################################################### 
 def cleanStats(mods, cats):
+
+## oddly enough, these aren't always equal
     lenModifiers = len(mods)
     lenCategories = len(cats)
     maxID = 0
     
-## get the last stat_id value    
+## get the last stat_id value, we only care about modifiers since those are
+## used for scoring. there are stat_categories that have zero use    
     for i in range(0,lenModifiers):
         tmp = mods[i]['stat']['stat_id']
         if int(tmp) > maxID:
@@ -264,7 +222,7 @@ def cleanStats(mods, cats):
     
     statInfo = StatInfo()
     
-## initialize arrays to use Yahoo's stupid stat_id as the index parameter
+## initialize arrays to use Yahoo's stupid stat_id as the index size
     statInfo.display_name   = [None] * (maxID+1)
     statInfo.value          =    [0] * (maxID+1)
        
@@ -272,7 +230,8 @@ def cleanStats(mods, cats):
     for i in range(0,lenModifiers):
         statIndex = mods[i]['stat']['stat_id']
         statInfo.value[statIndex] = float(mods[i]['stat']['value'])
-        
+## walk through the category list and only get categories that have modifiers
+## associated with them        
         j = 0
         while(j < lenCategories):
             tmpCat = cats[j]['stat']['stat_id']
@@ -284,8 +243,8 @@ def cleanStats(mods, cats):
                 
 ###############################################################################
 ## cleanPositions
-## input: 
-## output: 
+## break up the two categories to index a lot more easily
+## 
 ##
 ############################################################################### 
 def cleanPositions(pos):
