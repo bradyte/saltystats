@@ -142,10 +142,8 @@ def getLeagueSettings(season, league_id, oauthToken):
                 self.end_date           = end_date
                 self.current_week       = current_week
         class Scoring(object):
-            def __init__(self, stat_categories, stat_modifiers, stat_values, uses_fractional_points, uses_negative_points=None):
-                self.stat_categories    = stat_categories
-                self.stat_modifiers     = stat_modifiers
-                self.stat_values        = stat_values
+            def __init__(self, statInfo, uses_fractional_points, uses_negative_points=None):
+                self.statInfo           = statInfo
                 self.uses_fractional_points = uses_fractional_points
                 self.uses_negative_points   = uses_negative_points
      
@@ -161,7 +159,8 @@ def getLeagueSettings(season, league_id, oauthToken):
     leagueSettings.About.url                        \
         = leaguedata['fantasy_content']['leagues']['0']['league'][0]['url']
     leagueSettings.About.roster_positions           \
-        = leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['roster_positions']
+        = cleanPositions(                           \
+          leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['roster_positions'])
     
     ##dates
     leagueSettings.Dates.season                     \
@@ -178,14 +177,13 @@ def getLeagueSettings(season, league_id, oauthToken):
         = leaguedata['fantasy_content']['leagues']['0']['league'][0]['current_week']
     
     ##scoring
-    leagueSettings.Scoring.stat_categories          \
-        = leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['stat_categories']['stats']
-    leagueSettings.Scoring.stat_modifiers           \
-        = leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['stat_modifiers']['stats']
     leagueSettings.Scoring.uses_fractional_points   \
         = leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['uses_fractional_points']
     leagueSettings.Scoring.uses_negative_points     \
         = leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['uses_negative_points']
+    leagueSettings.Scoring.statInfo                 \
+        = cleanStats(leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['stat_modifiers']['stats'],\
+                     leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['stat_categories']['stats'])
     
 
     
@@ -198,7 +196,7 @@ def getLeagueSettings(season, league_id, oauthToken):
 ##
 ############################################################################### 
 def printCleanRoster(roster):
-    print(    '{:<12} {:<24} {:<10} {:<10} {:<10}'.format(\
+    print('{:<12} {:<24} {:<10} {:<10} {:<10}'.format(\
           'Player ID', 'Name', 'Team', 'Position', 'Roster'))
     
     for j in range(0,14):
@@ -209,7 +207,97 @@ def printCleanRoster(roster):
               roster[j].display_position, \
               roster[j].selected_position))
 
+###############################################################################
+## printCleanSettings
+## input: 
+## output: 
+##
+############################################################################### 
+def printCleanSettings(leagueSettings, seeAbout, seeDates, seeScoring):
+## prints about league  
+    if seeAbout == 1:
+        print('{:<22} {:<30}'.format('League Type:', leagueSettings.About.game_code.upper()))
+        print('{:<22} {:<30}'.format('League Name:', leagueSettings.About.name))
+        print('{:<22} {:<30}'.format('League Size:', leagueSettings.About.num_teams))
+        print('{:<22} {:<30}'.format('League URL:' , leagueSettings.About.url))
+        print('{:<20}'.format('Positions:'))
 
+        for i in range(0, len(leagueSettings.About.roster_positions)):
+            print(' {:<2}- {:<6}'.format(leagueSettings.About.roster_positions[i].count,\
+                                         leagueSettings.About.roster_positions[i].position))
+        print('\r')
+        
+## prints league dates
+    if seeDates == 1:
+        print('{:<22} {:<30}'.format('Season:', leagueSettings.Dates.season)) 
+        print('{:<22} {:<30}\n'.format('Current Week:', leagueSettings.Dates.current_week))
+        
+## prints the scoring settings
+    if seeScoring == 1:
+        for k in range(0,len(leagueSettings.Scoring.statInfo.value)):
+            if(leagueSettings.Scoring.statInfo.display_name[k] != None):
+                print('{:-<20} {:6.2f}'.format(\
+                      str(leagueSettings.Scoring.statInfo.display_name[k]), \
+                      float(leagueSettings.Scoring.statInfo.value[k])))
 
+###############################################################################
+## cleanStats
+## input: 
+## output: 
+##
+############################################################################### 
+def cleanStats(mods, cats):
+    lenModifiers = len(mods)
+    lenCategories = len(cats)
+    maxID = 0
+    
+## get the last stat_id value    
+    for i in range(0,lenModifiers):
+        tmp = mods[i]['stat']['stat_id']
+        if int(tmp) > maxID:
+            maxID = tmp  
+        
+    class StatInfo(object):
+        def __init__(self, display_name=None, value=None):
+            self.display_name   = display_name
+            self.value          = value
+    
+    statInfo = StatInfo()
+    
+## initialize arrays to use Yahoo's stupid stat_id as the index parameter
+    statInfo.display_name   = [None] * (maxID+1)
+    statInfo.value          =    [0] * (maxID+1)
+       
+## use stat_id from the stat_modifiers to search the stat_categories  
+    for i in range(0,lenModifiers):
+        statIndex = mods[i]['stat']['stat_id']
+        statInfo.value[statIndex] = float(mods[i]['stat']['value'])
+        
+        j = 0
+        while(j < lenCategories):
+            tmpCat = cats[j]['stat']['stat_id']
+            if tmpCat == statIndex:
+               statInfo.display_name[statIndex] = cats[j]['stat']['display_name']
+            j += 1
 
+    return statInfo;
+                
+###############################################################################
+## cleanPositions
+## input: 
+## output: 
+##
+############################################################################### 
+def cleanPositions(pos):
+    class Positions(object):
+        def __init__(self, position=None, count=None):
+            self.position   = position
+            self.count      = count
+    
+    positions = []
+    
+    for i in range(0,len(pos)):
+        positions.append(Positions(pos[i]['roster_position']['position'],\
+                                   pos[i]['roster_position']['count']))
 
+    return positions;
