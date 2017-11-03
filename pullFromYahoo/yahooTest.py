@@ -22,9 +22,17 @@ team_id         = 1
 week            = 1
 roster_size     = 15
 
-leagueSettings  = getLeagueSettings(season, league_id, oauthToken)
+#leagueSettings  = getLeagueSettings(season, league_id, oauthToken)
 
-roster          = getWeeklyRoster(season, league_id, team_id, week, roster_size, oauthToken)
+#roster          = getWeeklyRoster(season, league_id, team_id, week, roster_size, oauthToken)
+
+matchup         = getWeeklyMatchup(season, league_id, team_id, week, oauthToken)
+
+#tmp = matchup['fantasy_content']['leagues']['0']['league'][1]['scoreboard']['0']['matchups'][str(0)]['matchup']['winner_team_key']
+tmp = matchup['fantasy_content']['leagues']['0']['league'][1]['scoreboard']['0']['matchups'][str(0)]['matchup']['0']['teams']['0']['team'][0][0]['team_key']
+
+print(json.dumps(tmp, indent=2))
+
 
 
 
@@ -35,7 +43,7 @@ roster          = getWeeklyRoster(season, league_id, team_id, week, roster_size,
 #
 #printCleanSettings(leagueSettings,seeAbout,seeDates,seeScoring)
 
-printCleanRoster(roster, roster_size)
+#printCleanRoster(roster, roster_size)
 
 
 ## still need to figure out week 13 game_id!!
