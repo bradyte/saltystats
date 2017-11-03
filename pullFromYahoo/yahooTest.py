@@ -1,5 +1,4 @@
 import json
-import time
 from func import *
 
 # For my personal history:
@@ -21,39 +20,12 @@ roster          = getWeeklyRoster(season, league_id, team_id, week, oauthToken)
 leagueSettings  = getLeagueSettings(season, league_id, oauthToken)
 
 
-
-
-#seeAbout        = 1
-#seeDates        = 1
-#seeScoring      = 1
+#seeAbout       = 1
+#seeDates       = 1
+#seeScoring     = 1
 
 #printCleanSettings(leagueSettings,seeAbout,seeDates,seeScoring)
 #printCleanRoster(roster)
-
-
-    
-
-
-               
-
-#for i in range(0,numStats):
-#    leagueSettings.Scoring.stat_modifiers[i] = leagueSettings.Scoring.stat_modifiers[i]['stat']['stat_id']
-#    leagueSettings.Scoring.stat_categories[i] = leagueSettings.Scoring.stat_categories[i]['stat']['stat_id']
-#    
-#    print(leagueSettings.Scoring.stat_modifiers[i]," ",leagueSettings.Scoring.stat_categories[i])
-
-
-
-#json.dumps(json.loads(str(tmp,'utf-8')), indent=2)
-
-
-
-
-
-
-
-
-
 
 
 ## still need to figure out week 13 game_id!!
