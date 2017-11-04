@@ -171,13 +171,37 @@ def getLeagueSettings(season, league_id, oauthToken):
 
     return leagueSettings;
 
-
-def getWeeklyMatchup(season, league_id, team_id, week, oauthToken):
+###############################################################################
+## getWeeklyMatchup
+## 
+## 
+##
+############################################################################### 
+def getWeeklyMatchup(season, league_id, team_id, week, num_teams, oauthToken):
     game_key    = getSeasonGameKey(season)
     url     = 'https://fantasysports.yahooapis.com/fantasy/v2/leagues;league_keys=' \
                 + str(game_key) +'.l.' + str(league_id)  \
                 + '/scoreboard;week=' + str(week) + '?format=json'
                         
     jsondata = jsonQuery(url, oauthToken)
-    return jsondata;
+    
+    class Matchups(object):
+        def __init__(self, winner_team_key=None, team0_team_key=None, team0_total=None, team1_team_key=None, team1_total=None):
+            self.winner_team_key = winner_team_key
+            self.team0_team_key  = team0_team_key
+            self.team0_total     = team0_total
+            self.team1_team_key  = team1_team_key
+            self.team1_total     = team1_total
+    
+    matchup = []
+    for i in range(0,int(num_teams/2)):
+        winner_team_key = jsondata['fantasy_content']['leagues']['0']['league'][1]['scoreboard']['0']['matchups'][str(i)]['matchup']['winner_team_key']
+        team0_team_key  = jsondata['fantasy_content']['leagues']['0']['league'][1]['scoreboard']['0']['matchups'][str(i)]['matchup']['0']['teams']['0']['team'][0][0]['team_key']
+        team0_total     = jsondata['fantasy_content']['leagues']['0']['league'][1]['scoreboard']['0']['matchups'][str(i)]['matchup']['0']['teams']['0']['team'][1]['team_points']['total']
+        team1_team_key  = jsondata['fantasy_content']['leagues']['0']['league'][1]['scoreboard']['0']['matchups'][str(i)]['matchup']['0']['teams']['1']['team'][0][0]['team_key']
+        team1_total     = jsondata['fantasy_content']['leagues']['0']['league'][1]['scoreboard']['0']['matchups'][str(i)]['matchup']['0']['teams']['1']['team'][1]['team_points']['total']
+    
+        matchup.append(Matchups(winner_team_key, team0_team_key, float(team0_total), team1_team_key, float(team1_total)))
+
+    return matchup;
 

@@ -22,16 +22,16 @@ team_id         = 1
 week            = 1
 roster_size     = 15
 
-#leagueSettings  = getLeagueSettings(season, league_id, oauthToken)
+
+leagueSettings  = getLeagueSettings(season, league_id, oauthToken)
 
 #roster          = getWeeklyRoster(season, league_id, team_id, week, roster_size, oauthToken)
 
-matchup         = getWeeklyMatchup(season, league_id, team_id, week, oauthToken)
+matchups         = getWeeklyMatchup(season, league_id, team_id, week, leagueSettings.About.num_teams, oauthToken)
 
-#tmp = matchup['fantasy_content']['leagues']['0']['league'][1]['scoreboard']['0']['matchups'][str(0)]['matchup']['winner_team_key']
-tmp = matchup['fantasy_content']['leagues']['0']['league'][1]['scoreboard']['0']['matchups'][str(0)]['matchup']['0']['teams']['0']['team'][0][0]['team_key']
+printCleanMatchups(matchups, leagueSettings.About.num_teams)
 
-print(json.dumps(tmp, indent=2))
+#print(json.dumps(tmp, indent=2))
 
 
 

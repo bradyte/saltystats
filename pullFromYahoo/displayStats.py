@@ -9,14 +9,14 @@ def printCleanRoster(roster, roster_size):
     print('{:>12} {:<24} {:<10} {:<10} {:<10} {:>5}'.format(\
           'Player ID', 'Name', 'Team', 'Position', 'Roster', 'Fpts'))
     
-    for j in range(0,roster_size):
+    for i in range(0,roster_size):
         print('{:>12} {:<24} {:<10} {:<10} {:<10} {:>5.2f}'.format(\
-              roster[j].player_id,              \
-              roster[j].name_full,              \
-              roster[j].editorial_team_abbr,    \
-              roster[j].display_position,       \
-              roster[j].selected_position,      \
-              roster[j].player_points))
+              roster[i].player_id,              \
+              roster[i].name_full,              \
+              roster[i].editorial_team_abbr,    \
+              roster[i].display_position,       \
+              roster[i].selected_position,      \
+              roster[i].player_points))
 
 ###############################################################################
 ## printCleanSettings
@@ -51,3 +51,20 @@ def printCleanSettings(leagueSettings, seeAbout, seeDates, seeScoring):
                 print('{:-<20} {:6.2f}'.format(\
                       str(leagueSettings.Scoring.statInfo.display_name[k]), \
                       float(leagueSettings.Scoring.statInfo.value[k])))
+                
+###############################################################################
+## printCleanMatchup
+## input: 
+## output: 
+##
+############################################################################### 
+def printCleanMatchups(matchups, num_teams):
+    
+    for i in range(0,int(num_teams/2)):
+        print('{:<24} {:<24} {:<24} {:<24} {:<24}'.format(\
+              matchups[i].winner_team_key,  \
+              matchups[i].team0_team_key,   \
+              matchups[i].team0_total,      \
+              matchups[i].team1_team_key,   \
+              matchups[i].team1_total))
+    
