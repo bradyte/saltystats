@@ -85,6 +85,6 @@ def cleanPositions(pos):
     
     for i in range(0,len(pos)):
         positions.append(Positions(pos[i]['roster_position']['position'],\
-                                   pos[i]['roster_position']['count']))
+                                   int(pos[i]['roster_position']['count'])))
 
     return positions;

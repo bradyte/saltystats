@@ -111,12 +111,13 @@ def getLeagueSettings(season, league_id, oauthToken):
     
     class LeagueSettings(object):
         class About(object):
-            def __init__(self, name=None, num_teams=None, game_code=None, url=None, roster_positions=None):
+            def __init__(self, name=None, num_teams=None, game_code=None, url=None, roster_positions=None, rosterSize=None):
                 self.name                   = name
                 self.num_teams              = num_teams
                 self.game_code              = game_code
                 self.url                    = url
                 self.roster_positions       = roster_positions
+                self.rosterSize             = rosterSize
         class Dates(object):
             def __init__(self, season=None, start_week=None, start_date=None, end_week=None, end_date=None, current_week=None):
                 self.season                 = season
@@ -143,22 +144,26 @@ def getLeagueSettings(season, league_id, oauthToken):
     leagueSettings.About.url                        \
         = leaguedata['fantasy_content']['leagues']['0']['league'][0]['url']
     leagueSettings.About.roster_positions           \
-        = cleanPositions(                           \
-          leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['roster_positions'])
+        = cleanPositions(leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['roster_positions'])
+    leagueSettings.About.rosterSize = 0
+    for i in range(0,len(leagueSettings.About.roster_positions )):
+        leagueSettings.About.rosterSize = leagueSettings.About.rosterSize + leagueSettings.About.roster_positions[i].count
+    
     
     ##dates
-    leagueSettings.Dates.season                     \
-        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['season']
+
     leagueSettings.Dates.start_week                 \
         = leaguedata['fantasy_content']['leagues']['0']['league'][0]['start_week']
-    leagueSettings.Dates.start_date                 \
-        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['start_date']
     leagueSettings.Dates.end_week                   \
         = leaguedata['fantasy_content']['leagues']['0']['league'][0]['end_week']
-    leagueSettings.Dates.end_date                   \
-        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['end_date']
     leagueSettings.Dates.current_week               \
         = leaguedata['fantasy_content']['leagues']['0']['league'][0]['current_week']
+    leagueSettings.Dates.season                     \
+        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['season']
+    leagueSettings.Dates.start_date                 \
+        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['start_date']
+    leagueSettings.Dates.end_date                   \
+        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['end_date']
     
     ##scoring
     leagueSettings.Scoring.uses_fractional_points   \

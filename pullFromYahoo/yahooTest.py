@@ -25,11 +25,67 @@ roster_size     = 15
 
 leagueSettings  = getLeagueSettings(season, league_id, oauthToken)
 
+#needed to initialize class
+#leagueSettings.About.num_teams
+#leagueSettings.Dates.start_week
+#leagueSettings.Dates.end_week
+
+
+
+#getWeeklyOutcome
+#week = [None] * (int(leagueSettings.Dates.end_week) + 1)
+#team = [0] * (int(leagueSettings.About.num_teams) + 1)
+
+#roster = []
+roster = \
+{
+    'roster': [
+        {
+           'position': 'QB',
+           'player_id': 8780
+        },
+        {
+            'position': 'WR',
+            'player_id': 9600
+        }
+    ]
+}
+
+team = {'team':[{}]}
+team['team'].append(roster)
+#team.append(roster)
+#
+week = {}
+week = []
+week.append({})
+week.append({'team': [{}] })
+week[1]['team'].append(roster)
+#week.append({
+#    'team': [
+#        {},
+#        {
+#        'roster': [
+#            {
+#                'position': 'WR',
+#                'player_id': 9600
+#            }    
+#        ],
+#        'total' : 100,
+#        'opponent': 2,
+#        'oppTotal': 120
+#        }
+#    ]  
+#})
+
+
+ 
+
+
 #roster          = getWeeklyRoster(season, league_id, team_id, week, roster_size, oauthToken)
 
-matchups         = getWeeklyMatchup(season, league_id, team_id, week, leagueSettings.About.num_teams, oauthToken)
+#matchups         = getWeeklyMatchup(season, league_id, team_id, week, leagueSettings.About.num_teams, oauthToken)
 
-printCleanMatchups(matchups, leagueSettings.About.num_teams)
+#printCleanMatchups(matchups, leagueSettings.About.num_teams)
 
 #print(json.dumps(tmp, indent=2))
 
@@ -39,8 +95,8 @@ printCleanMatchups(matchups, leagueSettings.About.num_teams)
 
 #seeAbout       = 1
 #seeDates       = 1
-#seeScoring     = 1
-#
+#seeScoring     = 0
+###
 #printCleanSettings(leagueSettings,seeAbout,seeDates,seeScoring)
 
 #printCleanRoster(roster, roster_size)

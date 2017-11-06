@@ -30,9 +30,10 @@ def printCleanSettings(leagueSettings, seeAbout, seeDates, seeScoring):
     if seeAbout == 1:
         print('{:<22} {:<30}'.format('League Type:', leagueSettings.About.game_code.upper()))
         print('{:<22} {:<30}'.format('League Name:', leagueSettings.About.name))
-        print('{:<22} {:<30}'.format('League Size:', leagueSettings.About.num_teams))
         print('{:<22} {:<30}'.format('League URL:' , leagueSettings.About.url))
-        print('{:<20}'.format('Positions:'))
+        print('{:<22} {:<30}'.format('League Size:', leagueSettings.About.num_teams))
+        print('{:<22} {:<30}'.format('Roster Size:', leagueSettings.About.rosterSize))
+        print('{:<22}'.format('Positions:'))
 
         for i in range(0, len(leagueSettings.About.roster_positions)):
             print(' {:<2}- {:<6}'.format(leagueSettings.About.roster_positions[i].count,\
@@ -41,8 +42,11 @@ def printCleanSettings(leagueSettings, seeAbout, seeDates, seeScoring):
         
 ## prints league dates
     if seeDates == 1:
-        print('{:<22} {:<30}'.format('Season:', leagueSettings.Dates.season)) 
-        print('{:<22} {:<30}\n'.format('Current Week:', leagueSettings.Dates.current_week))
+        print('{:<22} {:<30}'.format('Season:'      , leagueSettings.Dates.season)) 
+        print('{:<22} {:<30}'.format('Start week:'  , leagueSettings.Dates.start_week))
+        print('{:<22} {:<30}'.format('End week:'    , leagueSettings.Dates.end_week))
+        print('{:<22} {:<30}'.format('Current Week:', leagueSettings.Dates.current_week))
+        print('\r')
         
 ## prints the scoring settings
     if seeScoring == 1:
