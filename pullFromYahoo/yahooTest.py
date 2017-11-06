@@ -24,11 +24,19 @@ roster_size     = 15
 
 
 leagueSettings  = getLeagueSettings(season, league_id, oauthToken)
+#type=week;week={week}
+for i in range(1, int(leagueSettings.Dates.current_week)):
+    fpts = getPlayerStats(season, 9317, i, leagueSettings.Scoring.statInfo.value, oauthToken)
+    
+    print('Week: {:<10}\t{:<10}'.format(i,fpts))
+    
+
 
 #needed to initialize class
 #leagueSettings.About.num_teams
 #leagueSettings.Dates.start_week
 #leagueSettings.Dates.end_week
+#fpts = getPlayerStats(season, 9317, 1, leagueSettings.Scoring.statInfo.value, oauthToken)
 
 
 
@@ -36,46 +44,44 @@ leagueSettings  = getLeagueSettings(season, league_id, oauthToken)
 #week = [None] * (int(leagueSettings.Dates.end_week) + 1)
 #team = [0] * (int(leagueSettings.About.num_teams) + 1)
 
-#roster = []
-roster = \
-{
-    'roster': [
-        {
-           'position': 'QB',
-           'player_id': 8780
-        },
-        {
-            'position': 'WR',
-            'player_id': 9600
-        }
-    ]
-}
-
-team = {'team':[{}]}
-team['team'].append(roster)
-#team.append(roster)
-#
-week = {}
-week = []
-week.append({})
-week.append({'team': [{}] })
-week[1]['team'].append(roster)
-#week.append({
-#    'team': [
-#        {},
+##roster = []
+#roster = \
+#{
+#    'roster': [
 #        {
-#        'roster': [
-#            {
-#                'position': 'WR',
-#                'player_id': 9600
-#            }    
-#        ],
-#        'total' : 100,
-#        'opponent': 2,
-#        'oppTotal': 120
+#           'position': 'QB',
+#           'player_id': 8780
+#        },
+#        {
+#            'position': 'WR',
+#            'player_id': 9600
 #        }
-#    ]  
-#})
+#    ]
+#}
+#
+##
+#week = {}
+#week = []
+#week.append({})
+#week.append({'team': [{}] })
+#week[1]['team'].append(roster)
+#
+##week.append({
+##    'team': [
+##        {},
+##        {
+##        'roster': [
+##            {
+##                'position': 'WR',
+##                'player_id': 9600
+##            }    
+##        ],
+##        'total' : 100,
+##        'opponent': 2,
+##        'oppTotal': 120
+##        }
+##    ]  
+##})
 
 
  
@@ -95,7 +101,7 @@ week[1]['team'].append(roster)
 
 #seeAbout       = 1
 #seeDates       = 1
-#seeScoring     = 0
+#seeScoring     = 1
 ###
 #printCleanSettings(leagueSettings,seeAbout,seeDates,seeScoring)
 

@@ -62,7 +62,7 @@ def getSeasonGameKey(season):
 def getWeeklyRoster(season, league_id, team_id, week, roster_size, oauthToken):
     
     game_key    = getSeasonGameKey(season)
-    url     = 'https://fantasysports.yahooapis.com/fantasy/v2/teams;team_keys=' \
+    url         = 'https://fantasysports.yahooapis.com/fantasy/v2/teams;team_keys=' \
                 + str(game_key) +'.l.' + str(league_id) + '.t.' + str(team_id)  \
                 + '/roster;week=' + str(week) + '/players/stats;type=week;week='\
                 + str(week) + '?format=json'
@@ -104,7 +104,7 @@ def getWeeklyRoster(season, league_id, team_id, week, roster_size, oauthToken):
 def getLeagueSettings(season, league_id, oauthToken):
     
     game_key    = getSeasonGameKey(season)    
-    url     = 'https://fantasysports.yahooapis.com/fantasy/v2/leagues;league_keys=' \
+    url         = 'https://fantasysports.yahooapis.com/fantasy/v2/leagues;league_keys=' \
                 + str(game_key) + '.l.' + str(league_id) + '/settings?format=json'
                 
     leaguedata = jsonQuery(url, oauthToken)
@@ -184,8 +184,8 @@ def getLeagueSettings(season, league_id, oauthToken):
 ############################################################################### 
 def getWeeklyMatchup(season, league_id, team_id, week, num_teams, oauthToken):
     game_key    = getSeasonGameKey(season)
-    url     = 'https://fantasysports.yahooapis.com/fantasy/v2/leagues;league_keys=' \
-                + str(game_key) +'.l.' + str(league_id)  \
+    url         = 'https://fantasysports.yahooapis.com/fantasy/v2/leagues;league_keys=' \
+                + str(game_key) + '.l.' + str(league_id)  \
                 + '/scoreboard;week=' + str(week) + '?format=json'
                         
     jsondata = jsonQuery(url, oauthToken)
@@ -210,3 +210,60 @@ def getWeeklyMatchup(season, league_id, team_id, week, num_teams, oauthToken):
 
     return matchup;
 
+###############################################################################
+## getPlayerStats
+## 
+## 
+##
+############################################################################### 
+def getPlayerStats(season, player_id, week, statValues, oauthToken):
+    game_key    = getSeasonGameKey(season)
+    url         = 'https://fantasysports.yahooapis.com/fantasy/v2/player/' \
+                + str(game_key) + '.p.' + str(player_id) \
+                + '/stats;type=week;week=' + str(week) +'?format=json'
+                
+    jsondata = jsonQuery(url, oauthToken)
+    
+    byeWeek  = int(jsondata['fantasy_content']['player'][0][7]['bye_weeks']['week'])
+    
+    if week == byeWeek:
+        return 'BYE'
+    else:
+        tmpStats = jsondata['fantasy_content']['player'][1]['player_stats']['stats']
+        fpts = 0
+        for i in range(0,len(tmpStats)):
+            
+            stat_id = int(tmpStats[i]['stat']['stat_id'])
+            value   = int(tmpStats[i]['stat']['value'])
+            fpts = round(fpts + value * statValues[stat_id], 2) 
+        
+        return fpts;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
