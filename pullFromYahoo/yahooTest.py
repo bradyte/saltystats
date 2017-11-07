@@ -1,4 +1,7 @@
 import json
+import numpy
+import math
+import matplotlib.pyplot as mp
 from func import *
 from displayStats import *
 
@@ -22,13 +25,49 @@ team_id         = 1
 week            = 1
 roster_size     = 15
 
+#29399
+#9317
+player_id = 9317
+
 
 leagueSettings  = getLeagueSettings(season, league_id, oauthToken)
 #type=week;week={week}
+fpts        = []
+fptsSum     = []
+fptsMean    = 0.0
+fptsStdev   = 0.0
+fptsCV      = 0.0
+fptsROC     = 0.0
+fptsPDF     = 0.0
+fptsSE      = 0.0 # standard error of mean
+confInt     = 0.95
+confLimits  = 0.0
+
+mp.axis([0, 10, 0, 30])
+
+
+print('Week:     Fpts      Average   Stdev     CV        ROC') 
 for i in range(1, int(leagueSettings.Dates.current_week)):
-    fpts = getPlayerStats(season, 9317, i, leagueSettings.Scoring.statInfo.value, oauthToken)
-    
-    print('Week: {:<10}\t{:<10}'.format(i,fpts))
+    fpts.append(getPlayerStats(season, player_id, i, leagueSettings.Scoring.statInfo.value, oauthToken))
+    if fpts[i-1] != 'BYE':
+        fptsNum.append(fpts[i-1])
+        fptsMean    = round(numpy.mean(fptsNum), 2)
+        fptsStdev   = round(numpy.std(fptsNum), 2)
+        if i == 1:
+            fptsCV      = 0.0
+            fptsROC     = 0.0
+            fptsEXP     = 0.0
+        else:
+            fptsCV      = round(fptsStdev/fptsMean, 2)
+            fptsROC     = round(fpts[i-1]/fptsMean, 2)
+            fptsSE      = round(fptsStdev/numpy.sqrt(i),2)
+#            A           = 1/(fptsStdev*numpy.sqrt(2*numpy.pi))
+#            ex          = numpy.exp(-((fpts[i-1]-fptsMean)**2)/(2*fptsStdev**2))
+#            fptsPDF     = round(A*ex, 2)
+        mp.plot(i, fptsROC)
+
+    print('{:<10}{:<10}{:<10}{:<10}{:<10}{:<10}{:<10}'.format(\
+          i,fpts[i-1], fptsMean, fptsStdev, fptsCV, fptsROC, fptsSE))
     
 
 
