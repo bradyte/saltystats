@@ -27,32 +27,34 @@ roster_size     = 15
 
 #29399
 #9317
-player_id = 9317
+#30199 hunt
+player_id = 6762
+
 
 
 leagueSettings  = getLeagueSettings(season, league_id, oauthToken)
 #type=week;week={week}
 fpts        = []
-fptsSum     = []
+fptsArr     = []
 fptsMean    = 0.0
 fptsStdev   = 0.0
 fptsCV      = 0.0
 fptsROC     = 0.0
 fptsPDF     = 0.0
 fptsSE      = 0.0 # standard error of mean
-confInt     = 0.95
+confInt     = 1.96  # z* of 95%
 confLimits  = 0.0
 
-mp.axis([0, 10, 0, 30])
 
 
-print('Week:     Fpts      Average   Stdev     CV        ROC') 
+
+print('Week:     Fpts      Average   Stdev     CV        ROC       Margin+/-') 
 for i in range(1, int(leagueSettings.Dates.current_week)):
     fpts.append(getPlayerStats(season, player_id, i, leagueSettings.Scoring.statInfo.value, oauthToken))
     if fpts[i-1] != 'BYE':
-        fptsNum.append(fpts[i-1])
-        fptsMean    = round(numpy.mean(fptsNum), 2)
-        fptsStdev   = round(numpy.std(fptsNum), 2)
+        fptsArr.append(fpts[i-1])
+        fptsMean    = round(numpy.mean(fptsArr), 2)
+        fptsStdev   = round(numpy.std(fptsArr), 2)
         if i == 1:
             fptsCV      = 0.0
             fptsROC     = 0.0
@@ -60,11 +62,7 @@ for i in range(1, int(leagueSettings.Dates.current_week)):
         else:
             fptsCV      = round(fptsStdev/fptsMean, 2)
             fptsROC     = round(fpts[i-1]/fptsMean, 2)
-            fptsSE      = round(fptsStdev/numpy.sqrt(i),2)
-#            A           = 1/(fptsStdev*numpy.sqrt(2*numpy.pi))
-#            ex          = numpy.exp(-((fpts[i-1]-fptsMean)**2)/(2*fptsStdev**2))
-#            fptsPDF     = round(A*ex, 2)
-        mp.plot(i, fptsROC)
+            fptsSE      = round(confInt*fptsStdev/numpy.sqrt(i),2)
 
     print('{:<10}{:<10}{:<10}{:<10}{:<10}{:<10}{:<10}'.format(\
           i,fpts[i-1], fptsMean, fptsStdev, fptsCV, fptsROC, fptsSE))
