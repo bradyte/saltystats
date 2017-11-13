@@ -1,7 +1,7 @@
 import json
 import numpy
 import math
-import matplotlib.pyplot as mp
+import matplotlib.pyplot as plt
 from func import *
 from displayStats import *
 
@@ -16,7 +16,7 @@ from displayStats import *
 ## https://jsonformatter.curiousconcept.com/
 
 ## This is the path to your Yahoo API consumer and secret key
-filePath        = '/Users/tbrady/drive/sw/oauth2.json'
+filePath        = '/Users/tombrady/drive/sw/oauth2.json'
 oauthToken      = beginOauth2Session(filePath)
 
 season          = 2017
@@ -28,7 +28,9 @@ roster_size     = 15
 #29399
 #9317
 #30199 hunt
-player_id = 6762
+#6762
+player_id = 24171
+
 
 
 
@@ -36,6 +38,7 @@ leagueSettings  = getLeagueSettings(season, league_id, oauthToken)
 #type=week;week={week}
 fpts        = []
 fptsArr     = []
+fptsPlotArr = []
 fptsMean    = 0.0
 fptsStdev   = 0.0
 fptsCV      = 0.0
@@ -46,7 +49,7 @@ confInt     = 1.96  # z* of 95%
 confLimits  = 0.0
 
 
-
+title       = getPlayerName(season, player_id, week, oauthToken)
 
 print('Week:     Fpts      Average   Stdev     CV        ROC       Margin+/-') 
 for i in range(1, int(leagueSettings.Dates.current_week)):
@@ -63,12 +66,26 @@ for i in range(1, int(leagueSettings.Dates.current_week)):
             fptsCV      = round(fptsStdev/fptsMean, 2)
             fptsROC     = round(fpts[i-1]/fptsMean, 2)
             fptsSE      = round(confInt*fptsStdev/numpy.sqrt(i),2)
-
+        plt.subplot(211)    
+        plt.scatter(i, fpts[i-1])
+        plt.xlabel('Week')
+        plt.title(title)
+        plt.axis([0, 17, 0, 40]) 
+        plt.grid(True)
+        
+        plt.subplot(212) 
+        plt.scatter(i, fptsCV)
+        plt.xlabel('Week')
+        plt.title('CV')
+        plt.axis([0, 17, 0, 1]) 
+        plt.grid(True)
     print('{:<10}{:<10}{:<10}{:<10}{:<10}{:<10}{:<10}'.format(\
           i,fpts[i-1], fptsMean, fptsStdev, fptsCV, fptsROC, fptsSE))
-    
 
+ 
 
+plt.subplots_adjust(wspace=0.8, hspace=0.8)
+plt.show()
 #needed to initialize class
 #leagueSettings.About.num_teams
 #leagueSettings.Dates.start_week
@@ -141,7 +158,7 @@ for i in range(1, int(leagueSettings.Dates.current_week)):
 #seeScoring     = 1
 ###
 #printCleanSettings(leagueSettings,seeAbout,seeDates,seeScoring)
-
+#
 #printCleanRoster(roster, roster_size)
 
 

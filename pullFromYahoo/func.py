@@ -240,6 +240,15 @@ def getPlayerStats(season, player_id, week, statValues, oauthToken):
         return fpts;
     
     
+def getPlayerName(season, player_id, week, oauthToken):
+    game_key    = getSeasonGameKey(season)
+    url         = 'https://fantasysports.yahooapis.com/fantasy/v2/player/' \
+                + str(game_key) + '.p.' + str(player_id) \
+                + '/stats;type=week;week=' + str(week) +'?format=json'
+                
+    namedata = jsonQuery(url, oauthToken)  
+    
+    return str(namedata['fantasy_content']['player'][0][2]['name']['full'])
     
     
     
