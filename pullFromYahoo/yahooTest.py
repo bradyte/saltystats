@@ -16,7 +16,7 @@ from displayStats import *
 ## https://jsonformatter.curiousconcept.com/
 
 ## This is the path to your Yahoo API consumer and secret key
-filePath        = '/Users/tombrady/drive/sw/oauth2.json'
+filePath        = '/Users/tbrady/drive/sw/json/yahoo/oauth2.json'
 oauthToken      = beginOauth2Session(filePath)
 
 season          = 2017
@@ -27,9 +27,11 @@ roster_size     = 15
 
 #29399
 #9317
-#30199 hunt
-#6762
-player_id = 24171
+#30199 hunt downward trend
+#6762 fitzgerald inconsistent
+#29236 wentz very good
+#28461 coleman consistent
+player_id = 28461
 
 
 
@@ -45,6 +47,7 @@ fptsCV      = 0.0
 fptsROC     = 0.0
 fptsPDF     = 0.0
 fptsSE      = 0.0 # standard error of mean
+fptsVar     = 0.0
 confInt     = 1.96  # z* of 95%
 confLimits  = 0.0
 
@@ -65,7 +68,8 @@ for i in range(1, int(leagueSettings.Dates.current_week)):
         else:
             fptsCV      = round(fptsStdev/fptsMean, 2)
             fptsROC     = round(fpts[i-1]/fptsMean, 2)
-            fptsSE      = round(confInt*fptsStdev/numpy.sqrt(i),2)
+#            fptsSE      = round(confInt*fptsStdev/numpy.sqrt(i),2)
+            fptsVar     = round(fptsROC/fptsStdev,3)
         plt.subplot(211)    
         plt.scatter(i, fpts[i-1])
         plt.xlabel('Week')
@@ -74,13 +78,13 @@ for i in range(1, int(leagueSettings.Dates.current_week)):
         plt.grid(True)
         
         plt.subplot(212) 
-        plt.scatter(i, fptsCV)
+        plt.scatter(i, fptsVar)
         plt.xlabel('Week')
         plt.title('CV')
-        plt.axis([0, 17, 0, 1]) 
+        plt.axis([0, 17, 0, 0.6]) 
         plt.grid(True)
     print('{:<10}{:<10}{:<10}{:<10}{:<10}{:<10}{:<10}'.format(\
-          i,fpts[i-1], fptsMean, fptsStdev, fptsCV, fptsROC, fptsSE))
+          i,fpts[i-1], fptsMean, fptsStdev, fptsCV, fptsROC, fptsVar))
 
  
 

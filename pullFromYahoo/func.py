@@ -234,7 +234,7 @@ def getPlayerStats(season, player_id, week, statValues, oauthToken):
         for i in range(0,len(tmpStats)):
             
             stat_id = int(tmpStats[i]['stat']['stat_id'])
-            value   = int(tmpStats[i]['stat']['value'])
+            value   = float(tmpStats[i]['stat']['value'])
             fpts = round(fpts + value * statValues[stat_id], 2) 
         
         return fpts;
