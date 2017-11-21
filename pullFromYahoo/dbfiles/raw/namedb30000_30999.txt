@@ -1,0 +1,1000 @@
+30000	RB	Jalen Richard
+30001	None	None
+30002	WR	Jake Lampman
+30003	None	None
+30004	None	None
+30005	None	None
+30006	CB	Sam Brown
+30007	TE	M.J. McFarland
+30008	TE	Austin Traylor
+30009	CB	Jimmy Pruitt
+30010	CB	Mariel Cooper
+30011	None	None
+30012	None	None
+30013	None	None
+30014	CB	Javien Elliott
+30015	DE	Zach Wood
+30016	RB	Romar Morris
+30017	None	None
+30018	None	None
+30019	WR	Marquis Bundy
+30020	K	Devon Bell
+30021	LB	Kyle Coleman
+30022	None	None
+30023	WR	Marvin Hall
+30024	TE	Garrett Griffin
+30025	None	None
+30026	None	None
+30027	None	None
+30028	None	None
+30029	None	None
+30030	LB	Jeff Overbaugh
+30031	None	None
+30032	DE	Nolan Frese
+30033	None	None
+30034	None	None
+30035	None	None
+30036	None	None
+30037	TE	Eric Wallace
+30038	K	Sam Ficken
+30039	LB	Darnell Sankey
+30040	None	None
+30041	None	None
+30042	None	None
+30043	None	None
+30044	WR	David Watford
+30045	WR	Kendal Thompson
+30046	None	None
+30047	WR	Harvey Binford
+30048	TE	Nick Truesdell
+30049	None	None
+30050	None	None
+30051	LB	Raphael Kirby
+30052	None	None
+30053	S	Lee Hightower
+30054	None	None
+30055	None	None
+30056	None	None
+30057	None	None
+30058	None	None
+30059	None	None
+30060	None	None
+30061	RB	Troymaine Pope
+30062	None	None
+30063	None	None
+30064	None	None
+30065	None	None
+30066	None	None
+30067	DT	Zamir Carlis
+30068	None	None
+30069	None	None
+30070	None	None
+30071	DE	Tylor Harris
+30072	None	None
+30073	None	None
+30074	None	None
+30075	None	None
+30076	None	None
+30077	None	None
+30078	S	Joe Powell
+30079	None	None
+30080	None	None
+30081	DE	Jake Metz
+30082	RB	Blake Sims
+30083	DE	Jimmy Bean
+30084	DE	Royce LaFrance
+30085	RB	Jacob Huesman
+30086	K	Cory Carter
+30087	RB	Quayvon Hicks
+30088	None	None
+30089	None	None
+30090	None	None
+30091	None	None
+30092	None	None
+30093	CB	Jeff Richards
+30094	LB	Jeff Knox
+30095	None	None
+30096	None	None
+30097	RB	Daryl Virgies
+30098	CB	Forrest Hightower
+30099	LB	Adam Bighill
+30100	LB	Alex Bazzie
+30101	None	None
+30102	WR,TE	Chris Briggs
+30103	LB	Bo Lokombo
+30104	None	None
+30105	TE	Derek Hart
+30106	LB	Jacob Lindsey
+30107	None	None
+30108	CB	Bradley Sylve
+30109	CB	John Ojo
+30110	WR	Garrett Scantling
+30111	WR	Cyril Grayson
+30112	TE	Mo Alie-Cox
+30113	None	None
+30114	DE	Myles Garrett
+30115	QB	Mitchell Trubisky
+30116	DE	Solomon Thomas
+30117	RB	Leonard Fournette
+30118	WR	Corey Davis
+30119	S	Jamal Adams
+30120	WR	Mike Williams
+30121	RB	Christian McCaffrey
+30122	WR	John Ross
+30123	QB	Patrick Mahomes II
+30124	CB	Marshon Lattimore
+30125	QB	Deshaun Watson
+30126	LB	Haason Reddick
+30127	DE	Derek Barnett
+30128	S	Malik Hooker
+30129	CB	Marlon Humphrey
+30130	DT	Jonathan Allen
+30131	CB	Adoree' Jackson
+30132	TE	O.J. Howard
+30133	None	None
+30134	LB	Jarrad Davis
+30135	DE	Charles Harris
+30136	TE	Evan Engram
+30137	CB	Gareon Conley
+30138	S	Jabrill Peppers
+30139	LB,DE	Takkarist McKinley
+30140	CB	Tre'Davious White
+30141	DE	Taco Charlton
+30142	TE	David Njoku
+30143	LB	T.J. Watt
+30144	LB	Reuben Foster
+30145	None	None
+30146	CB	Kevin King
+30147	None	None
+30148	DT,DE	Malik McDowell
+30149	S	Budda Baker
+30150	WR	Zay Jones
+30151	None	None
+30152	S	Marcus Maye
+30153	WR	Curtis Samuel
+30154	RB	Dalvin Cook
+30155	S	Marcus Williams
+30156	CB	Sidney Jones
+30157	TE	Gerald Everett
+30158	TE	Adam Shaheen
+30159	CB	Quincy Wilson
+30160	LB	Tyus Bowser
+30161	RB	Joe Mixon
+30162	LB	Ryan Anderson
+30163	S	Justin Evans
+30164	DE	DeMarcus Walker
+30165	QB	DeShone Kizer
+30166	CB	Teez Tabor
+30167	LB	Raekwon McMillan
+30168	DT	Dalvin Tomlinson
+30169	S	Obi Melifonwu
+30170	LB	Zach Cunningham
+30171	None	None
+30172	LB,DE	Tanoh Kpassagnon
+30173	CB	Chidobe Awuzie
+30174	S	Josh Jones
+30175	WR	JuJu Smith-Schuster
+30176	None	None
+30177	None	None
+30178	DT	Larry Ogunjobi
+30179	CB	Ahkello Witherspoon
+30180	RB	Alvin Kamara
+30181	DE	Dawuane Smoot
+30182	WR	Cooper Kupp
+30183	None	None
+30184	None	None
+30185	WR	Taywan Taylor
+30186	DE	Jordan Willis
+30187	DT,DE	Chris Wormley
+30188	LB	Duke Riley
+30189	LB	Alex Anzalone
+30190	DE	Daeshon Hall
+30191	LB	Tim Williams
+30192	WR	ArDarius Stewart
+30193	LB,DE	Tarell Basham
+30194	CB	Fabian Moreau
+30195	WR	Carlos Henderson
+30196	DE	Derek Rivers
+30197	WR	Chris Godwin
+30198	None	None
+30199	RB	Kareem Hunt
+30200	QB	Davis Webb
+30201	DT	Eddie Vanderdoes
+30202	RB	D'Onta Foreman
+30203	CB	Shaquill Griffin
+30204	S	John Johnson III
+30205	CB	Jourdan Lewis
+30206	DT	Montravius Adams
+30207	CB	Cameron Sutton
+30208	S	Delano Hill
+30209	WR	Kenny Golladay
+30210	CB	Cordrea Tankersley
+30211	WR	Chad Williams
+30212	CB	Rasul Douglas
+30213	TE	Jonnu Smith
+30214	CB	Brendan Langley
+30215	DT	Nazair Jones
+30216	DE	Trey Hendrickson
+30217	QB	C.J. Beathard
+30218	RB	James Conner
+30219	WR	Amara Darboh
+30220	LB	Kendell Beckwith
+30221	LB	Vince Biegel
+30222	DT	Jaleel Johnson
+30223	WR	Dede Westbrook
+30224	S	Tedric Thompson
+30225	S	Eddie Jackson
+30226	S	Rayshawn Jenkins
+30227	RB	Samaje Perine
+30228	None	None
+30229	LB,DE	Carl Lawson
+30230	WR	Josh Reynolds
+30231	WR	Mack Hollins
+30232	RB	Tarik Cohen
+30233	LB	Ben Gedeon
+30234	RB	Joe Williams
+30235	None	None
+30236	S	Montae Nicholson
+30237	LB	Jalen Reeves-Maybin
+30238	LB	Samson Ebukam
+30239	CB	Howard Wilson
+30240	TE	Michael Roberts
+30241	WR	Josh Malone
+30242	None	None
+30243	None	None
+30244	DE	Deatrich Wise Jr.
+30245	RB	Donnel Pumphrey
+30246	WR	Ryan Switzer
+30247	RB	Jamaal Williams
+30248	QB	Joshua Dobbs
+30249	None	None
+30250	None	None
+30251	DT	Ryan Glasgow
+30252	WR	Jehu Chesson
+30253	RB	Wayne Gallman
+30254	WR	Chad Hansen
+30255	DT,DE	Carlos Watkins
+30256	RB	Marlon Mack
+30257	DT	Grover Stewart
+30258	TE	Jake Butt
+30259	TE	George Kittle
+30260	None	None
+30261	LB	Blair Brown
+30262	S,CB	Damontae Kazee
+30263	TE	Jordan Leggett
+30264	S,CB	Desmond King
+30265	CB	Corn Elder
+30266	K	Jake Elliott
+30267	TE	Jeremy Sprinkle
+30268	LB	Jayon Brown
+30269	RB	Brian Hill
+30270	None	None
+30271	CB	Nate Hairston
+30272	None	None
+30273	None	None
+30274	LB	Anthony Walker Jr.
+30275	RB	Jeremy McNichols
+30276	LB	Matt Milano
+30277	None	None
+30278	CB	Jamal Agnew
+30279	WR	Shelton Gibson
+30280	DE	Avery Moss
+30281	LB	Marquel Lee
+30282	CB	Treston Decoud
+30283	WR	Rodney Adams
+30284	QB	Nathan Peterman
+30285	WR	Isaiah McKenzie
+30286	CB	Brian Allen
+30287	TE	Eric Saubert
+30288	WR	DeAngelo Yancey
+30289	None	None
+30290	WR	Trent Taylor
+30291	DT	Davon Godchaux
+30292	RB	T.J. Logan
+30293	None	None
+30294	LB	Dylan Donahue
+30295	RB	Aaron Jones
+30296	LB	Ukeme Eligwe
+30297	LB,S	Nathan Gerry
+30298	DT	Caleb Brantley
+30299	S	Chuck Clark
+30300	S,CB	Mike Tyson
+30301	RB	Elijah McGuire
+30302	DT	Tanzel Smart
+30303	None	None
+30304	S	Xavier Woods
+30305	RB	Alex Armah
+30306	LB	Jordan Evans
+30307	DT	Vincent Taylor
+30308	LB	Tanner Vallejo
+30309	DE	Al-Quadin Muhammad
+30310	DT	D.J. Jones
+30311	CB	Jeremy Clark
+30312	None	None
+30313	None	None
+30314	TE	Bucky Hodges
+30315	LB,DE	Pita Taumoepenu
+30316	CB	Derrick Jones
+30317	DT,DE	Jeremiah Ledbetter
+30318	RB	Sam Rogers
+30319	RB	De'Angelo Henderson
+30320	S,CB	Brandon Wilson
+30321	S,CB	Rudy Ford
+30322	WR	Robert Davis
+30323	None	None
+30324	None	None
+30325	None	None
+30326	None	None
+30327	DT	Elijah Qualls
+30328	QB	Brad Kaaya
+30329	CB	Marquez White
+30330	None	None
+30331	DB,S	Leon McQuay III
+30332	WR	Stacy Coley
+30333	DE	Ifeadi Odenigbo
+30334	S	Shalom Luani
+30335	CB	Jalen Myrick
+30336	DT	Stevie Tu'ikolovatu
+30337	K	Zane Gonzalez
+30338	DE	Isaac Rochell
+30339	WR	David Moore
+30340	LB,DE	Josh Carraway
+30341	DT	Joey Ivie
+30342	CB	Adrian Colbert
+30343	LB,S	Josh Harvey-Clemons
+30344	None	None
+30345	LB	Elijah Lee
+30346	K	Harrison Butker
+30347	LB,DT	Ejuan Price
+30348	CB	Joshua Holsey
+30349	None	None
+30350	WR	Isaiah Ford
+30351	RB	Devante Mays
+30352	WR	Noah Brown
+30353	RB	Marquez Williams
+30354	RB	Elijah Hood
+30355	RB	Khalfani Muhammad
+30356	None	None
+30357	DT	Treyvon Hester
+30358	S,CB	Jack Tocho
+30359	DT,DE	Jordan Carrell
+30360	WR	Malachi Dupre
+30361	LB,DE	Keion Adams
+30362	RB	Chris Carson
+30363	DE	Pat O'Connor
+30364	TE	Mason Schreck
+30365	RB	Matthew Dayes
+30366	QB	Chad Kelly
+30367	CB	Ishmael Adams
+30368	CB	Jared Collins
+30369	LB	Kevin Davis
+30370	RB	Justin Davis
+30371	None	None
+30372	None	None
+30373	TE	Johnny Mundt
+30374	LB	Folarin Orimolade
+30375	CB	Aarion Penton
+30376	DT	Casey Sayles
+30377	CB	Dravious Wright
+30378	LB	Ben Boulware
+30379	DE	Bryan Cox
+30380	WR	Austin Duke
+30381	CB	Cole Luke
+30382	WR	Fred Ross Jr.
+30383	DT,DE	Nelson Adams
+30384	DT,DE	Christian Brown
+30385	None	None
+30386	DE	Francis Kallon
+30387	LB	Keith Kelsey
+30388	TE	Scott Orndoff
+30389	QB	Nick Schuessler
+30390	RB	Rushel Shell III
+30391	CB	Jeremy Cutrer
+30392	DB,S	Terrish Webb
+30393	DE	Hunter Dimick
+30394	WR	Amba Etta-Tawo
+30395	TE	Caleb Bluiett
+30396	WR	Keelan Cole
+30397	None	None
+30398	RB	Tim Cook
+30399	LB	P.J. Davis
+30400	None	None
+30401	LB	Justin Horton
+30402	DT	Tueni Lupeamanu
+30403	RB	I'Tavius Mathers
+30404	S	Charlie Miller
+30405	DE	Carroll Phillips
+30406	CB	Ezra Robinson
+30407	WR	Kenneth Walker III
+30408	None	None
+30409	None	None
+30410	WR	Travin Dural
+30411	WR	Ahmad Fulwood
+30412	DT	Devaroe Lawrence
+30413	None	None
+30414	None	None
+30415	CB	Arthur Maulet
+30416	RB	John Robinson-Woodgett
+30417	LB	Sae Tautu
+30418	None	None
+30419	None	None
+30420	TE	Sean Culkin
+30421	None	None
+30422	CB	Michael Davis
+30423	RB	Austin Ekeler
+30424	LB	Nigel Harris
+30425	QB	Eli Jenkins
+30426	K	Younghoe Koo
+30427	DE	Tashawn Bower
+30428	LB	James Onwualu
+30429	DT	Dylan Bradley
+30430	WR	Andre Patton
+30431	None	None
+30432	WR	Artavis Scott
+30433	None	None
+30434	DE	Caleb Kidder
+30435	CB	Brandon Stewart
+30436	QB	Wes Lunt
+30437	CB	Brad Watson
+30438	DE	Sam McCaskill
+30439	RB	Terrell Newby
+30440	WR	Dontre Wilson
+30441	TE	Josiah Price
+30442	None	None
+30443	CB	Horace Richardson
+30444	WR	R.J. Shelton
+30445	None	None
+30446	LB	Shaan Washington
+30447	S	Marcelis Branch
+30448	LB	Eric Wilson
+30449	None	None
+30450	WR	Deante Burton
+30451	WR	Reginald Davis III
+30452	LB	Darius English
+30453	None	None
+30454	CB	Jarnor Jones
+30455	LB,DE	JT Jones
+30456	None	None
+30457	None	None
+30458	None	None
+30459	WR	Josh Magee
+30460	S	Quincy Mauger
+30461	S	Jordan Moore
+30462	LB,DE	Chris Odom
+30463	RB	Tyler Renew
+30464	CB	Taylor Reynolds
+30465	LB	Christian Tago
+30466	QB	Alek Torgersen
+30467	S	Deron Washington
+30468	TE	Antony Auclair
+30469	DE	Deondre Barnett
+30470	LB	Richie Brown
+30471	LB	Riley Bullough
+30472	CB	Maurice Fleming
+30473	None	None
+30474	S	Alex Gray
+30475	None	None
+30476	QB	Sefo Liufau
+30477	CB	Greg Mabin
+30478	LB	Paul Magloire Jr.
+30479	CB	Jonathan Moxey
+30480	WR	Thomas Sperbeck
+30481	WR	Bobo Wilson
+30482	WR	Carlton Agudosi
+30483	DT	Collin Bevins
+30484	None	None
+30485	S	Ironhead Gallon
+30486	CB	Gump Hayes
+30487	WR	Krishawn Hogan
+30488	S	Drico Johnson
+30489	LB	Tre'von Johnson
+30490	QB	Trevor Knight
+30491	CB	Ryan Lewis
+30492	DT	Jonathan McLaughlin
+30493	S	Cyril Noland-Lewis
+30494	TE	Ricky Seals-Jones
+30495	CB	Sojourn Shelton
+30496	RB	James Summers
+30497	DT	Pasoni Tasini
+30498	TE	Steven Wroblewski
+30499	LB	Jermaine Grace
+30500	LB	Mike Moore
+30501	None	None
+30502	WR	Zach Pascal
+30503	WR	James Quick
+30504	DE	Brandon Banks
+30505	WR	Levern Jacobs
+30506	None	None
+30507	DT	Ondre Pipkins
+30508	S	Fish Smithson
+30509	QB	Zach Terrell
+30510	WR	Tim White
+30511	WR	Tim Patrick
+30512	WR	Quincy Adeboyejo
+30513	WR	C.J. Board
+30514	LB	Bam Bradley
+30515	DT,DE	Omarius Bryant
+30516	RB	Taquan Mizzell
+30517	RB	Ricky Ortiz
+30518	None	None
+30519	K	Bobby Puyol
+30520	K	Kenny Allen
+30521	None	None
+30522	RB	Dalton Crossan
+30523	TE	Darrell Daniels
+30524	WR	Trey Griffey
+30525	None	None
+30526	WR	Bug Howard
+30527	TE	Colin Jeter
+30528	WR	Jerome Lane
+30529	CB	Chris Lyles
+30530	None	None
+30531	WR	JoJo Natson Jr.
+30532	CB	Reggie Porter
+30533	RB	Brandon Radcliff
+30534	None	None
+30535	LB,DE	Garrett Sickels
+30536	DE	Jhaustin Thomas
+30537	None	None
+30538	QB	Phillip Walker
+30539	LB	B.J. Bello
+30540	None	None
+30541	LB	Ladell Fleming
+30542	CB	J.D. Harmon
+30543	S	Alvin Hill
+30544	LB	Kenneth Olugbode
+30545	LB	Jamal Marcus
+30546	DT	Karter Schult
+30547	TE	Taylor McNamara
+30548	CB	Kai Nacua
+30549	CB	Channing Stribling
+30550	WR	Victor Bolden Jr.
+30551	WR	Kendrick Bourne
+30552	RB	Matt Breida
+30553	WR	K.D. Cannon
+30554	None	None
+30555	CB	Zach Franklin
+30556	LB	Jimmie Gilbert
+30557	S	Malik Golden
+30558	None	None
+30559	TE	Cole Hikutini
+30560	DB,CB	Lorenzo Jerome
+30561	None	None
+30562	RB,TE	Tyler McCloskey
+30563	QB	Nick Mullens
+30564	LB	Donavin Newsom
+30565	DE	Noble Nwachukwu
+30566	None	None
+30567	None	None
+30568	LB	Austin Calitro
+30569	CB	Xavier Coleman
+30570	WR	Brisly Estime
+30571	RB,TE	Anthony Firkser
+30572	DE	Patrick Gamble
+30573	LB	Connor Harris
+30574	None	None
+30575	WR	Gabe Marks
+30576	LB	Brandon Bell
+30577	TE	Cethan Carter
+30578	S	Demetrious Cox
+30579	WR	Karel Hamilton
+30580	RB	Darrin Laufasa
+30581	None	None
+30582	WR	Monty Madaris
+30583	LB	Hardy Nickerson
+30584	None	None
+30585	None	None
+30586	DT	Josh Tupou
+30587	RB	Jarveon Williams
+30588	RB	Stanley Williams
+30589	CB	Carlos Davis
+30590	S	Daniel Henry
+30591	None	None
+30592	DE	Patrick Ricard
+30593	None	None
+30594	TE	Jason Croom
+30595	RB	Jordan Johnson
+30596	DE	Marquavius Lewis
+30597	None	None
+30598	WR	Brandon Reilly
+30599	None	None
+30600	S	B.T. Sanders
+30601	CB	Marcus Sayles
+30602	WR	Daikiel Shorts
+30603	TE	Keith Towbridge
+30604	S	Jeremy Tyler
+30605	DT	Nigel Williams
+30606	None	None
+30607	CB	Donatello Brown
+30608	LB	Johnathan Calvin
+30609	WR	Michael Clark
+30610	WR	Montay Crockett
+30611	None	None
+30612	None	None
+30613	LB	Cody Heiman
+30614	QB	Taysom Hill
+30615	DT	Izaah Lunsford
+30616	None	None
+30617	TE	Aaron Peck
+30618	RB	Kalif Phillips
+30619	CB	Lenzy Pipkins
+30620	CB	David Rivers III
+30621	None	None
+30622	LB	Donald Payne
+30623	CB	Breon Borders
+30624	DT	Paul Boyette Jr.
+30625	None	None
+30626	DE	Fadol Brown
+30627	TE	Pharaoh Brown
+30628	S	Anthony Cioffi
+30629	WR	Keon Hatcher
+30630	CB	Chris Humes
+30631	S	Rickey Jefferson
+30632	TE	Anthony Kukwa
+30633	LB	Nicholas Morrow
+30634	None	None
+30635	S	Ahmad Thomas
+30636	DT	Jordan Wade
+30637	WR	Isaac Whitney
+30638	LB	Xavier Woodson-Luster
+30639	WR	Ishmael Zamora
+30640	LB	Chase Allen
+30641	None	None
+30642	CB	Larry Hope
+30643	WR	Malcolm Lewis
+30644	DE	Cameron Malveaux
+30645	DE	Praise Martin-Oguike
+30646	CB	Torry McTyer
+30647	WR	Drew Morgan
+30648	WR	Francis Owusu
+30649	DE	Joby Saint Fleur
+30650	RB	De'Veon Smith
+30651	None	None
+30652	S	Maurice Smith
+30653	WR	Damore'ea Stringfellow
+30654	DT	Josh Augusta
+30655	DT	Adam Butler
+30656	WR	Austin Carr
+30657	None	None
+30658	RB	LeShun Daniels Jr.
+30659	LB	Brooks Ellis
+30660	WR	Cody Hollister
+30661	TE	Jacob Hollister
+30662	None	None
+30663	S	David Jones
+30664	CB	D.J. Killings
+30665	None	None
+30666	LB	Harvey Langi
+30667	None	None
+30668	None	None
+30669	CB	Kenny Moore
+30670	None	None
+30671	CB	Dwayne Thomas
+30672	CB	Jason Thompson
+30673	S	Damarius Travis
+30674	DE	Corey Vereen
+30675	None	None
+30676	None	None
+30677	None	None
+30678	S	Devin Chappell
+30679	WR	Gehrig Dieter
+30680	WR	Anas Hasic
+30681	TE	Wyatt Houston
+30682	WR	Marcus Kemp
+30683	CB	Ashton Lampkin
+30684	None	None
+30685	WR	Alonzo Moore
+30686	CB	J.R. Nelson
+30687	S	Jordan Sterns
+30688	WR	Tony Stevens
+30689	DT	Gabriel Mass
+30690	S	Chanceller James
+30691	WR	BJ Johnson III
+30692	None	None
+30693	LB	Najee Harris
+30694	LB	Josh Letuligasenoa
+30695	WR	Raysean Pringle
+30696	RB	William Stanback
+30697	LB	David Talley
+30698	LB,S	Aaron Taylor
+30699	LB,DE	Chris Casher
+30700	LB	LaTroy Lewis
+30701	DE	Ricky Ali'ifua
+30702	TE	Emanuel Byrd
+30703	RB	Devine Redding
+30704	WR	Jamari Staples
+30705	LB	Marcus Oliver
+30706	DE	Evan Panfil
+30707	RB	Corey Clement
+30708	DT	Winston Craig
+30709	QB	Jerod Evans
+30710	CB	Randall Goforth
+30711	None	None
+30712	None	None
+30713	S	Tre Sullivan
+30714	DT	Charles Walker
+30715	WR	Greg Ward Jr.
+30716	CB	Jomal Wiltz
+30717	RB	Joel Bouagnon
+30718	DT	Rashaad Coward
+30719	LB	Hendrick Ekpe
+30720	WR	Tanner Gentry
+30721	TE	Franko House
+30722	LB	Isaiah Irving
+30723	None	None
+30724	None	None
+30725	K	Andy Phillips
+30726	LB	Alex Scearce
+30727	WR	Jhajuan Seales
+30728	RB	Freddie Stevenson
+30729	WR	Kermit Whitfield
+30730	DT	Josh Banks
+30731	None	None
+30732	CB	DaShaun Amos
+30733	S	Jadar Johnson
+30734	WR	Keeon Johnson
+30735	DT	Jarron Jones
+30736	LB	Calvin Munson
+30737	WR	Travis Rudolph
+30738	DE	Evan Schwan
+30739	RB	Shane Smith
+30740	TE	Colin Thompson
+30741	CB	Nigel Tribune
+30742	WR	Robert Wheelwright
+30743	WR	Jalen Williams
+30744	CB	Jeremy Boykins
+30745	DT	DeAngelo Brown
+30746	WR	Bra'Lon Cherry
+30747	QB	Tyler Ferguson
+30748	CB	John Green
+30749	DT	Roderick Henderson
+30750	LB,S	Denzel Johnson
+30751	RB	Akeem Judd
+30752	WR	KeVonn Mabon
+30753	None	None
+30754	WR	Giovanni Pascascio
+30755	None	None
+30756	WR,TE	Billy Brown
+30757	RB	Algernon Brown
+30758	QB	Skyler Howard
+30759	DT	Jeremy Liggins
+30760	LB	Otha Peters
+30761	WR	Darreus Rogers
+30762	None	None
+30763	TE	Tyrone Swoopes
+30764	LB	Nick Usher
+30765	TE	Brandon Barnes
+30766	DE	Alex Barrett
+30767	WR	Dontez Ford
+30768	RB	Tion Green
+30769	DT	Nick James
+30770	None	None
+30771	CB	Des Lawrence
+30772	None	None
+30773	WR	Michael Rector
+30774	DT	Maurice Swain Jr.
+30775	WR	Noel Thomas
+30776	CB	Josh Thornton
+30777	WR,TE	Robert Tonyan
+30778	DE	Jeremiah Valoaga
+30779	QB	Austin Appleby
+30780	DT,DE	Woody Baron
+30781	WR	Brian Brown
+30782	None	None
+30783	LB	Kennan Gilchrist
+30784	TE	Blake Jarwin
+30785	LB	Joseph Jones
+30786	None	None
+30787	DE	Lewis Neal
+30788	QB	Cooper Rush
+30789	None	None
+30790	RB	Jahad Thomas
+30791	LB	Lucas Wacha
+30792	DT	Eli Ankou
+30793	LB	Avery Williams
+30794	CB	Dee Virgin
+30795	TE	Evan Baylis
+30796	S	Malik Smith
+30797	None	None
+30798	None	None
+30799	LB	Dylan Cole
+30800	TE	Zach Conque
+30801	DE	T.J. Daniel
+30802	DE	Daniel Ross
+30803	LB	Gimel President
+30804	DE	Matthew Godin
+30805	LB	Dayon Pratt
+30806	WR	Deante' Gray
+30807	S	T.J. Mutcherson
+30808	WR	Riley McCarron
+30809	WR	Shaq Hill
+30810	DT	Rickey Hatley
+30811	WR	Justin Hardee
+30812	None	None
+30813	LB	Josh Banderas
+30814	S,CB	Dante Barnett
+30815	LB	Jerrol Garcia-Williams
+30816	LB	Deon Hollins
+30817	None	None
+30818	DT	Tyrique Jarrett
+30819	WR	Anthony Nash
+30820	CB	Dontrell Nelson
+30821	CB	Marcus Rios
+30822	QB	Kyle Sloter
+30823	DT,DE	Shakir Soto
+30824	S	Orion Stewart
+30825	S	Dymonte Thomas
+30826	None	None
+30827	WR	Reggie Davis
+30828	CB	Najee Murray
+30829	S	Donte Carey
+30830	WR	Kevin Snead
+30831	LB	Johnny Ragin III
+30832	DE	C.J. Robbins Jr.
+30833	S	Jarrod Harper
+30834	DT	Kevin Maurice
+30835	WR	Larry Clark
+30836	LB	Jevaris Jones
+30837	CB	Dante Blackmon
+30838	S	Tyson Graham
+30839	WR	Al-Damion Riles
+30840	LB	Anthony Harrell
+30841	LB	Abner Logan
+30842	CB	Tevin Homer
+30843	S	Marcus McWilson
+30844	LB	Randy Allen
+30845	WR	Aaron Bailey
+30846	CB	Jaylen Hill
+30847	None	None
+30848	S,CB	Jamal Carter Sr.
+30849	LB	Ken Ekanem
+30850	RB,TE	Trey Edmunds
+30851	RB	Khalid Abdullah
+30852	S	Trey Robinson
+30853	None	None
+30854	WR	Speedy Noil
+30855	None	None
+30856	DE	Darnell Leslie
+30857	LB	Matt Galambos
+30858	TE	Phazahn Odom
+30859	CB	Bryce Jones
+30860	RB	Dare Ogunbowale
+30861	WR	Chris Thompson
+30862	LB	Nico Marley
+30863	WR	Mitchell Paige
+30864	TE	DeSean Smith
+30865	CB	Dominique Hatfield
+30866	RB	De'Mard Llorens
+30867	WR	Shakeir Ryan
+30868	LB	Teidrick Smith
+30869	CB	Justin Thomas
+30870	None	None
+30871	LB,DE	Michael Bart
+30872	QB	Bart Houston
+30873	RB	Lenard Tillery
+30874	TE	Travis Wilson
+30875	None	None
+30876	TE	Sam Cotton
+30877	RB	Joe Bacci
+30878	DT	A.J. Jefferson
+30879	None	None
+30880	DE	Alex Jenkins
+30881	LB	Eric Nzeocha
+30882	None	None
+30883	LB	Zeek Bigger
+30884	S	Tommy Armstrong Jr.
+30885	S	Jordan Simone
+30886	WR	Colby Pearson
+30887	S	Damariay Drew
+30888	TE	Alex Gray
+30889	LB	Jack Lynn
+30890	CB	William Likely III
+30891	WR	Dan Arnold
+30892	None	None
+30893	CB	Daniel Gray
+30894	TE	Barrett Burns
+30895	CB	Daquan Holmes
+30896	CB	Ryan Reid
+30897	TE	Stevie Donatell
+30898	CB	Manny Abad
+30899	WR	Lance Lenoir
+30900	WR	Cameron Posey
+30901	WR	Fred Brown
+30902	None	None
+30903	None	None
+30904	LB	Brady Sheldon
+30905	DT	Chunky Clements
+30906	LB	Tevin Floyd
+30907	QB	Dane Evans
+30908	TE	Adam Zaruba
+30909	CB	Dejaun Butler
+30910	None	None
+30911	LB	Noor Davis
+30912	QB	David Olson
+30913	DB,CB	Jarell Carter
+30914	WR	Jordan Westerkamp
+30915	RB	Darius Victor
+30916	LB	Jonathan Walton
+30917	DT	Peli Anau
+30918	RB	Josh Rounds
+30919	DT	Aiulua Fanene
+30920	None	None
+30921	DE	Jeremy Faulk
+30922	None	None
+30923	WR	C.J. Germany
+30924	LB	Terence Waugh
+30925	TE	Nate Iese
+30926	WR	Alton Howard
+30927	None	None
+30928	TE	Mike Estes
+30929	None	None
+30930	WR	Marvin Bracy
+30931	WR	De'Quan Hampton
+30932	WR	Brian Riley
+30933	LB	Jimmy Herman
+30934	DE	Keionta Davis
+30935	CB	Malik Foreman
+30936	WR	Keevan Lucas
+30937	None	None
+30938	WR	Dan Williams
+30939	WR	Germone Hopper
+30940	WR	Rashard Davis
+30941	LB,DE	Austin Gearing
+30942	WR	Justice Liggins
+30943	TE	Andrew Price
+30944	LB	Rodney Butler
+30945	CB	Darrius Sims
+30946	None	None
+30947	QB	Mitch Leidner
+30948	DE	Whitney Richardson
+30949	CB	Tyquwan Glass
+30950	S	Elijah Mitchell
+30951	CB	Antonio Crawford
+30952	LB	Willie Mays III
+30953	S	Armageddon Draughn
+30954	LB	Christian Kuntz
+30955	None	None
+30956	None	None
+30957	None	None
+30958	None	None
+30959	None	None
+30960	None	None
+30961	None	None
+30962	None	None
+30963	None	None
+30964	None	None
+30965	None	None
+30966	None	None
+30967	None	None
+30968	None	None
+30969	None	None
+30970	None	None
+30971	None	None
+30972	None	None
+30973	None	None
+30974	None	None
+30975	None	None
+30976	None	None
+30977	None	None
+30978	None	None
+30979	None	None
+30980	None	None
+30981	None	None
+30982	None	None
+30983	None	None
+30984	None	None
+30985	None	None
+30986	None	None
+30987	None	None
+30988	None	None
+30989	None	None
+30990	None	None
+30991	None	None
+30992	None	None
+30993	None	None
+30994	None	None
+30995	None	None
+30996	None	None
+30997	None	None
+30998	None	None
+30999	None	None

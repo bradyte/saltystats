@@ -21,7 +21,8 @@ import time
 filePath        = '/Users/tbrady/drive/sw/json/yahoo/oauth2.json'
 oauthToken      = beginOauth2Session(filePath)
 
-season          = 2013
+
+season          = 2017
 league_id       = 470610
 team_id         = 1
 week            = 1
@@ -33,39 +34,61 @@ roster_size     = 15
 #6762 fitzgerald inconsistent
 #29236 wentz very good
 #28461 coleman consistent
-player_id = 29236
+player_id = 9320
 
 
 
 
 #leagueSettings  = getLeagueSettings(season, league_id, oauthToken)
-#type=week;week={week}
-fpts        = []
-fptsArr     = []
-fptsPlotArr = []
-fptsMean    = 0.0
-fptsStdev   = 0.0
-fptsCV      = 0.0
-fptsROC     = 0.0
-fptsPDF     = 0.0
-fptsSE      = 0.0 # standard error of mean
-fptsVar     = 0.0
-confInt     = 1.96  # z* of 95%
-confLimits  = 0.0
+##type=week;week={week}
+#fpts        = []
+#fptsArr     = []
+#fptsPlotArr = []
+#fptsMean    = 0.0
+#fptsStdev   = 0.0
+#fptsCV      = 0.0
+#fptsROC     = 0.0
+#fptsPDF     = 0.0
+#fptsSE      = 0.0 # standard error of mean
+#fptsVar     = 0.0
+#confInt     = 1.96  # z* of 95%
+#confLimits  = 0.0
 
 
-player_id = 100019
-#for i in range(player_id,player_id+32):
-url = 'https://fantasysports.yahooapis.com/fantasy/v2/player/'  \
-    + str(getSeasonGameKey(season)) + '.p.' + str(player_id)    \
-    + '/stats;type=week;week=' + str(week) + '?format=json'
-jsondata = jsonQuery(url, oauthToken)
-#    jsondataText = jsondata['fantasy_content']['player'][0][2]['name']['full']
-#    jsondataStats = jsondata['fantasy_content']['player'][1]['player_stats']['stats']
-#print(i)
-pprint.pprint(jsondata)
-#    time.sleep(2)
+start = 26000
+filename = str('namedb'+str(start)+'_'+str(start+999)+'.txt')
 
+
+#arr = doesPlayerExist(season, 27000, week, oauthToken)
+with open(filename, 'w') as output:
+    for player_id in range(start,start+1000):
+        arr = doesPlayerExist(season, player_id, week, oauthToken)
+        output.write(  str(arr[0]) + '\t' \
+                     + str(arr[1]) + '\t' \
+                     + str(arr[2]) + '\n')
+        print(         str(arr[0]) + '\t' \
+                     + str(arr[1]) + '\t' \
+                     + str(arr[2]))
+
+
+
+#k = 0
+#ksum = 0
+#player_id = 100001
+#for i in range(player_id,player_id+34):
+#    if (i != 100031) and (i != 100032):
+#        url = 'https://fantasysports.yahooapis.com/fantasy/v2/player/'  \
+#            + str(getSeasonGameKey(season)) + '.p.' + str(i)    \
+#            + '/stats;type=week;week=' + str(week) + '?format=json'
+#        jsondata = jsonQuery(url, oauthToken)
+#        jsondataText = jsondata['fantasy_content']['player'][0][2]['name']['full']
+#        jsondataStats = int(jsondata['fantasy_content']['player'][1]['player_stats']['stats'][19]['stat']['value'])
+#        if jsondataStats > 0:
+#            k += 1
+##        pprint.pprint(jsondataStats)
+#        ksum += jsondataStats
+##    time.sleep(2)
+#print(ksum/k)
     
 
 #title       = getPlayerName(season, player_id, week, oauthToken)

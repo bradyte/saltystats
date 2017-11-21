@@ -174,7 +174,7 @@ def getLeagueSettings(season, league_id, oauthToken):
         = cleanStats(leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['stat_modifiers']['stats'],\
                      leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['stat_categories']['stats'])
 
-    return leagueSettings;
+    return leaguedata;
 
 ###############################################################################
 ## getWeeklyMatchup
@@ -217,9 +217,8 @@ def getWeeklyMatchup(season, league_id, team_id, week, num_teams, oauthToken):
 ##
 ############################################################################### 
 def getPlayerStats(season, player_id, week, statValues, oauthToken):
-    game_key    = getSeasonGameKey(season)
     url         = 'https://fantasysports.yahooapis.com/fantasy/v2/player/' \
-                + str(game_key) + '.p.' + str(player_id) \
+                + str(getSeasonGameKey(season)) + '.p.' + str(player_id) \
                 + '/stats;type=week;week=' + str(week) +'?format=json'
                 
     jsondata = jsonQuery(url, oauthToken)
@@ -241,9 +240,8 @@ def getPlayerStats(season, player_id, week, statValues, oauthToken):
     
     
 def getPlayerName(season, player_id, week, oauthToken):
-    game_key    = getSeasonGameKey(season)
     url         = 'https://fantasysports.yahooapis.com/fantasy/v2/player/' \
-                + str(game_key) + '.p.' + str(player_id) \
+                + str(getSeasonGameKey(season)) + '.p.' + str(player_id) \
                 + '/stats;type=week;week=' + str(week) +'?format=json'
                 
     namedata = jsonQuery(url, oauthToken)  
@@ -251,14 +249,32 @@ def getPlayerName(season, player_id, week, oauthToken):
     return str(namedata['fantasy_content']['player'][0][2]['name']['full'])
     
     
+def doesPlayerExist(season, player_id, week, oauthToken):
+    url         = 'https://fantasysports.yahooapis.com/fantasy/v2/player/'  \
+                + str(getSeasonGameKey(season)) + '.p.' + str(player_id)    \
+                + '/stats;type=week;week=' + str(week) + '?format=json'
+                
+    jsondata = jsonQuery(url, oauthToken)
+    name = None
+    position = None
+    if 'error' in jsondata:
+        return [player_id, position, name]
+    else:
+        jsondata = jsondata['fantasy_content']['player']
+        name = str(jsondata[0][2]['name']['full'])
+        position = None
+        for d in jsondata[0]:
+            if 'display_position' in d:
+                position = d['display_position']
+        return [player_id, str(position), str(name)]
+#        return jsondata
+
     
     
     
     
     
-    
-    
-    
+
     
     
     

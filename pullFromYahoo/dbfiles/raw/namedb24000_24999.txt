@@ -1,0 +1,1000 @@
+24000	None	None
+24001	DT	Dan Williams
+24002	S	Devin McCourty
+24003	DT	Jared Odrick
+24004	CB	Kyle Wilson
+24005	None	None
+24006	LB,DE	Jerry Hughes
+24007	CB	Patrick Robinson
+24008	None	None
+24009	None	None
+24010	None	None
+24011	RB	Dexter McCluster
+24012	S	Nate Allen
+24013	S	T.J. Ward
+24014	WR	Arrelious Benn
+24015	LB	Koa Misi
+24016	None	None
+24017	TE	Rob Gronkowski
+24018	None	None
+24019	LB	Lamarr Houston
+24020	None	None
+24021	DT	Linval Joseph
+24022	LB	Daryl Washington
+24023	None	None
+24024	None	None
+24025	None	None
+24026	None	None
+24027	None	None
+24028	None	None
+24029	DE	Carlos Dunlap
+24030	LB	Sean Lee
+24031	None	None
+24032	None	None
+24033	None	None
+24034	None	None
+24035	WR	Golden Tate
+24036	None	None
+24037	LB	Brandon Spikes
+24038	None	None
+24039	None	None
+24040	None	None
+24041	None	None
+24042	None	None
+24043	None	None
+24044	None	None
+24045	TE	Ed Dickson
+24046	S	Morgan Burnett
+24047	None	None
+24048	None	None
+24049	None	None
+24050	None	None
+24051	None	None
+24052	None	None
+24053	WR	Brandon LaFell
+24054	LB	Donald Butler
+24055	None	None
+24056	DT	Earl Mitchell
+24057	WR	Emmanuel Sanders
+24058	DT	Corey Peters
+24059	None	None
+24060	QB	Colt McCoy
+24061	None	None
+24062	WR	Eric Decker
+24063	WR	Andre Roberts
+24064	None	None
+24065	None	None
+24066	LB	NaVorro Bowman
+24067	None	None
+24068	None	None
+24069	None	None
+24070	TE	Jimmy Graham
+24071	None	None
+24072	None	None
+24073	None	None
+24074	None	None
+24075	DE	Everson Griffen
+24076	None	None
+24077	None	None
+24078	LB	Perry Riley Jr.
+24079	CB	Alterraun Verner
+24080	None	None
+24081	None	None
+24082	None	None
+24083	None	None
+24084	None	None
+24085	S	Darrell Stuckey
+24086	None	None
+24087	None	None
+24088	None	None
+24089	TE	Dennis Pitta
+24090	None	None
+24091	None	None
+24092	None	None
+24093	TE	Garrett Graham
+24094	None	None
+24095	DT	Geno Atkins
+24096	None	None
+24097	None	None
+24098	DT	Al Woods
+24099	None	None
+24100	TE	Clay Harbor
+24101	None	None
+24102	DT	C.J. Wilson
+24103	None	None
+24104	None	None
+24105	None	None
+24106	None	None
+24107	None	None
+24108	TE	Michael Hoomanawanui
+24109	S	Kam Chancellor
+24110	None	None
+24111	None	None
+24112	S	Kendrick Lewis
+24113	CB	Perrish Cox
+24114	None	None
+24115	None	None
+24116	None	None
+24117	None	None
+24118	None	None
+24119	None	None
+24120	CB	Sherrick McManis
+24121	CB	Nolan Carroll
+24122	DT,DE	Cam Thomas
+24123	None	None
+24124	None	None
+24125	None	None
+24126	None	None
+24127	None	None
+24128	None	None
+24129	None	None
+24130	None	None
+24131	None	None
+24132	None	None
+24133	DT	Arthur Jones
+24134	None	None
+24135	None	None
+24136	None	None
+24137	None	None
+24138	None	None
+24139	S	Reshad Jones
+24140	CB	Crezdon Butler
+24141	None	None
+24142	None	None
+24143	None	None
+24144	None	None
+24145	None	None
+24146	None	None
+24147	None	None
+24148	None	None
+24149	None	None
+24150	None	None
+24151	None	None
+24152	None	None
+24153	None	None
+24154	LB	Arthur Moats
+24155	None	None
+24156	None	None
+24157	None	None
+24158	None	None
+24159	None	None
+24160	None	None
+24161	None	None
+24162	None	None
+24163	None	None
+24164	None	None
+24165	DE	Eugene Sims
+24166	None	None
+24167	None	None
+24168	None	None
+24169	RB	James Starks
+24170	None	None
+24171	WR	Antonio Brown
+24172	None	None
+24173	None	None
+24174	None	None
+24175	QB	Joe Webb
+24176	None	None
+24177	None	None
+24178	None	None
+24179	None	None
+24180	None	None
+24181	None	None
+24182	None	None
+24183	None	None
+24184	None	None
+24185	None	None
+24186	None	None
+24187	None	None
+24188	None	None
+24189	LB	Willie Young
+24190	None	None
+24191	None	None
+24192	None	None
+24193	LB	Dekoda Watson
+24194	None	None
+24195	None	None
+24196	None	None
+24197	None	None
+24198	WR	Marc Mariani
+24199	None	None
+24200	None	None
+24201	None	None
+24202	None	None
+24203	None	None
+24204	None	None
+24205	None	None
+24206	None	None
+24207	None	None
+24208	TE	Jim Dray
+24209	DT	Sean Lissemore
+24210	None	None
+24211	None	None
+24212	None	None
+24213	DE	Ricardo Mathews
+24214	None	None
+24215	None	None
+24216	None	None
+24217	None	None
+24218	None	None
+24219	S	Kurt Coleman
+24220	None	None
+24221	None	None
+24222	None	None
+24223	None	None
+24224	None	None
+24225	CB	Robert McClain
+24226	None	None
+24227	None	None
+24228	None	None
+24229	None	None
+24230	None	None
+24231	None	None
+24232	None	None
+24233	None	None
+24234	None	None
+24235	None	None
+24236	None	None
+24237	None	None
+24238	None	None
+24239	None	None
+24240	None	None
+24241	None	None
+24242	None	None
+24243	None	None
+24244	None	None
+24245	None	None
+24246	None	None
+24247	None	None
+24248	None	None
+24249	None	None
+24250	None	None
+24251	None	None
+24252	None	None
+24253	None	None
+24254	None	None
+24255	None	None
+24256	None	None
+24257	None	None
+24258	None	None
+24259	S	Rafael Bush
+24260	None	None
+24261	None	None
+24262	RB	Joique Bell
+24263	None	None
+24264	None	None
+24265	None	None
+24266	None	None
+24267	None	None
+24268	None	None
+24269	None	None
+24270	None	None
+24271	None	None
+24272	None	None
+24273	None	None
+24274	None	None
+24275	None	None
+24276	None	None
+24277	None	None
+24278	None	None
+24279	None	None
+24280	None	None
+24281	None	None
+24282	None	None
+24283	None	None
+24284	None	None
+24285	None	None
+24286	None	None
+24287	None	None
+24288	None	None
+24289	None	None
+24290	None	None
+24291	None	None
+24292	S	Sergio Brown
+24293	None	None
+24294	DT	Kyle Love
+24295	None	None
+24296	None	None
+24297	None	None
+24298	None	None
+24299	None	None
+24300	None	None
+24301	None	None
+24302	None	None
+24303	TE	Jeff Cumberland
+24304	None	None
+24305	None	None
+24306	None	None
+24307	None	None
+24308	None	None
+24309	None	None
+24310	None	None
+24311	QB	Thad Lewis
+24312	None	None
+24313	None	None
+24314	None	None
+24315	None	None
+24316	None	None
+24317	None	None
+24318	RB	LeGarrette Blount
+24319	None	None
+24320	None	None
+24321	None	None
+24322	None	None
+24323	None	None
+24324	None	None
+24325	None	None
+24326	S	Chris Maragos
+24327	None	None
+24328	None	None
+24329	None	None
+24330	None	None
+24331	None	None
+24332	None	None
+24333	None	None
+24334	None	None
+24335	None	None
+24336	LB	Vincent Rey
+24337	None	None
+24338	None	None
+24339	None	None
+24340	None	None
+24341	None	None
+24342	None	None
+24343	None	None
+24344	None	None
+24345	None	None
+24346	None	None
+24347	None	None
+24348	None	None
+24349	None	None
+24350	None	None
+24351	None	None
+24352	None	None
+24353	None	None
+24354	None	None
+24355	None	None
+24356	None	None
+24357	None	None
+24358	LB	Albert McClellan
+24359	None	None
+24360	None	None
+24361	None	None
+24362	None	None
+24363	None	None
+24364	None	None
+24365	None	None
+24366	None	None
+24367	None	None
+24368	None	None
+24369	None	None
+24370	None	None
+24371	None	None
+24372	None	None
+24373	None	None
+24374	None	None
+24375	None	None
+24376	None	None
+24377	None	None
+24378	None	None
+24379	None	None
+24380	None	None
+24381	None	None
+24382	None	None
+24383	None	None
+24384	None	None
+24385	None	None
+24386	None	None
+24387	None	None
+24388	None	None
+24389	None	None
+24390	None	None
+24391	None	None
+24392	None	None
+24393	None	None
+24394	None	None
+24395	None	None
+24396	None	None
+24397	None	None
+24398	None	None
+24399	None	None
+24400	RB	Chris Ivory
+24401	None	None
+24402	None	None
+24403	None	None
+24404	None	None
+24405	LB	Junior Galette
+24406	None	None
+24407	None	None
+24408	None	None
+24409	None	None
+24410	None	None
+24411	None	None
+24412	None	None
+24413	None	None
+24414	None	None
+24415	None	None
+24416	None	None
+24417	None	None
+24418	None	None
+24419	None	None
+24420	None	None
+24421	None	None
+24422	None	None
+24423	None	None
+24424	None	None
+24425	None	None
+24426	None	None
+24427	None	None
+24428	None	None
+24429	None	None
+24430	None	None
+24431	None	None
+24432	None	None
+24433	None	None
+24434	None	None
+24435	None	None
+24436	WR	Bryan Walters
+24437	None	None
+24438	None	None
+24439	None	None
+24440	None	None
+24441	None	None
+24442	None	None
+24443	None	None
+24444	None	None
+24445	None	None
+24446	None	None
+24447	None	None
+24448	None	None
+24449	None	None
+24450	None	None
+24451	DE	Mitch Unrein
+24452	None	None
+24453	None	None
+24454	None	None
+24455	None	None
+24456	None	None
+24457	None	None
+24458	None	None
+24459	None	None
+24460	None	None
+24461	None	None
+24462	None	None
+24463	None	None
+24464	None	None
+24465	None	None
+24466	None	None
+24467	None	None
+24468	None	None
+24469	None	None
+24470	None	None
+24471	None	None
+24472	None	None
+24473	None	None
+24474	None	None
+24475	None	None
+24476	None	None
+24477	None	None
+24478	None	None
+24479	None	None
+24480	None	None
+24481	None	None
+24482	None	None
+24483	None	None
+24484	None	None
+24485	None	None
+24486	None	None
+24487	None	None
+24488	None	None
+24489	None	None
+24490	None	None
+24491	None	None
+24492	None	None
+24493	None	None
+24494	None	None
+24495	None	None
+24496	None	None
+24497	None	None
+24498	None	None
+24499	None	None
+24500	None	None
+24501	None	None
+24502	None	None
+24503	None	None
+24504	None	None
+24505	None	None
+24506	None	None
+24507	LB	Frank Zombo
+24508	CB	Sam Shields
+24509	None	None
+24510	None	None
+24511	None	None
+24512	None	None
+24513	None	None
+24514	None	None
+24515	None	None
+24516	None	None
+24517	None	None
+24518	None	None
+24519	None	None
+24520	None	None
+24521	None	None
+24522	None	None
+24523	None	None
+24524	None	None
+24525	None	None
+24526	None	None
+24527	None	None
+24528	None	None
+24529	None	None
+24530	None	None
+24531	None	None
+24532	None	None
+24533	None	None
+24534	None	None
+24535	None	None
+24536	None	None
+24537	None	None
+24538	None	None
+24539	None	None
+24540	None	None
+24541	None	None
+24542	None	None
+24543	None	None
+24544	None	None
+24545	None	None
+24546	None	None
+24547	None	None
+24548	None	None
+24549	None	None
+24550	None	None
+24551	None	None
+24552	None	None
+24553	WR	Victor Cruz
+24554	None	None
+24555	None	None
+24556	None	None
+24557	None	None
+24558	None	None
+24559	None	None
+24560	None	None
+24561	None	None
+24562	None	None
+24563	None	None
+24564	None	None
+24565	None	None
+24566	None	None
+24567	None	None
+24568	None	None
+24569	None	None
+24570	None	None
+24571	None	None
+24572	None	None
+24573	None	None
+24574	None	None
+24575	None	None
+24576	None	None
+24577	None	None
+24578	CB	Tramaine Brock
+24579	None	None
+24580	None	None
+24581	None	None
+24582	None	None
+24583	None	None
+24584	None	None
+24585	None	None
+24586	None	None
+24587	None	None
+24588	None	None
+24589	None	None
+24590	S	Darian Stewart
+24591	None	None
+24592	None	None
+24593	None	None
+24594	None	None
+24595	None	None
+24596	None	None
+24597	None	None
+24598	None	None
+24599	None	None
+24600	None	None
+24601	None	None
+24602	None	None
+24603	S	Barry Church
+24604	None	None
+24605	None	None
+24606	None	None
+24607	None	None
+24608	TE	Logan Paulsen
+24609	None	None
+24610	None	None
+24611	None	None
+24612	None	None
+24613	None	None
+24614	None	None
+24615	None	None
+24616	None	None
+24617	None	None
+24618	None	None
+24619	None	None
+24620	None	None
+24621	None	None
+24622	None	None
+24623	None	None
+24624	None	None
+24625	None	None
+24626	None	None
+24627	None	None
+24628	None	None
+24629	None	None
+24630	None	None
+24631	None	None
+24632	None	None
+24633	None	None
+24634	None	None
+24635	None	None
+24636	None	None
+24637	None	None
+24638	None	None
+24639	None	None
+24640	None	None
+24641	None	None
+24642	None	None
+24643	None	None
+24644	None	None
+24645	None	None
+24646	None	None
+24647	None	None
+24648	None	None
+24649	None	None
+24650	None	None
+24651	None	None
+24652	None	None
+24653	None	None
+24654	None	None
+24655	None	None
+24656	None	None
+24657	None	None
+24658	None	None
+24659	None	None
+24660	None	None
+24661	None	None
+24662	None	None
+24663	None	None
+24664	None	None
+24665	DE	George Johnson
+24666	None	None
+24667	None	None
+24668	None	None
+24669	None	None
+24670	None	None
+24671	None	None
+24672	None	None
+24673	None	None
+24674	None	None
+24675	None	None
+24676	None	None
+24677	S	Anthony Levine Sr.
+24678	None	None
+24679	None	None
+24680	None	None
+24681	None	None
+24682	None	None
+24683	None	None
+24684	None	None
+24685	CB	Marcus Sherels
+24686	None	None
+24687	None	None
+24688	None	None
+24689	None	None
+24690	None	None
+24691	None	None
+24692	None	None
+24693	None	None
+24694	None	None
+24695	None	None
+24696	None	None
+24697	None	None
+24698	None	None
+24699	None	None
+24700	None	None
+24701	None	None
+24702	None	None
+24703	None	None
+24704	None	None
+24705	None	None
+24706	None	None
+24707	None	None
+24708	None	None
+24709	WR	Brandon Banks
+24710	None	None
+24711	None	None
+24712	None	None
+24713	None	None
+24714	None	None
+24715	None	None
+24716	None	None
+24717	None	None
+24718	None	None
+24719	None	None
+24720	None	None
+24721	None	None
+24722	None	None
+24723	None	None
+24724	None	None
+24725	None	None
+24726	None	None
+24727	None	None
+24728	None	None
+24729	None	None
+24730	None	None
+24731	None	None
+24732	None	None
+24733	None	None
+24734	None	None
+24735	RB	Will Tukuafu
+24736	None	None
+24737	None	None
+24738	None	None
+24739	None	None
+24740	None	None
+24741	None	None
+24742	None	None
+24743	None	None
+24744	None	None
+24745	None	None
+24746	CB	Teddy Williams
+24747	None	None
+24748	None	None
+24749	None	None
+24750	None	None
+24751	None	None
+24752	None	None
+24753	None	None
+24754	None	None
+24755	None	None
+24756	None	None
+24757	None	None
+24758	None	None
+24759	S	Andrew Sendejo
+24760	RB	James Develin
+24761	None	None
+24762	None	None
+24763	None	None
+24764	None	None
+24765	None	None
+24766	None	None
+24767	None	None
+24768	None	None
+24769	None	None
+24770	None	None
+24771	None	None
+24772	None	None
+24773	None	None
+24774	WR	Andrew Hawkins
+24775	None	None
+24776	None	None
+24777	None	None
+24778	DT	Tom Johnson
+24779	None	None
+24780	None	None
+24781	None	None
+24782	None	None
+24783	None	None
+24784	None	None
+24785	None	None
+24786	None	None
+24787	None	None
+24788	QB	Cam Newton
+24789	LB	Von Miller
+24790	DT	Marcell Dareus
+24791	WR	A.J. Green
+24792	CB	Patrick Peterson
+24793	WR	Julio Jones
+24794	None	None
+24795	None	None
+24796	None	None
+24797	QB	Blaine Gabbert
+24798	DE	J.J. Watt
+24799	QB	Christian Ponder
+24800	DT	Nick Fairley
+24801	LB	Robert Quinn
+24802	None	None
+24803	LB	Ryan Kerrigan
+24804	None	None
+24805	DT	Corey Liuget
+24806	CB	Prince Amukamara
+24807	DE	Adrian Clayborn
+24808	DT	Phil Taylor
+24809	None	None
+24810	None	None
+24811	DE	Cameron Jordan
+24812	None	None
+24813	None	None
+24814	CB	Jimmy Smith
+24815	RB	Mark Ingram
+24816	None	None
+24817	DE	Muhammad Wilkerson
+24818	DE	Cameron Heyward
+24819	None	None
+24820	None	None
+24821	S	Aaron Williams
+24822	QB	Andy Dalton
+24823	QB	Colin Kaepernick
+24824	LB,DE	Jabaal Sheard
+24825	None	None
+24826	LB	Akeem Ayers
+24827	LB	Bruce Carter
+24828	DE	Jarvis Jenkins
+24829	DE	Brooks Reed
+24830	TE	Kyle Rudolph
+24831	None	None
+24832	S	Rahim Moore
+24833	None	None
+24834	TE	Lance Kendricks
+24835	None	None
+24836	None	None
+24837	S	Marcus Gilchrist
+24838	None	None
+24839	None	None
+24840	DT,DE	Stephen Paea
+24841	None	None
+24842	None	None
+24843	RB	Shane Vereen
+24844	None	None
+24845	WR	Torrey Smith
+24846	None	None
+24847	None	None
+24848	None	None
+24849	None	None
+24850	None	None
+24851	WR	Randall Cobb
+24852	DT	Terrell McClain
+24853	None	None
+24854	None	None
+24855	LB	Kelvin Sheppard
+24856	TE	Rob Housler
+24857	LB	Justin Houston
+24858	RB	DeMarco Murray
+24859	None	None
+24860	RB	Stevan Ridley
+24861	QB	Ryan Mallett
+24862	None	None
+24863	None	None
+24864	DT	Jurrell Casey
+24865	None	None
+24866	None	None
+24867	CB	Chris Culliver
+24868	None	None
+24869	None	None
+24870	None	None
+24871	LB	Mason Foster
+24872	None	None
+24873	DE	Allen Bailey
+24874	None	None
+24875	None	None
+24876	CB	Shareece Wright
+24877	None	None
+24878	LB	Akeem Dent
+24879	None	None
+24880	S	Chris Conte
+24881	None	None
+24882	None	None
+24883	None	None
+24884	None	None
+24885	None	None
+24886	LB	K.J. Wright
+24887	S	Da'Norris Searcy
+24888	None	None
+24889	None	None
+24890	LB	Sam Acho
+24891	TE	Luke Stocker
+24892	None	None
+24893	None	None
+24894	None	None
+24895	None	None
+24896	None	None
+24897	None	None
+24898	None	None
+24899	None	None
+24900	None	None
+24901	WR	Cecil Shorts III
+24902	None	None
+24903	None	None
+24904	None	None
+24905	None	None
+24906	None	None
+24907	None	None
+24908	S	Chris Prosinski
+24909	None	None
+24910	None	None
+24911	None	None
+24912	RB	Taiwan Jones
+24913	RB	Bilal Powell
+24914	None	None
+24915	None	None
+24916	TE	Julius Thomas
+24917	None	None
+24918	CB	Davon House
+24919	None	None
+24920	None	None
+24921	None	None
+24922	None	None
+24923	RB	Anthony Sherman
+24924	CB	Buster Skrine
+24925	None	None
+24926	None	None
+24927	None	None
+24928	None	None
+24929	DT	Karl Klug
+24930	None	None
+24931	S	Shiloh Keo
+24932	RB	Jacquizz Rodgers
+24933	None	None
+24934	None	None
+24935	None	None
+24936	RB	Dion Lewis
+24937	None	None
+24938	None	None
+24939	QB	T.J. Yates
+24940	WR	Jeremy Kerley
+24941	CB	Richard Sherman
+24942	TE	Niles Paul
+24943	None	None
+24944	None	None
+24945	None	None
+24946	TE	Lee Smith
+24947	None	None
+24948	None	None
+24949	LB	Chris Carter
+24950	None	None
+24951	None	None
+24952	LB	Pernell McPhee
+24953	None	None
+24954	None	None
+24955	None	None
+24956	None	None
+24957	None	None
+24958	None	None
+24959	None	None
+24960	CB	Byron Maxwell
+24961	TE	Charles Clay
+24962	None	None
+24963	WR	Dwayne Harris
+24964	None	None
+24965	WR	Aldrick Robinson
+24966	None	None
+24967	QB	Tyrod Taylor
+24968	None	None
+24969	None	None
+24970	RB	Jordan Todman
+24971	None	None
+24972	None	None
+24973	None	None
+24974	None	None
+24975	None	None
+24976	None	None
+24977	S	Colin Jones
+24978	None	None
+24979	None	None
+24980	None	None
+24981	None	None
+24982	LB	J.T. Thomas III
+24983	None	None
+24984	None	None
+24985	None	None
+24986	None	None
+24987	None	None
+24988	None	None
+24989	None	None
+24990	None	None
+24991	TE	Virgil Green
+24992	None	None
+24993	None	None
+24994	None	None
+24995	None	None
+24996	None	None
+24997	None	None
+24998	None	None
+24999	None	None

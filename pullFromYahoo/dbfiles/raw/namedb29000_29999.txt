@@ -1,0 +1,1000 @@
+29000	None	None
+29001	WR	Bradley Marquez
+29002	None	None
+29003	DT	Louis Trinca-Pasat
+29004	None	None
+29005	None	None
+29006	None	None
+29007	None	None
+29008	None	None
+29009	None	None
+29010	None	None
+29011	None	None
+29012	None	None
+29013	RB	George Farmer
+29014	WR	Antwan Goodley
+29015	None	None
+29016	None	None
+29017	None	None
+29018	None	None
+29019	None	None
+29020	None	None
+29021	S,CB	Tim Scott
+29022	S	Jameill Showers
+29023	None	None
+29024	WR	Lucky Whitehead
+29025	None	None
+29026	None	None
+29027	None	None
+29028	DT,DE	Richard Ash
+29029	LB,DE	Cap Capi
+29030	None	None
+29031	None	None
+29032	None	None
+29033	None	None
+29034	TE	E.J. Bibbs
+29035	None	None
+29036	None	None
+29037	None	None
+29038	WR	Darius Jennings
+29039	None	None
+29040	None	None
+29041	None	None
+29042	None	None
+29043	None	None
+29044	None	None
+29045	None	None
+29046	TE	Will Tye
+29047	None	None
+29048	None	None
+29049	None	None
+29050	DT	Toby Johnson
+29051	None	None
+29052	None	None
+29053	DT	Derrick Lott
+29054	None	None
+29055	TE	Tim Semisch
+29056	WR	Isaac Fruechte
+29057	K	Mike Meyer
+29058	None	None
+29059	None	None
+29060	CB	Cody Riggs
+29061	S	Harold Jones-Quartey
+29062	CB	Curtis Riley
+29063	None	None
+29064	None	None
+29065	None	None
+29066	WR	Andrew Turzilli
+29067	None	None
+29068	None	None
+29069	WR	Donteea Dye
+29070	WR	Adam Humphries
+29071	None	None
+29072	QB	Jake Heaps
+29073	None	None
+29074	None	None
+29075	None	None
+29076	None	None
+29077	CB	Quinton Dunbar
+29078	None	None
+29079	S	Travell Dixon
+29080	None	None
+29081	CB	SaQwan Edwards
+29082	None	None
+29083	None	None
+29084	None	None
+29085	RB	Mack Brown
+29086	S	Corey Moore
+29087	None	None
+29088	None	None
+29089	None	None
+29090	CB	De'Vante Bausby
+29091	None	None
+29092	None	None
+29093	LB	Andrew East
+29094	None	None
+29095	TE	Manasseh Garner
+29096	DT,DE	David Irving
+29097	None	None
+29098	LB	Justin March-Lillard
+29099	None	None
+29100	None	None
+29101	None	None
+29102	TE	Daniel Brown
+29103	None	None
+29104	None	None
+29105	None	None
+29106	None	None
+29107	None	None
+29108	None	None
+29109	None	None
+29110	TE	Brandon Cottom
+29111	LB	Tyrell Adams
+29112	None	None
+29113	None	None
+29114	DT	T.Y. McGill
+29115	None	None
+29116	None	None
+29117	None	None
+29118	TE	Tevin Westbrook
+29119	None	None
+29120	None	None
+29121	LB	Houston Bates
+29122	None	None
+29123	None	None
+29124	None	None
+29125	None	None
+29126	None	None
+29127	None	None
+29128	WR	Deshon Foxx
+29129	None	None
+29130	None	None
+29131	None	None
+29132	None	None
+29133	None	None
+29134	None	None
+29135	None	None
+29136	None	None
+29137	None	None
+29138	None	None
+29139	None	None
+29140	None	None
+29141	None	None
+29142	None	None
+29143	None	None
+29144	None	None
+29145	None	None
+29146	None	None
+29147	None	None
+29148	None	None
+29149	None	None
+29150	None	None
+29151	None	None
+29152	WR	Kasen Williams
+29153	None	None
+29154	None	None
+29155	None	None
+29156	None	None
+29157	None	None
+29158	None	None
+29159	None	None
+29160	CB	Kevin Short
+29161	None	None
+29162	CB	Jude Adjei-Barimah
+29163	None	None
+29164	None	None
+29165	None	None
+29166	None	None
+29167	None	None
+29168	None	None
+29169	None	None
+29170	None	None
+29171	None	None
+29172	None	None
+29173	None	None
+29174	None	None
+29175	None	None
+29176	None	None
+29177	None	None
+29178	RB	Terrell Watson
+29179	None	None
+29180	None	None
+29181	None	None
+29182	None	None
+29183	None	None
+29184	RB	Bronson Hill
+29185	None	None
+29186	None	None
+29187	None	None
+29188	None	None
+29189	None	None
+29190	None	None
+29191	None	None
+29192	None	None
+29193	None	None
+29194	None	None
+29195	None	None
+29196	None	None
+29197	None	None
+29198	None	None
+29199	None	None
+29200	None	None
+29201	None	None
+29202	None	None
+29203	None	None
+29204	None	None
+29205	None	None
+29206	None	None
+29207	None	None
+29208	TE	Ross Travis
+29209	None	None
+29210	LB	Derrick Mathews
+29211	None	None
+29212	None	None
+29213	WR	Jamel Johnson
+29214	None	None
+29215	None	None
+29216	S	Dexter McCoil
+29217	TE	Ronnie Shields
+29218	None	None
+29219	None	None
+29220	None	None
+29221	None	None
+29222	None	None
+29223	None	None
+29224	S	Erik Harris
+29225	None	None
+29226	WR	Anthony Dable
+29227	CB	Aaron Grymes
+29228	None	None
+29229	WR	Xavier Rush
+29230	None	None
+29231	None	None
+29232	None	None
+29233	None	None
+29234	None	None
+29235	QB	Jared Goff
+29236	QB	Carson Wentz
+29237	DE	Joey Bosa
+29238	RB	Ezekiel Elliott
+29239	CB	Jalen Ramsey
+29240	None	None
+29241	DT	DeForest Buckner
+29242	None	None
+29243	LB	Leonard Floyd
+29244	CB	Eli Apple
+29245	CB	Vernon Hargreaves III
+29246	DT	Sheldon Rankins
+29247	None	None
+29248	S	Karl Joseph
+29249	WR	Corey Coleman
+29250	None	None
+29251	S	Keanu Neal
+29252	None	None
+29253	LB,DE	Shaq Lawson
+29254	LB	Darron Lee
+29255	WR	Will Fuller V
+29256	WR	Josh Doctson
+29257	WR	Laquon Treadwell
+29258	CB	William Jackson
+29259	CB	Artie Burns
+29260	QB	Paxton Lynch
+29261	DT	Kenny Clark
+29262	None	None
+29263	DT	Robert Nkemdiche
+29264	DT	Vernon Butler
+29265	None	None
+29266	LB,DE	Emmanuel Ogbah
+29267	LB	Kevin Dodd
+29268	LB	Jaylon Smith
+29269	TE	Hunter Henry
+29270	LB	Myles Jack
+29271	DT,DE	Chris Jones
+29272	CB	Xavien Howard
+29273	DE	Noah Spence
+29274	WR	Sterling Shepard
+29275	LB	Reggie Ragland
+29276	LB	Kamalei Correa
+29277	DT	Austin Johnson
+29278	DE	Jihad Ward
+29279	RB	Derrick Henry
+29280	DT	A'Shawn Robinson
+29281	WR	Michael Thomas
+29282	None	None
+29283	None	None
+29284	QB	Christian Hackenberg
+29285	LB	Deion Jones
+29286	S	Su'a Cravens
+29287	CB	Mackensie Alexander
+29288	WR	Tyler Boyd
+29289	DT	Jarran Reed
+29290	None	None
+29291	S,CB	T.J. Green
+29292	S	Sean Davis
+29293	K	Roberto Aguayo
+29294	CB	Cyrus Jones
+29295	S	Vonn Bell
+29296	CB	James Bradberry
+29297	DE	Adam Gotsis
+29298	S	Kevin Byard
+29299	DE	Carl Nassib
+29300	None	None
+29301	DT	Maliek Collins
+29302	CB	Will Redmond
+29303	DE	Yannick Ngakoue
+29304	DE	Bronson Kaufusi
+29305	S	Darian Thompson
+29306	DE	Jonathan Bullard
+29307	RB	Kenyan Drake
+29308	CB	KeiVarae Russell
+29309	LB	Shilique Calhoun
+29310	None	None
+29311	CB	Daryl Worley
+29312	None	None
+29313	None	None
+29314	DT	Adolphus Washington
+29315	TE	Austin Hooper
+29316	None	None
+29317	LB	Jordan Jenkins
+29318	CB	Kendall Fuller
+29319	WR	Braxton Miller
+29320	WR	Leonte Carroo
+29321	LB	Nick Vigil
+29322	LB	Kyler Fackrell
+29323	DT	Javon Hargrave
+29324	RB	C.J. Prosise
+29325	QB	Jacoby Brissett
+29326	CB	Brandon Williams
+29327	QB	Cody Kessler
+29328	TE	Nick Vannett
+29329	None	None
+29330	DT	Vincent Valentine
+29331	None	None
+29332	S	Justin Simmons
+29333	LB	Joe Schobert
+29334	QB	Connor Cook
+29335	DE	Charles Tapper
+29336	LB	Joshua Perry
+29337	DT	Sheldon Day
+29338	CB	Tavon Young
+29339	None	None
+29340	CB	Eric Murray
+29341	WR	Chris Moore
+29342	CB	Ryan Smith
+29343	LB	B.J. Goodson
+29344	TE	Tyler Higbee
+29345	S	Miles Killebrew
+29346	WR	Malcolm Mitchell
+29347	LB	Nick Kwiatkoski
+29348	WR	Ricardo Louis
+29349	LB	De'Vondre Campbell
+29350	DT	Hassan Ridgeway
+29351	WR	Pharoh Cooper
+29352	CB	Juston Burris
+29353	RB	Tyler Ervin
+29354	DT	David Onyemata
+29355	None	None
+29356	DT	Andrew Billings
+29357	None	None
+29358	S	Deon Bush
+29359	LB	Antonio Morrison
+29360	WR	Demarcus Robinson
+29361	CB	Deiondre' Hall
+29362	None	None
+29363	S	Derrick Kindred
+29364	None	None
+29365	LB	Blake Martinez
+29366	DT	Willie Henry
+29367	CB	Rashard Robinson
+29368	RB	Kenneth Dixon
+29369	QB	Dak Prescott
+29370	RB	Devontae Booker
+29371	DE	Dean Lowry
+29372	TE	Seth DeValve
+29373	QB	Cardale Jones
+29374	WR	Tajae Sharpe
+29375	CB	Zack Sanchez
+29376	DT	Ronald Blair III
+29377	RB	DeAndre Washington
+29378	None	None
+29379	None	None
+29380	LB	Matt Judon
+29381	DT,DE	Quinton Jefferson
+29382	None	None
+29383	RB	Paul Perkins
+29384	RB	Jordan Howard
+29385	None	None
+29386	DE	Matt Ioannidis
+29387	RB	Wendell Smallwood
+29388	WR	Jordan Payton
+29389	None	None
+29390	RB	Jonathan Williams
+29391	CB	LeShaun Sims
+29392	None	None
+29393	S	K.J. Dillon
+29394	LB	Kentrell Brothers
+29395	None	None
+29396	QB	Kevin Hogan
+29397	WR	Trevor Davis
+29398	None	None
+29399	WR	Tyreek Hill
+29400	DT	D.J. Reader
+29401	S,CB	Marqui Christian
+29402	None	None
+29403	LB	Antwione Williams
+29404	None	None
+29405	RB	Alex Collins
+29406	WR	Rashard Higgins
+29407	CB	Trey Caldwell
+29408	None	None
+29409	LB	Jatavis Brown
+29410	RB	Andy Janovich
+29411	TE	Temarrick Hemingway
+29412	CB	D.J. White
+29413	None	None
+29414	WR	Moritz Boehringer
+29415	DE	Tyrone Holmes
+29416	WR	Keenan Reynolds
+29417	LB	Devante Bond
+29418	TE	Jerell Adams
+29419	S	DeAndre Houston-Carson
+29420	WR	Jakeem Grant
+29421	QB	Nate Sudfeld
+29422	TE	David Morgan
+29423	CB	Anthony Brown
+29424	LB	Josh Forrest
+29425	QB	Jake Rudock
+29426	WR	Kolby Listenbee
+29427	None	None
+29428	LB	Cory James
+29429	None	None
+29430	CB	Blake Countess
+29431	RB,TE	Danny Vitale
+29432	RB	Derek Watt
+29433	WR	Cody Core
+29434	None	None
+29435	QB	Brandon Allen
+29436	DT,DE	Anthony Zettel
+29437	LB	Dadi Nicolas
+29438	CB	Jordan Lucas
+29439	S,CB	Harlan Miller
+29440	WR	Michael Thomas
+29441	QB	Jeff Driskel
+29442	LB	Kamu Grugier-Hill
+29443	CB	Maurice Canady
+29444	None	None
+29445	RB	Kelvin Taylor
+29446	S	Kavon Frazier
+29447	WR	Aaron Burbridge
+29448	LB	Elandon Roberts
+29449	None	None
+29450	RB	Darius Jackson
+29451	TE	Rico Gathers
+29452	CB	Kevon Seymour
+29453	S	Will Parks
+29454	LB	Travis Feeney
+29455	None	None
+29456	LB	Aaron Wallace
+29457	QB	Brandon Doughty
+29458	None	None
+29459	WR	Devin Lucien
+29460	DE	Jonathan Woodard
+29461	DE	Stephen Weatherly
+29462	None	None
+29463	WR	Demarcus Ayers
+29464	WR	Daniel Braverman
+29465	TE	Thomas Duarte
+29466	LB	Steven Daniels
+29467	CB	Jalen Mills
+29468	None	None
+29469	None	None
+29470	RB	Dwayne Washington
+29471	RB	Daniel Lasco II
+29472	WR	Devin Fuller
+29473	LB	Trevor Bates
+29474	DE	Alex McCalister
+29475	WR	Charone Peake
+29476	RB	Keith Marshall
+29477	WR	Kenny Lawler Jr.
+29478	S	Jayron Kearse
+29479	S	Clayton Fejedelem
+29480	LB	Tyler Matakevich
+29481	RB	Zac Brooks
+29482	None	None
+29483	CB	Prince Charles Iworah
+29484	LB	Scooby Wright III
+29485	LB	Joe Walker
+29486	TE	Beau Sandland
+29487	CB	Kalan Reed
+29488	DE	Johnny Maxey
+29489	None	None
+29490	None	None
+29491	DE	Giorgio Newberry
+29492	None	None
+29493	None	None
+29494	None	None
+29495	None	None
+29496	WR	Canaan Severin
+29497	None	None
+29498	None	None
+29499	RB	Andrew Bonnet
+29500	None	None
+29501	LB	Jeremy Cash
+29502	WR	Keyarris Garrett
+29503	RB	Devon Johnson
+29504	TE	Jake McGee
+29505	LB	Jared Norris
+29506	None	None
+29507	CB	Briean Boddy-Calhoun
+29508	TE	Braedon Bowman
+29509	None	None
+29510	CB	Mike Hilton
+29511	None	None
+29512	WR	Jamal Robinson
+29513	None	None
+29514	S	Jarrod Wilson
+29515	None	None
+29516	QB	Mike Bercovici
+29517	None	None
+29518	RB	Kenneth Farrow
+29519	None	None
+29520	None	None
+29521	WR	Jamaal Jones
+29522	LB,DE	Chris Landrum
+29523	None	None
+29524	S	Adrian McDonald
+29525	None	None
+29526	None	None
+29527	None	None
+29528	None	None
+29529	None	None
+29530	CB	Larry Scott
+29531	RB	Chris Swain
+29532	TE	Matt Weiser
+29533	WR	Dom Williams
+29534	CB	Trevor Williams
+29535	None	None
+29536	CB	Keith Baxter
+29537	TE	Kyle Carter
+29538	None	None
+29539	None	None
+29540	None	None
+29541	None	None
+29542	RB	Jhurell Pressley
+29543	None	None
+29544	None	None
+29545	QB	Joel Stave
+29546	LB	Bryson Albright
+29547	None	None
+29548	None	None
+29549	None	None
+29550	RB	Glenn Gronkowski
+29551	None	None
+29552	None	None
+29553	None	None
+29554	None	None
+29555	None	None
+29556	None	None
+29557	None	None
+29558	None	None
+29559	DT	Justin Zimmer
+29560	RB	Peyton Barber
+29561	None	None
+29562	None	None
+29563	None	None
+29564	CB	Elie Bouka
+29565	TE	Kivon Cartwright
+29566	DE	Kameron Canaday
+29567	None	None
+29568	None	None
+29569	None	None
+29570	None	None
+29571	TE	Alan Cross
+29572	None	None
+29573	None	None
+29574	S	Matthias Farley
+29575	RB	Russell Hansbrough
+29576	None	None
+29577	S	Isaiah Johnson
+29578	CB	Trevon Hartfield
+29579	None	None
+29580	None	None
+29581	DT	DaVonte Lambert
+29582	LB	Lamar Louis
+29583	None	None
+29584	LB	Cassanova McKinzy
+29585	None	None
+29586	None	None
+29587	TE	Hakeem Valles
+29588	LB	Luke Rhodes
+29589	CB	Ronald Zamort
+29590	None	None
+29591	S	Elijah Shumate
+29592	WR	Dez Stewart
+29593	DE	Channing Ward
+29594	None	None
+29595	None	None
+29596	DE	Sterling Bailey
+29597	None	None
+29598	None	None
+29599	RB	Josh Ferguson
+29600	TE	Darion Griswold
+29601	None	None
+29602	WR	Marcus Leak
+29603	LB	Curt Maggitt
+29604	S	Stefan McClure
+29605	WR	Mekale McKay
+29606	None	None
+29607	CB	Chris Milton
+29608	None	None
+29609	WR	Chester Rogers
+29610	None	None
+29611	None	None
+29612	WR	Tevaun Smith
+29613	LB	Ron Thompson Jr.
+29614	None	None
+29615	S	Andrew Williamson
+29616	RB	Bralon Addison
+29617	LB	Vontarrius Dora
+29618	WR	Mose Frazier
+29619	None	None
+29620	None	None
+29621	DT	Calvin Heurtelou
+29622	DT,DE	Shaneil Jenkins
+29623	TE	Henry Krieger-Coble
+29624	DT	David Moala
+29625	None	None
+29626	None	None
+29627	None	None
+29628	LB	Dwayne Norman
+29629	None	None
+29630	DT	Kyle Peko
+29631	WR	Kalif Raymond
+29632	None	None
+29633	None	None
+29634	None	None
+29635	None	None
+29636	LB,DE	Eddie Yarbrough
+29637	None	None
+29638	WR	Maurice Harris
+29639	None	None
+29640	None	None
+29641	None	None
+29642	None	None
+29643	None	None
+29644	None	None
+29645	DT	Cory Johnson
+29646	None	None
+29647	CB	Devonte Johnson
+29648	None	None
+29649	DT	Chris Mayes
+29650	RB	J.D. McKissic
+29651	None	None
+29652	None	None
+29653	S	Sharrod Neasman
+29654	TE	Joshua Perkins
+29655	CB	Brian Poole
+29656	RB	Will Ratelle
+29657	None	None
+29658	None	None
+29659	K	Nick Rose
+29660	None	None
+29661	RB	Brandon Wilds
+29662	LB	Dominique Alexander
+29663	None	None
+29664	None	None
+29665	None	None
+29666	TE	J.P. Holtz
+29667	S,CB	Tracy Howard
+29668	DT	Nile Lawrence-Stample
+29669	None	None
+29670	None	None
+29671	None	None
+29672	None	None
+29673	None	None
+29674	LB	Quentin Gause
+29675	None	None
+29676	None	None
+29677	None	None
+29678	WR	Marcus Johnson
+29679	WR	Cayleb Jones
+29680	RB	Byron Marshall
+29681	RB	Cedric O'Neal
+29682	WR	Hunter Sharp
+29683	DT	Aziz Shittu
+29684	CB	C.J. Smith
+29685	None	None
+29686	WR	Paul Turner
+29687	DT	Destiny Vaeao
+29688	DT	Connor Wujciak
+29689	None	None
+29690	WR	Reggie Diggs
+29691	None	None
+29692	None	None
+29693	None	None
+29694	RB	Rob Kelley
+29695	RB	Joe Kerridge
+29696	DE	Anthony Lanier
+29697	WR	Valdez Showers
+29698	None	None
+29699	DE	Ryan Brown
+29700	RB	Tra Carson
+29701	None	None
+29702	DT	David Dean
+29703	WR	Alex Erickson
+29704	None	None
+29705	None	None
+29706	CB	Darius Hillary
+29707	None	None
+29708	None	None
+29709	None	None
+29710	WR	Alonzo Russell
+29711	None	None
+29712	None	None
+29713	LB	Brandon Chubb
+29714	DT,DE	Morgan Fox
+29715	RB	Aaron Green
+29716	LB	Nicholas Grigsby
+29717	None	None
+29718	LB	Cory Littleton
+29719	WR	Geronimo Allison
+29720	S	Kentrell Brice
+29721	None	None
+29722	QB	Joe Callahan
+29723	None	None
+29724	CB	Mike Jordan
+29725	None	None
+29726	None	None
+29727	LB	Reggie Gilbert
+29728	TE	David Grinnage
+29729	CB	Josh Hawkins
+29730	WR	Paul McRoberts
+29731	RB	Don Jackson
+29732	None	None
+29733	WR	Marquez North
+29734	None	None
+29735	None	None
+29736	LB	Kache Palacio
+29737	None	None
+29738	None	None
+29739	None	None
+29740	S	Brian Randolph
+29741	None	None
+29742	DE	Ian Seau
+29743	WR	Nelson Spruce
+29744	None	None
+29745	None	None
+29746	None	None
+29747	DT	Brian Price
+29748	None	None
+29749	CB	Herb Waters
+29750	None	None
+29751	DT	Trevon Coley
+29752	None	None
+29753	LB	Cavellis Luckett
+29754	K	Wil Lutz
+29755	None	None
+29756	LB	Victor Ochi
+29757	None	None
+29758	LB	Patrick Onwuasor
+29759	DT	Michael Pierce
+29760	None	None
+29761	None	None
+29762	None	None
+29763	None	None
+29764	None	None
+29765	None	None
+29766	LB	Jason Fanaika
+29767	LB,DE	Lenny Jones
+29768	None	None
+29769	K	John Lunsford
+29770	None	None
+29771	CB	Adairius Barnes
+29772	WR	Jace Billingsley
+29773	None	None
+29774	None	None
+29775	WR	Bryce Treggs
+29776	None	None
+29777	None	None
+29778	None	None
+29779	None	None
+29780	None	None
+29781	S,CB	Charles Washington
+29782	CB	Ian Wells
+29783	TE	Cole Wick
+29784	None	None
+29785	WR	Robby Anderson
+29786	None	None
+29787	None	None
+29788	None	None
+29789	TE	Stephen Anderson
+29790	None	None
+29791	WR	Jalin Marshall
+29792	K	Ka'imi Fairbairn
+29793	K	Ross Martin
+29794	DE	Joel Heath
+29795	WR	Tevin Jones
+29796	None	None
+29797	DE	Ufomba Kamalu
+29798	S	Doug Middleton
+29799	LB,DE	Eric Lee
+29800	DE	Julien Obioha
+29801	None	None
+29802	DE	Claude Pelon
+29803	WR	Richard Mullaney
+29804	LB	Shakeel Rashad
+29805	DE	Lawrence Thomas
+29806	TE	Jason Vander Laan
+29807	LB	Brennan Scarlett
+29808	CB	Duke Thomas
+29809	None	None
+29810	RB	Soma Vainuku
+29811	None	None
+29812	QB	Trevone Boykin
+29813	DT	Brandin Bryant
+29814	CB	DeAndre Elliott
+29815	None	None
+29816	DE	Christian French
+29817	None	None
+29818	LB	Steve Longa
+29819	WR	Wendall Williams
+29820	LB	Akil Blount
+29821	RB	Tre Madden
+29822	LB	James Burgess
+29823	None	None
+29824	None	None
+29825	WR	Tanner McEvoy
+29826	LB	Ryan DiSalvo
+29827	None	None
+29828	None	None
+29829	S	A.J. Hendy
+29830	None	None
+29831	None	None
+29832	LB,DE	Farrington Huguenin
+29833	S	Tyvis Powell
+29834	K	Marshall Koehn
+29835	CB	Lafayette Pitts
+29836	WR	Rashawn Scott
+29837	WR	Brandon Shippen
+29838	None	None
+29839	None	None
+29840	None	None
+29841	S	Andrew Adams
+29842	CB	Ken Crawley
+29843	None	None
+29844	None	None
+29845	S	Trae Elston
+29846	CB	Donte Deayon
+29847	S,CB	De'Vante Harris
+29848	CB	Michael Hunter
+29849	None	None
+29850	TE	Cedrick Lang
+29851	None	None
+29852	None	None
+29853	None	None
+29854	WR	Tommylee Lewis
+29855	WR	Roger Lewis
+29856	DE	Mitchell Loewen
+29857	TE	Ryan Malleck
+29858	None	None
+29859	DE	D.J. Pettway
+29860	None	None
+29861	WR	K.J. Maye
+29862	None	None
+29863	None	None
+29864	DT	Greg Milhouse Jr.
+29865	WR	Jordan Williams-Lambert
+29866	None	None
+29867	DE	Romeo Okwara
+29868	WR	Darius Powe
+29869	None	None
+29870	QB	Josh Woodrum
+29871	None	None
+29872	RB	D.J. Foster
+29873	DT	Woodrow Hamilton
+29874	None	None
+29875	CB	Jonathan Jones
+29876	CB	Cre'von LeBlanc
+29877	TE	Steven Scheu
+29878	None	None
+29879	TE	Bryce Williams
+29880	None	None
+29881	CB	Vernon Harris
+29882	None	None
+29883	WR	Mitch Mathews
+29884	CB	Shak Randolph
+29885	LB	Terrance Smith
+29886	None	None
+29887	None	None
+29888	WR	Chris Brown
+29889	DT	Rodney Coe
+29890	None	None
+29891	WR	Ed Eagan
+29892	None	None
+29893	WR	Andy Jones
+29894	LB	Deon King
+29895	None	None
+29896	CB	Jeremiah McKinnon
+29897	None	None
+29898	None	None
+29899	None	None
+29900	None	None
+29901	None	None
+29902	CB	Frankie Williams
+29903	RB	Brandon Brown-Dukes
+29904	WR	Marcus Tucker
+29905	WR	Chris Hubert
+29906	RB	Elijhaa Penny
+29907	None	None
+29908	LB	Reggie Northrup
+29909	None	None
+29910	None	None
+29911	None	None
+29912	None	None
+29913	TE	Ben Braunecker
+29914	None	None
+29915	K	Jonathan Brown
+29916	CB	Taveze Calhoun
+29917	LB	Don Cherry
+29918	None	None
+29919	None	None
+29920	LB,DE	Roy Robertson-Harris
+29921	None	None
+29922	LB	Kyle Kragen
+29923	None	None
+29924	CB	Kevin Peterson
+29925	CB	Tre Roberson
+29926	None	None
+29927	None	None
+29928	None	None
+29929	None	None
+29930	RB	Brandon Burks
+29931	None	None
+29932	None	None
+29933	S	Rolan Milligan
+29934	None	None
+29935	DE	Ishaq Williams
+29936	CB	Bryson Keeton
+29937	LB	Pete Robertson
+29938	None	None
+29939	RB	Tani Tupou
+29940	DE	Mehdi Abdesmad
+29941	None	None
+29942	None	None
+29943	None	None
+29944	TE	Alex Ellis
+29945	DE	Iosia Iosia
+29946	None	None
+29947	None	None
+29948	None	None
+29949	K	Aldrick Rosas
+29950	DT	Antwaun Woods
+29951	RB	C.J. Ham
+29952	S	Marwin Evans
+29953	WR	K.J. Brent
+29954	None	None
+29955	LB	James Cowser
+29956	CB	Kenneth Durden
+29957	CB	Antonio Hamilton
+29958	WR	Johnny Holton
+29959	DT	Drew Iddings
+29960	DT	Darius Latham
+29961	WR	Max McCaffrey
+29962	CB	Tony McRae
+29963	TE	Ryan O'Malley
+29964	None	None
+29965	None	None
+29966	LB	Ryan Langford
+29967	None	None
+29968	None	None
+29969	None	None
+29970	None	None
+29971	None	None
+29972	None	None
+29973	None	None
+29974	None	None
+29975	None	None
+29976	LB	Wynton McManis
+29977	None	None
+29978	WR	Jaydon Mickens
+29979	None	None
+29980	None	None
+29981	None	None
+29982	None	None
+29983	None	None
+29984	None	None
+29985	CB	Bennett Okotcha
+29986	None	None
+29987	None	None
+29988	None	None
+29989	None	None
+29990	None	None
+29991	None	None
+29992	None	None
+29993	RB	Jalen Simmons
+29994	None	None
+29995	None	None
+29996	None	None
+29997	None	None
+29998	None	None
+29999	DE	Branden Jackson
