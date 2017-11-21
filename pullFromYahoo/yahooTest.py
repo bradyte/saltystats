@@ -39,7 +39,7 @@ player_id = 9320
 
 
 
-#leagueSettings  = getLeagueSettings(season, league_id, oauthToken)
+
 ##type=week;week={week}
 #fpts        = []
 #fptsArr     = []
@@ -55,20 +55,20 @@ player_id = 9320
 #confLimits  = 0.0
 
 
-start = 26000
-filename = str('namedb'+str(start)+'_'+str(start+999)+'.txt')
-
-
-#arr = doesPlayerExist(season, 27000, week, oauthToken)
-with open(filename, 'w') as output:
-    for player_id in range(start,start+1000):
-        arr = doesPlayerExist(season, player_id, week, oauthToken)
-        output.write(  str(arr[0]) + '\t' \
-                     + str(arr[1]) + '\t' \
-                     + str(arr[2]) + '\n')
-        print(         str(arr[0]) + '\t' \
-                     + str(arr[1]) + '\t' \
-                     + str(arr[2]))
+#start = 26000
+#filename = str('namedb'+str(start)+'_'+str(start+999)+'.txt')
+#
+#
+##arr = doesPlayerExist(season, 27000, week, oauthToken)
+#with open(filename, 'w') as output:
+#    for player_id in range(start,start+1000):
+#        arr = doesPlayerExist(season, player_id, week, oauthToken)
+#        output.write(  str(arr[0]) + '\t' \
+#                     + str(arr[1]) + '\t' \
+#                     + str(arr[2]) + '\n')
+#        print(         str(arr[0]) + '\t' \
+#                     + str(arr[1]) + '\t' \
+#                     + str(arr[2]))
 
 
 

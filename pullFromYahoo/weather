@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Nov 21 13:53:39 2017
+
+@author: tbrady
+"""
+import urllib.request
+
+url = 'http://www.ncdc.noaa.gov/homr/services/station/homr/services/station/search?headersOnly=true&state=MI&county=OAKLAND'
+
+
+
+tmp = urllib.request.urlopen(url).read()

@@ -5,69 +5,13 @@ Created on Tue Nov 21 07:50:04 2017
 
 @author: tbrady
 """
- 
-#from func import *
-
-
-
+import league_settings as ls
+from func import *
+import nfl_info as nfl
 import csv
 import glob
 path = '/Users/tbrady/Documents/GitHub/saltystats/pullFromYahoo/dbfiles/raw/*.txt'
 
-
-files = glob.glob(path)
-
-
-p    = []
-
-
-for file in files:
-    with open(file) as f:
-        reader = csv.reader(f, delimiter="\t")
-        arr = list(reader)
-        for i in range(0,len(arr)):
-            if arr[i][1] != 'None':
-                p.append([int(arr[i][0]),arr[i][1],arr[i][2]])
-#                print(         str(arr[i][0]) + '\t' \
-#                             + str(arr[i][1]) + '\t' \
-#                             + str(arr[i][2]))
-p.sort()
-
-O = []
-qb = []
-rb = []
-wr = []
-te = []
-k  = []
-for i in range(0,len(p)):
-    O.append([p[i][0], p[i][1], p[i][2]])
-    if   p[i][1] == 'QB':
-        qb.append([p[i][0], p[i][1], p[i][2]])
-    elif p[i][1] == 'RB':
-        rb.append([p[i][0], p[i][1], p[i][2]])
-    elif p[i][1] == 'WR':
-        wr.append([p[i][0], p[i][1], p[i][2]])
-    elif p[i][1] == 'TE':
-        te.append([p[i][0], p[i][1], p[i][2]])
-    elif p[i][1] == 'K':
-        k.append( [p[i][0], p[i][1], p[i][2]])
-
-
-
-
-
-
-
-
-
-#filePath        = '/Users/tbrady/drive/sw/json/yahoo/oauth2.json'
-#oauthToken      = beginOauth2Session(filePath)
-#
-#season          = 2017
-#league_id       = 470610
-#team_id         = 1
-#week            = 1
-#roster_size     = 15
 #
 #start = 31000
 #filename = str('namedb'+str(start)+'_'+str(start+999)+'.txt')
@@ -81,3 +25,68 @@ for i in range(0,len(p)):
 #        print(         str(arr[0]) + '\t' \
 #                     + str(arr[1]) + '\t' \
 #                     + str(arr[2]))
+
+
+#files = glob.glob(path)
+#p    = []
+#
+#for file in files:
+#    with open(file) as f:
+#        reader = csv.reader(f, delimiter="\t")
+#        arr = list(reader)
+#        for i in range(0,len(arr)):
+#            if arr[i][1] != 'None':
+#                p.append([int(arr[i][0]),arr[i][1],arr[i][2]])
+##                print(         str(arr[i][0]) + '\t' \
+##                             + str(arr[i][1]) + '\t' \
+##                             + str(arr[i][2]))
+#p.sort()
+#
+#O = []
+#qb = []
+#rb = []
+#wr = []
+#te = []
+#k  = []
+#for i in range(0,len(p)):
+#    O.append([p[i][0], p[i][1], p[i][2]])
+#    if   p[i][1] == 'QB':
+#        qb.append([p[i][0], p[i][1], p[i][2]])
+#    elif p[i][1] == 'RB':
+#        rb.append([p[i][0], p[i][1], p[i][2]])
+#    elif p[i][1] == 'WR':
+#        wr.append([p[i][0], p[i][1], p[i][2]])
+#    elif p[i][1] == 'TE':
+#        te.append([p[i][0], p[i][1], p[i][2]])
+#    elif p[i][1] == 'K':
+#        k.append( [p[i][0], p[i][1], p[i][2]])
+
+
+
+
+
+
+
+
+#arr = wr
+#
+
+away    = False
+player  = nfl.qb[1]
+opp     = nfl.schedule[int(player[1])][int(ls.week)]
+if opp[0] == '@':
+    opp = int(opp[1:])
+    away = True
+    # away game
+    
+
+oppinfo = nfl.dst[int(opp)]
+#for j in range(0,len(arr)):
+#    arr[j] = doesPlayerExist(season, arr[j][0], week, oauthToken)
+#
+#
+#with open('/Users/tbrady/Documents/GitHub/saltystats/pullFromYahoo/dbfiles/wrpids.csv','w') as resFile:
+#    writ = csv.writer(resFile,delimiter=',')
+#    writ.writerows(arr)
+
+
