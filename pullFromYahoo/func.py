@@ -1,10 +1,47 @@
-from cleaning import *
+import cleaning
+import settings as ls
+import nfl_info as nfl
+import dataMine as dm
 
-import league_settings as ls
+###############################################################################
+## getTeamManagerInfo
+## This returns a manager class that has the roster based on team_id
+## 
+##
+###############################################################################  
+def getTeamManagerInfo(team_id):
+    url     = 'https://fantasysports.yahooapis.com/fantasy/v2/teams;team_keys='     \
+            + str(ls.game_key) +'.l.' + str(ls.league_id) + '.t.' + str(team_id)    \
+            + '/roster;week=' + str(ls.week) + '/players/stats;type=week;week='     \
+            + str(ls.week) + '?format=json'
+    
+    class ManagerInfo(object):
+        def __init__(self, team_key=None, team_id=None, team_name=None,     \
+                     waiver_priority=None, faab_balance=None,               \
+                     number_of_moves=None, nickname=None):
+            self.team_key           = team_key
+            self.team_id            = team_id
+            self.team_name          = team_name
+            self.waiver_priority    = waiver_priority
+            self.faab_balance       = faab_balance
+            self.number_of_moves    = number_of_moves
+            self.nickname           = nickname  
+    
+    jsondata = dm.jsonQuery(url)        
+    tmp0 = jsondata['fantasy_content']['teams']['0']['team'][0]
 
-
-
-
+    
+    mi = ManagerInfo()
+    
+    mi.team_key         = dm.searchJSONObject(tmp0, 'team_key')
+    mi.team_id          = dm.searchJSONObject(tmp0, 'team_id')  
+    mi.team_name        = dm.searchJSONObject(tmp0, 'team_name')
+    mi.waiver_priority  = dm.searchJSONObject(tmp0, 'waiver_priority')  
+    mi.faab_balance     = dm.searchJSONObject(tmp0, 'faab_balance')   
+    mi.number_of_moves  = dm.searchJSONObject(tmp0, 'number_of_moves')
+    mi.nickname         = dm.searchJSONObject(tmp0, 'nickname')  
+  
+    return mi;
 
 
 
@@ -14,118 +51,27 @@ import league_settings as ls
 ## team_id
 ##
 ###############################################################################  
-#def getWeeklyRoster(season, league_id, team_id, week, roster_size, oauthToken):
-#    url         = 'https://fantasysports.yahooapis.com/fantasy/v2/teams;team_keys=' \
-#                + str(ls.game_key) +'.l.' + str(ls.league_id) + '.t.' + str(team_id)  \
-#                + '/roster;week=' + str(ls.week) + '/players/stats;type=week;week='\
-#                + str(ls.week) + '?format=json'
-#                        
-#    jsondata = ls.jsonQuery(url)
-#    
-#    roster = [];
-#    
-#    class Player(object):
-#        def __init__(self, player_id, name_full, editorial_team_abbr, display_position, \
-#                     selected_position, player_points, player_stats=None):
-#            self.player_id              = player_id
-#            self.name_full              = name_full
-#            self.editorial_team_abbr    = editorial_team_abbr
-#            self.display_position       = display_position
-#            self.selected_position      = selected_position
-#            self.player_points          = player_points
-#            self.player_stats           = player_stats  # raw stats if we ever want to do more analysis on the stats
-#           
-#    for i in range(0,roster_size):
-#        playerData          = YahooIsGarbage(jsondata, i)
-#        player_id           = [d['player_id']               for d in playerData if 'player_id'              in d][0]
-#        name_full           = [d['name']['full']            for d in playerData if 'name'                   in d][0]
-#        editorial_team_abbr = [d['editorial_team_abbr']     for d in playerData if 'editorial_team_abbr'    in d][0]
-#        display_position    = [d['display_position']        for d in playerData if 'display_position'       in d][0]
-#        selected_position   = [d['position']                for d in playerData if 'position'               in d][0]
-#        player_points       = [d['player_points']['total']  for d in playerData if 'player_points'          in d][0]
-#
-#        roster.append(Player(player_id, name_full, editorial_team_abbr, display_position, selected_position, float(player_points)))
-#
-#    return roster;
-
-###############################################################################
-## getLeagueSettings
-## Similar to the getWeeklyRoster function, I am just picking through the messy
-## JSON structure and looking for the only data relevant to me
-##
-############################################################################### 
-def getLeagueSettings():   
-    url         = 'https://fantasysports.yahooapis.com/fantasy/v2/leagues;league_keys=' \
-                + str(ls.game_key) + '.l.' + str(ls.league_id) + '/settings?format=json'
-                
-    leaguedata = ls.jsonQuery(url)
+def getTeamWeeklyRoster(team_id):
+    url     = 'https://fantasysports.yahooapis.com/fantasy/v2/teams;team_keys='     \
+            + str(ls.game_key) +'.l.' + str(ls.league_id) + '.t.' + str(team_id)    \
+            + '/roster;week=' + str(ls.week) + '/players/stats;type=week;week='     \
+            + str(ls.week) + '?format=json'
+            
+    jsondata = dm.jsonQuery(url)        
+    roster = []
     
-    class LeagueSettings(object):
-        class About(object):
-            def __init__(self, name=None, num_teams=None, game_code=None, url=None, roster_positions=None, rosterSize=None):
-                self.name                   = name
-                self.num_teams              = num_teams
-                self.game_code              = game_code
-                self.url                    = url
-                self.roster_positions       = roster_positions
-                self.rosterSize             = rosterSize
-        class Dates(object):
-            def __init__(self, season=None, start_week=None, start_date=None, end_week=None, end_date=None, current_week=None):
-                self.season                 = season
-                self.start_week             = start_week
-                self.start_date             = start_date
-                self.end_week               = end_week
-                self.end_date               = end_date
-                self.current_week           = current_week
-        class Scoring(object):
-            def __init__(self, statInfo=None, uses_fractional_points=None, uses_negative_points=None):
-                self.statInfo               = statInfo
-                self.uses_fractional_points = uses_fractional_points
-                self.uses_negative_points   = uses_negative_points
-     
-    leagueSettings = LeagueSettings()
+    for i in range(ls.roster_size):
+        playerData          = cleaning.cleanPlayerData(jsondata, i)
+        player_id           = [d['player_id']           for d in playerData if 'player_id'          in d][0]
+        selected_position   = [d['selected_position']   for d in playerData if 'selected_position'  in d][0]
+        display_position    = [d['display_position']    for d in playerData if 'display_position'   in d][0]
+        roster.append([int(player_id),str(display_position), str(selected_position)])
         
-    ##about
-    leagueSettings.About.name                       \
-        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['name']
-    leagueSettings.About.num_teams                  \
-        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['num_teams']
-    leagueSettings.About.game_code                  \
-        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['game_code']
-    leagueSettings.About.url                        \
-        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['url']
-    leagueSettings.About.roster_positions           \
-        = cleanPositions(leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['roster_positions'])
-    leagueSettings.About.rosterSize = 0
-    for i in range(0,len(leagueSettings.About.roster_positions )):
-        leagueSettings.About.rosterSize = leagueSettings.About.rosterSize + leagueSettings.About.roster_positions[i].count
-    
-    
-    ##dates
+    return roster
 
-    leagueSettings.Dates.start_week                 \
-        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['start_week']
-    leagueSettings.Dates.end_week                   \
-        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['end_week']
-    leagueSettings.Dates.current_week               \
-        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['current_week']
-    leagueSettings.Dates.season                     \
-        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['season']
-    leagueSettings.Dates.start_date                 \
-        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['start_date']
-    leagueSettings.Dates.end_date                   \
-        = leaguedata['fantasy_content']['leagues']['0']['league'][0]['end_date']
-    
-    ##scoring
-    leagueSettings.Scoring.uses_fractional_points   \
-        = leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['uses_fractional_points']
-    leagueSettings.Scoring.uses_negative_points     \
-        = leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['uses_negative_points']
-    leagueSettings.Scoring.statInfo                 \
-        = cleanStats(leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['stat_modifiers']['stats'],\
-                     leaguedata['fantasy_content']['leagues']['0']['league'][1]['settings'][0]['stat_categories']['stats'])
 
-    return leagueSettings;
+
+
 
 ###############################################################################
 ## getWeeklyMatchup
@@ -172,7 +118,7 @@ def getPlayerStats(player_id, statValues):
                 + str(ls.game_key) + '.p.' + str(player_id) \
                 + '/stats;type=week;week=' + str(ls.week) +'?format=json'
                 
-    jsondata = ls.jsonQuery(url)
+    jsondata = dm.jsonQuery(url)
     
     byeWeek  = int(jsondata['fantasy_content']['player'][0][7]['bye_weeks']['week'])
     
@@ -190,13 +136,19 @@ def getPlayerStats(player_id, statValues):
         return fpts;
 
     
-    
-def doesPlayerExist(player_id):
+###############################################################################
+## getPlayerInfoQuery
+## 
+## 
+##
+###############################################################################     
+def getPlayerInfoQuery(player_id):
+
     url         = 'https://fantasysports.yahooapis.com/fantasy/v2/player/'  \
-                + str(ls.game_key) + '.p.' + str(player_id)    \
+                + str(ls.game_key) + '.p.' + str(player_id)                 \
                 + '/stats;type=week;week=' + str(ls.week) + '?format=json'
                 
-    jsondata    = ls.jsonQuery(url)
+    jsondata    = dm.jsonQuery(url)
     team_id     = 0
     name        = None
     position    = None
@@ -218,12 +170,63 @@ def doesPlayerExist(player_id):
                 tmp = tmp.split('.')
                 team_id = int(tmp[2])
         return [player_id, team_id, str(position), str(name), str(team_abbr)]
-#        return jsondata
-
+    
+###############################################################################
+## getPlayerInfoDB
+## 
+## 
+##
+###############################################################################     
+def getPlayerInfoDB(info):
+    team_id     = 0
+    name        = None
+    team_abbr   = None
+    lst         = None
+    
+    player_id   = info[0]
+    position    = info[1]
+    selected_position = info[2]
+    
+    if position == 'QB':
+        lst = nfl.qb
+    elif position == 'WR':
+        lst = nfl.wr
+    elif position == 'RB':
+        lst = nfl.rb
+    elif position == 'TE':
+        lst = nfl.te
+    elif position == 'K':
+        lst = nfl.ki
+    elif position == 'DEF':
+        lst = nfl.dst
+        
+    if lst != None:
+        for row in range(len(lst)):
+            if player_id == int(lst[row][0]):
+                return [player_id, int(lst[row][1]), str(selected_position), str(lst[row][3]), str(lst[row][4])]
+    else:
+        return [player_id, int(team_id), str(selected_position), str(name), str(team_abbr)]
+            
+        
+            
+            
+            
+            
+   
     
     
-    
-    
+###############################################################################
+## getLeagueTransactionQuery
+## 
+## 
+##
+############################################################################### 
+def getLeagueTransactionQuery():
+    url         = 'https://fantasysports.yahooapis.com/fantasy/v2/leagues;league_keys=' \
+                + str(ls.game_key) + '.l.' + str(ls.league_id) \
+                + '/transactions?format=json'
+    jsondata    = dm.jsonQuery(url)
+    transactions  = jsondata['fantasy_content']['leagues']['0']['league'][1]['transactions']
     
 
     

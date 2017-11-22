@@ -1,27 +1,37 @@
 ###############################################################################
-## YahooIsGarbage
+## cleanPlayerData
 ## Meant to clean up the player data from four seperate lists into one list
 ##
 ##
 ############################################################################### 
-def YahooIsGarbage(jsondata, i):
+def cleanPlayerData(d,i):
+    tmp = d['fantasy_content']['teams']['0']['team']
+    d   = tmp[1]['roster']['0']['players'][str(i)]['player']
     
-    class Struct(object):
-        def __init__(self, **entries):
-            self.__dict__.update(entries)
+    d0  = d[0] + [{'selected_position': d[1]['selected_position'][1]['position']}]
+    d0.append(dict(d[2]))
+    d0.append(dict(d[3]))
     
-    playerData0 = jsondata['fantasy_content']['teams']['0']['team'][1]['roster']['0']['players'][str(i)]['player'][0]
-    tmp         = jsondata['fantasy_content']['teams']['0']['team'][1]['roster']['0']['players'][str(i)]['player'][1]
-    tmp         = Struct(**tmp)
-    playerData1 = tmp.selected_position
-    playerData2 = jsondata['fantasy_content']['teams']['0']['team'][1]['roster']['0']['players'][str(i)]['player'][2]
-    playerData3 = jsondata['fantasy_content']['teams']['0']['team'][1]['roster']['0']['players'][str(i)]['player'][3]
+    return d0
 
-    playerData  = playerData0 + playerData1
+
+###############################################################################
+## cleanPositions
+## break up the two categories to index a lot more easily
+## 
+##
+############################################################################### 
+def cleanPositions(pos):
     
-    playerData.append(dict(playerData2))
-    playerData.append(dict(playerData3))
-    return playerData;
+    positions   = []
+    roster_size = 0
+    
+    for i in range(0,len(pos)):
+        positions.append([pos[i]['roster_position']['position'], int(pos[i]['roster_position']['count'])])
+        if positions[i][0] != 'IR':
+            roster_size += int(positions[i][1])
+
+    return [positions, roster_size]
 
 ###############################################################################
 ## cleanStats
@@ -69,22 +79,3 @@ def cleanStats(mods, cats):
 
     return statInfo;
                 
-###############################################################################
-## cleanPositions
-## break up the two categories to index a lot more easily
-## 
-##
-############################################################################### 
-def cleanPositions(pos):
-    class Positions(object):
-        def __init__(self, position=None, count=None):
-            self.position   = position
-            self.count      = count
-    
-    positions = []
-    
-    for i in range(0,len(pos)):
-        positions.append(Positions(pos[i]['roster_position']['position'],\
-                                   int(pos[i]['roster_position']['count'])))
-
-    return positions;

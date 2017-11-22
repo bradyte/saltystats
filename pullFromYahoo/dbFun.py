@@ -18,7 +18,7 @@ path = '/Users/tbrady/Documents/GitHub/saltystats/pullFromYahoo/dbfiles/raw/*.tx
 #
 #with open(filename, 'w') as output:
 #    for player_id in range(start,start+1000):
-#        arr = doesPlayerExist(season, player_id, week, oauthToken)
+#        arr = getPlayerInfo(season, player_id, week, oauthToken)
 #        output.write(  str(arr[0]) + '\t' \
 #                     + str(arr[1]) + '\t' \
 #                     + str(arr[2]) + '\n')

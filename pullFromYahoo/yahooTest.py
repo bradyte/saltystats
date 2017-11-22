@@ -1,32 +1,36 @@
-import json
-import numpy
-import math
+import settings as ls
+import func as f
 import matplotlib.pyplot as plt
-from func import *
-from displayStats import *
+
 import pprint
 import time
 
-## For my personal history:
-## 2014 - 455893
-## 2015 - 898971
-## 2016 - 247388
-## 2017 - 470610
+
 
 ## https://developer.yahoo.com/yql/console/
 ## http://jsonviewer.stack.hu/
 ## https://jsonformatter.curiousconcept.com/
 
-## This is the path to your Yahoo API consumer and secret key
-filePath        = '/Users/tbrady/drive/sw/json/yahoo/oauth2.json'
-oauthToken      = beginOauth2Session(filePath)
+
+teamInfo    = f.getTeamManagerInfo(ls.team_id)
+teamRoster  = f.getTeamWeeklyRoster(ls.team_id)
+
+data = []
+for i in range(len(teamRoster)):
+    data.append(f.getPlayerInfoDB(teamRoster[i]))
 
 
-season          = 2017
-league_id       = 470610
-team_id         = 1
-week            = 1
-roster_size     = 15
+
+
+[leagueSettings, statInfo] = ls.getLeagueSettings()
+
+
+
+
+
+
+
+
 
 #29399
 #9317
@@ -34,13 +38,8 @@ roster_size     = 15
 #6762 fitzgerald inconsistent
 #29236 wentz very good
 #28461 coleman consistent
-player_id = 9320
 
 
-
-
-
-##type=week;week={week}
 #fpts        = []
 #fptsArr     = []
 #fptsPlotArr = []
@@ -53,25 +52,6 @@ player_id = 9320
 #fptsVar     = 0.0
 #confInt     = 1.96  # z* of 95%
 #confLimits  = 0.0
-
-
-#start = 26000
-#filename = str('namedb'+str(start)+'_'+str(start+999)+'.txt')
-#
-#
-##arr = doesPlayerExist(season, 27000, week, oauthToken)
-#with open(filename, 'w') as output:
-#    for player_id in range(start,start+1000):
-#        arr = doesPlayerExist(season, player_id, week, oauthToken)
-#        output.write(  str(arr[0]) + '\t' \
-#                     + str(arr[1]) + '\t' \
-#                     + str(arr[2]) + '\n')
-#        print(         str(arr[0]) + '\t' \
-#                     + str(arr[1]) + '\t' \
-#                     + str(arr[2]))
-
-
-
 #k = 0
 #ksum = 0
 #player_id = 100001
