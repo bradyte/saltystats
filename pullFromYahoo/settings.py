@@ -14,15 +14,8 @@ import cleaning
 ##
 ############################################################################### 
 def getSeasonGameKey():
-##   season_ids
-##   2001 - 57    2002 - 49    2003 - 79    2004 - 101   2005 - 124
-##   2006 - 153   2007 - 175   2008 - 199   2009 - 222   2010 - 242
-##   2011 - 257   2012 - 273   2013 - 314   2014 - 331   2015 - 348
-##   2016 - 359   2017 - 371
-    ids = [ 57,  49,  79, 101, 124, \
-           153, 175, 199, 222, 242, \
-           257, 273, 314, 331, 348, \
-           359, 371]
+    ids = [ 57,  49,  79, 101, 124, 153, 175, 199, 222, \
+           242, 257, 273, 314, 331, 348, 359, 371]
     return ids[season - 2001]
 
  ###############################################################################
@@ -67,7 +60,6 @@ def getLeagueSettings():
     ld0 = jsondata['fantasy_content']['leagues']['0']['league'][0]
     ld1 = jsondata['fantasy_content']['leagues']['0']['league'][1]['settings']
     
-
     ##about
     leagueSettings.About.name           = ld0['name']
     leagueSettings.About.num_teams      = ld0['num_teams']
@@ -76,7 +68,6 @@ def getLeagueSettings():
     [pos, sz] = cleaning.cleanPositions(ld1[0]['roster_positions'])
     leagueSettings.About.roster_positions = pos
     leagueSettings.About.roster_size    = sz
-
 
     ##dates
     leagueSettings.Dates.start_week     = ld0['start_week']
@@ -90,11 +81,8 @@ def getLeagueSettings():
     leagueSettings.Scoring.uses_fractional_points   = dm.searchJSONObject(ld1, 'uses_fractional_points')
     leagueSettings.Scoring.uses_negative_points     = dm.searchJSONObject(ld1, 'uses_negative_points')
 
-#    leagueSettings.Scoring.statInfo                = cleanStats(ld1[0]['stat_modifiers']['stats'], ld1[0]['stat_categories']['stats'])
-#leagueSettings.About.rosterSize = 0
-#    for i in range(0,len(leagueSettings.About.roster_positions )):
-#        leagueSettings.About.rosterSize = leagueSettings.About.rosterSize + leagueSettings.About.roster_positions[i].count
- 
+    statInfo  = cleaning.cleanStats(ld1[0]['stat_categories']['stats'], ld1[0]['stat_modifiers']['stats'])
+    
     return [leagueSettings, statInfo]
     
 
@@ -108,12 +96,16 @@ season          = 2017
 league_id       = 470610  
 game_key        = getSeasonGameKey()
 [leagueSettings, statInfo] = getLeagueSettings()
+blankStatsArray = [[0] * (len(statInfo)+1)]
+#for i in range(len(statInfo[0])):
+#    print('{}\t{:>6.2f} \t {}'.format(i,statInfo[1][i],str(statInfo[0][i])))
 roster_size     = leagueSettings.About.roster_size
 
 
+week            = leagueSettings.Dates.current_week
 team_id         = 1
 
-week            = leagueSettings.Dates.current_week
+
 
 
 

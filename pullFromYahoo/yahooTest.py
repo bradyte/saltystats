@@ -1,7 +1,6 @@
 import settings as ls
 import func as f
 import matplotlib.pyplot as plt
-
 import pprint
 import time
 
@@ -11,21 +10,18 @@ import time
 ## http://jsonviewer.stack.hu/
 ## https://jsonformatter.curiousconcept.com/
 
-
 teamInfo    = f.getTeamManagerInfo(ls.team_id)
 teamRoster  = f.getTeamWeeklyRoster(ls.team_id)
+ls.week = 1
+for i in range(1,ls.leagueSettings.Dates.current_week):
+    ls.week = i
+    tmp = f.getPlayerStats(teamRoster[0][0])
+    print(tmp)
 
-data = []
-for i in range(len(teamRoster)):
-    data.append(f.getPlayerInfoDB(teamRoster[i]))
-
-
-
-
-[leagueSettings, statInfo] = ls.getLeagueSettings()
-
-
-
+#player_id = teamRoster[1][0]
+#name = teamRoster[1][3]
+#ls.week -= 1
+#info = f.updatePlayerStatsQuery(29957)
 
 
 
@@ -52,26 +48,8 @@ for i in range(len(teamRoster)):
 #fptsVar     = 0.0
 #confInt     = 1.96  # z* of 95%
 #confLimits  = 0.0
-#k = 0
-#ksum = 0
-#player_id = 100001
-#for i in range(player_id,player_id+34):
-#    if (i != 100031) and (i != 100032):
-#        url = 'https://fantasysports.yahooapis.com/fantasy/v2/player/'  \
-#            + str(getSeasonGameKey(season)) + '.p.' + str(i)    \
-#            + '/stats;type=week;week=' + str(week) + '?format=json'
-#        jsondata = jsonQuery(url, oauthToken)
-#        jsondataText = jsondata['fantasy_content']['player'][0][2]['name']['full']
-#        jsondataStats = int(jsondata['fantasy_content']['player'][1]['player_stats']['stats'][19]['stat']['value'])
-#        if jsondataStats > 0:
-#            k += 1
-##        pprint.pprint(jsondataStats)
-#        ksum += jsondataStats
-##    time.sleep(2)
-#print(ksum/k)
-    
 
-#title       = getPlayerName(season, player_id, week, oauthToken)
+
 #print('Week:     Fpts      Average   Stdev     CV        ROC       Margin+/-') 
 #for i in range(1, int(leagueSettings.Dates.current_week)):
 #    fpts.append(getPlayerStats(season, player_id, i, leagueSettings.Scoring.statInfo.value, oauthToken))

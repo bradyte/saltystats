@@ -58,15 +58,18 @@ def getTeamWeeklyRoster(team_id):
             + str(ls.week) + '?format=json'
             
     jsondata = dm.jsonQuery(url)        
-    roster = []
+    data = []
     
     for i in range(ls.roster_size):
         playerData          = cleaning.cleanPlayerData(jsondata, i)
-        player_id           = [d['player_id']           for d in playerData if 'player_id'          in d][0]
-        selected_position   = [d['selected_position']   for d in playerData if 'selected_position'  in d][0]
-        display_position    = [d['display_position']    for d in playerData if 'display_position'   in d][0]
-        roster.append([int(player_id),str(display_position), str(selected_position)])
-        
+        player_id           = dm.searchJSONObject(playerData, 'player_id')
+        selected_position   = dm.searchJSONObject(playerData, 'selected_position')
+        display_position    = dm.searchJSONObject(playerData, 'display_position')
+        data.append([int(player_id),str(display_position), str(selected_position)])
+      
+    roster = []
+    for i in range(len(data)):
+        roster.append(getPlayerInfoDB(data[i]))
     return roster
 
 
@@ -113,14 +116,15 @@ def getTeamWeeklyRoster(team_id):
 ## 
 ##
 ############################################################################### 
-def getPlayerStats(player_id, statValues):
+def getPlayerStats(player_id):
     url         = 'https://fantasysports.yahooapis.com/fantasy/v2/player/' \
                 + str(ls.game_key) + '.p.' + str(player_id) \
                 + '/stats;type=week;week=' + str(ls.week) +'?format=json'
                 
     jsondata = dm.jsonQuery(url)
     
-    byeWeek  = int(jsondata['fantasy_content']['player'][0][7]['bye_weeks']['week'])
+    byeWeek     = dm.searchJSONObject(jsondata['fantasy_content']['player'][0], 'bye_weeks')
+    byeWeek     = int(byeWeek['week'])
     
     if ls.week == byeWeek:
         return 'BYE'
@@ -131,9 +135,12 @@ def getPlayerStats(player_id, statValues):
             
             stat_id = int(tmpStats[i]['stat']['stat_id'])
             value   = float(tmpStats[i]['stat']['value'])
-            fpts = round(fpts + value * statValues[stat_id], 2) 
+            fpts = round(fpts + value * ls.statInfo[1][stat_id], 2) 
         
         return fpts;
+
+
+
 
     
 ###############################################################################
@@ -230,7 +237,37 @@ def getLeagueTransactionQuery():
     
 
     
+###############################################################################
+## getPlayerStats
+## 
+## 
+##
+############################################################################### 
+def updatePlayerStatsQuery(player_id):
+    url         = 'https://fantasysports.yahooapis.com/fantasy/v2/player/' \
+                + str(ls.game_key) + '.p.' + str(player_id) \
+                + '/stats;type=week;week=' + str(ls.week) +'?format=json'
+                
+    jsondata    = dm.jsonQuery(url)
+    tmp         = jsondata['fantasy_content']['player'][1]['player_stats']['stats']
+    byeWeek     = dm.searchJSONObject(jsondata['fantasy_content']['player'][0], 'bye_weeks')
+    byeWeek     = int(byeWeek['week'])
+
     
+    if ls.week == byeWeek:
+        return 'BYE'
+    else:
+        tmpStats = jsondata['fantasy_content']['player'][1]['player_stats']['stats']
+        fpts = 0
+        for i in range(0,len(tmpStats)):
+            
+            stat_id = int(tmpStats[i]['stat']['stat_id'])
+            value   = float(tmpStats[i]['stat']['value'])
+            fpts = round(fpts + value * ls.statInfo[1][stat_id], 2) 
+        
+        return fpts;  
+    
+
     
     
     
