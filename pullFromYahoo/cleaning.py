@@ -58,7 +58,8 @@ def cleanStats(cats, mods):
 ## use stat_id from the stat_modifiers to search the stat_categories  
     for i in range(0,len(cats)):
         idx             = cats[i]['stat']['stat_id']
-        stats[0][idx]   = cats[i]['stat']['name']
+#        stats[0][idx]   = cats[i]['stat']['name']
+        stats[0][idx]   = cats[i]['stat']['display_name']
 ## walk through the category list and only get categories that have modifiers
 ## associated with them        
         j       = 0

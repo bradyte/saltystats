@@ -1,7 +1,62 @@
 import cleaning
 import settings as ls
-import nfl_info as nfl
+import playerDatabase as pdb
 import csv
+
+
+
+###############################################################################
+## beginOauth2Session
+## input: file path to the oauth.json file
+## output: reusable token for queries to the Yahoo API
+##
+###############################################################################
+from yahoo_oauth import OAuth2
+import json  
+
+
+def beginOauth2Session(filePath):
+##  For your Oauth2 JSON file, please use the following format
+##  {
+##      "consumer_key":    "<CONSUMER_KEY>",
+##      "consumer_secret": "<CONSUMER_SECRET>",
+##  }
+    oauthToken = OAuth2(None, None, from_file=filePath)
+    if not oauthToken.token_is_valid():
+        oauthToken.refresh_access_token()
+    return oauthToken
+
+###############################################################################
+## jsonQuery
+## input: query url, oauthToken
+## output: result from query in raw JSON format
+##
+###############################################################################  
+def jsonQuery(url):
+    response = oauthToken.session.get(url)
+    jsondata =json.loads(str(response.content,'utf-8'))
+#    print(json.dumps(jsondata, indent=2))
+    return jsondata
+
+###############################################################################
+## searchJSONObject
+## searched JSON object for the provided string
+## 
+##
+############################################################################### 
+def searchJSONObject(jsondata, string):
+    for d in jsondata:
+        if string in d:
+            return d[string]
+
+
+
+filePath        = '/Users/tbrady/drive/sw/json/yahoo/oauth2.json'
+oauthToken      = beginOauth2Session(filePath)
+
+baseURI         = 'https://fantasysports.yahooapis.com/fantasy/v2/'
+
+
 
 ###############################################################################
 ## getTeamManagerInfo
@@ -9,8 +64,8 @@ import csv
 ## 
 ##
 ###############################################################################  
-def getTeamManagerInfo(team_id):
-    url     = 'https://fantasysports.yahooapis.com/fantasy/v2/teams;team_keys='     \
+def getTeamManagerInfoQuery(team_id):
+    url     = baseURI + 'teams;team_keys='     \
             + str(ls.game_key) +'.l.' + str(ls.league_id) + '.t.' + str(team_id)    \
             + '/roster;week=' + str(ls.week) + '/players/stats;type=week;week='     \
             + str(ls.week) + '?format=json'
@@ -51,25 +106,22 @@ def getTeamManagerInfo(team_id):
 ## team_id
 ##
 ###############################################################################  
-def getTeamWeeklyRoster(team_id):
-    url     = 'https://fantasysports.yahooapis.com/fantasy/v2/teams;team_keys='     \
+def getTeamWeeklyRosterQuery(team_id):
+    url     = baseURI + 'teams;team_keys='     \
             + str(ls.game_key) +'.l.' + str(ls.league_id) + '.t.' + str(team_id)    \
             + '/roster;week=' + str(ls.week) + '/players/stats;type=week;week='     \
             + str(ls.week) + '?format=json'
             
-    jsondata = fy.jsonQuery(url)        
-    data = []
+    jsondata = jsonQuery(url)        
+    roster = []
     
     for i in range(ls.roster_size):
         playerData          = cleaning.cleanPlayerData(jsondata, i)
-        player_id           = fy.searchJSONObject(playerData, 'player_id')
-        selected_position   = fy.searchJSONObject(playerData, 'selected_position')
-        display_position    = fy.searchJSONObject(playerData, 'display_position')
-        data.append([int(player_id),str(display_position), str(selected_position)])
-      
-    roster = []
-    for i in range(len(data)):
-        roster.append(getPlayerInfoDB(data[i]))
+        player_id           = searchJSONObject(playerData, 'player_id')
+        selected_position   = searchJSONObject(playerData, 'selected_position')
+        display_position    = searchJSONObject(playerData, 'display_position')
+        roster.append([str(player_id),str(display_position), str(selected_position)])
+
     return roster
 
 
@@ -116,14 +168,14 @@ def getTeamWeeklyRoster(team_id):
 ## 
 ##
 ############################################################################### 
-def getPlayerStats(player_id):
-    url         = 'https://fantasysports.yahooapis.com/fantasy/v2/player/' \
+def getPlayerStatsQuery(player_id):
+    url         = baseURI + 'player/' \
                 + str(ls.game_key) + '.p.' + str(player_id) \
                 + '/stats;type=week;week=' + str(ls.week) +'?format=json'
                 
-    jsondata = fy.jsonQuery(url)
+    jsondata = jsonQuery(url)
     
-    byeWeek     = fy.searchJSONObject(jsondata['fantasy_content']['player'][0], 'bye_weeks')
+    byeWeek     = searchJSONObject(jsondata['fantasy_content']['player'][0], 'bye_weeks')
     byeWeek     = int(byeWeek['week'])
     
     if ls.week == byeWeek:
@@ -151,11 +203,11 @@ def getPlayerStats(player_id):
 ###############################################################################     
 def getPlayerInfoQuery(player_id):
 
-    url         = 'https://fantasysports.yahooapis.com/fantasy/v2/player/'  \
+    url         = baseURI + 'player/'  \
                 + str(ls.game_key) + '.p.' + str(player_id)                 \
                 + '/stats;type=week;week=' + str(ls.week) + '?format=json'
                 
-    jsondata    = fy.jsonQuery(url)
+    jsondata    = jsonQuery(url)
     team_id     = 0
     name        = None
     position    = None
@@ -178,48 +230,7 @@ def getPlayerInfoQuery(player_id):
                 team_id = int(tmp[2])
         return [player_id, team_id, str(position), str(name), str(team_abbr)]
     
-###############################################################################
-## getPlayerInfoDB
-## 
-## 
-##
-###############################################################################     
-def getPlayerInfoDB(info):
-    team_id     = 0
-    name        = None
-    team_abbr   = None
-    lst         = None
-    
-    player_id   = info[0]
-    position    = info[1]
-    selected_position = info[2]
-    
-    if position == 'QB':
-        lst = nfl.qb
-    elif position == 'WR':
-        lst = nfl.wr
-    elif position == 'RB':
-        lst = nfl.rb
-    elif position == 'TE':
-        lst = nfl.te
-    elif position == 'K':
-        lst = nfl.ki
-    elif position == 'DEF':
-        lst = nfl.dst
-        
-    if lst != None:
-        for row in range(len(lst)):
-            if player_id == int(lst[row][0]):
-                return [player_id, int(lst[row][1]), str(selected_position), str(lst[row][3]), str(lst[row][4])]
-    else:
-        return [player_id, int(team_id), str(selected_position), str(name), str(team_abbr)]
-            
-        
-            
-            
-            
-            
-   
+
     
     
 ###############################################################################
@@ -229,10 +240,10 @@ def getPlayerInfoDB(info):
 ##
 ############################################################################### 
 def getLeagueTransactionQuery():
-    url         = 'https://fantasysports.yahooapis.com/fantasy/v2/leagues;league_keys=' \
+    url         = baseURI + 'leagues;league_keys=' \
                 + str(ls.game_key) + '.l.' + str(ls.league_id) \
                 + '/transactions?format=json'
-    jsondata    = fy.jsonQuery(url)
+    jsondata    = jsonQuery(url)
     transactions  = jsondata['fantasy_content']['leagues']['0']['league'][1]['transactions']
     
 
@@ -244,67 +255,39 @@ def getLeagueTransactionQuery():
 ##
 ############################################################################### 
 def updatePlayerStatsQuery(player_id):
-    url         = 'https://fantasysports.yahooapis.com/fantasy/v2/player/' \
+    url         = baseURI + 'player/' \
                 + str(ls.game_key) + '.p.' + str(player_id) \
                 + '/stats;type=week;week=' + str(ls.week) +'?format=json'
                 
-    jsondata    = fy.jsonQuery(url)
-    byeWeek     = fy.searchJSONObject(jsondata['fantasy_content']['player'][0], 'bye_weeks')
-    tmpStats    = jsondata['fantasy_content']['player'][1]['player_stats']['stats']
+    jsondata    = jsonQuery(url)
+    byeWeek     = searchJSONObject(jsondata['fantasy_content']['player'][0], 'bye_weeks')
     byeWeek     = int(byeWeek['week'])
-    bsa         = ls.blankStatsArray
+    
+    tmpStats    = jsondata['fantasy_content']['player'][1]['player_stats']['stats']
+    statsArray  = ls.blankStatsArray
+    fpts = 0
 
     if ls.week == byeWeek:
-        bsa[0]  = 'BYE'
+        statsArray[0]  = 'BYE'
     else:
         for i in range(0,len(tmpStats)):
             stat_id         = int(tmpStats[i]['stat']['stat_id'])
-            bsa[stat_id]    = float(tmpStats[i]['stat']['value'])
-     
-    idx = 0
-    tmpList = []
-    tmpCSV = []
-    with open('db/outfile.csv','r') as infile:
-        reader = csv.reader(infile)
-        tmpCSV.extend(reader)
+            statsArray[stat_id]    = int(tmpStats[i]['stat']['value'])
+            
+#            pdb.updateTableEntry(index_column=ls.statName[i],match_column='player_id',
+#                                match_value=player_id, num=statsArray[stat_id])
         
-    with open('db/outfile.csv','r') as infile:
-        reader = csv.reader(infile)        
-        while(idx != player_id):
-            row = next(reader)
-            idx = int(float(row[0]))            
-            tmpList = list(row)
 
-#    print('here')
-    tmpList.extend(bsa)
-    ovr = {idx:tmpList}
-    with open('db/outfile.csv','w') as outfile:
-        writer = csv.writer(outfile)
-        for line, row in enumerate(tmpCSV):
-            data = ovr.get(line,row)
-            writer.writerow(data)
+        for i in range(len(ls.statInfo[1])):
+            fpts += ls.statInfo[1][i]*statsArray[i]
+    
+#    pdb.updateTableEntry(index_column='fpts',match_column='player_id',
+#                                match_value=int(player_id), num=float(fpts))
+     
+
+    return [statsArray,fpts] 
 
 
-
-#        return tmpList
-    
-    
-#    return bsa  
-
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     

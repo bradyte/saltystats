@@ -1,31 +1,50 @@
 import settings as ls
-import func as f
+import yahooQuery as yq
 import matplotlib.pyplot as plt
 import pprint
 import time
-
+import playerDatabase as pdb
 
 
 ## https://developer.yahoo.com/yql/console/
 ## http://jsonviewer.stack.hu/
 ## https://jsonformatter.curiousconcept.com/
 
-teamInfo    = f.getTeamManagerInfo(ls.team_id)
-teamRoster  = f.getTeamWeeklyRoster(ls.team_id)
-ls.week = 1
-for i in range(1,ls.leagueSettings.Dates.current_week):
-    ls.week = i
-    tmp = f.getPlayerStats(teamRoster[0][0])
-    print(tmp)
+#teamInfo    = yq.getTeamManagerInfoQuery(ls.team_id)
+#teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id)
+#for i in range(len(teamRoster)):
+#    data = pdb.selectEntryFromTable(match_column='player_id',match_value=teamRoster[i][0])
+#    
+#    print(data[83:])
+#text = pdb.selectEntryFromTable(match_column='player_id',match_value=teamRoster[0][0])
+#info = text[83:]
+#fpts = yq.updatePlayerStatsQuery(teamRoster[0][0])
+#newText = pdb.selectEntryFromTable(match_column='player_id',match_value=teamRoster[0][0])
+#newInfo = newText[83:]
 
-#player_id = teamRoster[1][0]
-#name = teamRoster[1][3]
-#ls.week -= 1
-#info = f.updatePlayerStatsQuery(29957)
+#pdb.querySQLdatabase()
+pid=6762
+text    = pdb.selectEntryFromTable(match_value=pid)[83:]
+[statsArray,fpts]    = yq.updatePlayerStatsQuery(pid)
+pdb.updateTableEntry(match_value=pid, index_column='fpts', num=fpts)
+newText = pdb.selectEntryFromTable(match_value=pid)[83:]
+#newText = pdb.selectEntryFromTable(match_column='player_id',match_value=teamRoster[0][0])
+
+#ls.week = 1
+#for i in range(1,ls.leagueSettings.Dates.current_week):
+#    ls.week = i
+#    tmp = f.getPlayerStats(teamRoster[0][0])
+#    print(tmp)
 
 
+#tmp = nfl.playerDB[0:10]
+#ls.week = 1
+#for i in range(len(tmp)):
+#f.updatePlayerStatsQuery(int(tmp[3][0]))
 
-
+#with open('db/outfile.csv','r') as csvfile:
+#    reader = csv.reader(csvfile)
+#    tmpList = list(reader)[0]
 
 
 #29399
@@ -87,68 +106,5 @@ for i in range(1,ls.leagueSettings.Dates.current_week):
 #plt.subplots_adjust(wspace=0.8, hspace=0.8)
 #plt.show()
 
+pdb.closeDatabase()
 
-#needed to initialize class
-#leagueSettings.About.num_teams
-#leagueSettings.Dates.start_week
-#leagueSettings.Dates.end_week
-#fpts = getPlayerStats(season, 9317, 1, leagueSettings.Scoring.statInfo.value, oauthToken)
-
-
-
-#getWeeklyOutcome
-#week = [None] * (int(leagueSettings.Dates.end_week) + 1)
-#team = [0] * (int(leagueSettings.About.num_teams) + 1)
-
-##roster = []
-#roster = \
-#{
-#    'roster': [
-#        {
-#           'position': 'QB',
-#           'player_id': 8780
-#        },
-#        {
-#            'position': 'WR',
-#            'player_id': 9600
-#        }
-#    ]
-#}
-#
-##
-#week = {}
-#week = []
-#week.append({})
-#week.append({'team': [{}] })
-#week[1]['team'].append(roster)
-#
-##week.append({
-##    'team': [
-##        {},
-##        {
-##        'roster': [
-##            {
-##                'position': 'WR',
-##                'player_id': 9600
-##            }    
-##        ],
-##        'total' : 100,
-##        'opponent': 2,
-##        'oppTotal': 120
-##        }
-##    ]  
-##})
-
-#roster          = getWeeklyRoster(season, league_id, team_id, week, roster_size, oauthToken)
-#matchups         = getWeeklyMatchup(season, league_id, team_id, week, leagueSettings.About.num_teams, oauthToken)
-#printCleanMatchups(matchups, leagueSettings.About.num_teams)
-#print(json.dumps(tmp, indent=2))
-
-
-#seeAbout       = 1
-#seeDates       = 1
-#seeScoring     = 1
-###
-#printCleanSettings(leagueSettings,seeAbout,seeDates,seeScoring)
-#
-#printCleanRoster(roster, roster_size)

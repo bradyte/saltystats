@@ -5,8 +5,9 @@ Created on Tue Nov 21 12:48:29 2017
 
 @author: tbrady
 """
-import dataMine as dm
+import yahooQuery as yq
 import cleaning
+
 ###############################################################################
 ## getSeasonGameKey
 ## This is the key that identifies the fantasy season and fantasy sport
@@ -25,10 +26,10 @@ def getSeasonGameKey():
 ##
 ############################################################################### 
 def getLeagueSettings():   
-    url         = 'https://fantasysports.yahooapis.com/fantasy/v2/leagues;league_keys=' \
+    url         = yq.baseURI + 'leagues;league_keys=' \
                 + str(game_key) + '.l.' + str(league_id) + '/settings?format=json'
                 
-    jsondata = dm.jsonQuery(url) 
+    jsondata = yq.jsonQuery(url) 
     
     class LeagueSettings(object):
         class About(object):
@@ -78,12 +79,13 @@ def getLeagueSettings():
     leagueSettings.Dates.end_date       = ld0['end_date']
     
     ##scoring
-    leagueSettings.Scoring.uses_fractional_points   = dm.searchJSONObject(ld1, 'uses_fractional_points')
-    leagueSettings.Scoring.uses_negative_points     = dm.searchJSONObject(ld1, 'uses_negative_points')
+    leagueSettings.Scoring.uses_fractional_points   = yq.searchJSONObject(ld1, 'uses_fractional_points')
+    leagueSettings.Scoring.uses_negative_points     = yq.searchJSONObject(ld1, 'uses_negative_points')
 
     statInfo  = cleaning.cleanStats(ld1[0]['stat_categories']['stats'], ld1[0]['stat_modifiers']['stats'])
     
     return [leagueSettings, statInfo]
+
     
 
 
@@ -96,15 +98,31 @@ season          = 2017
 league_id       = 470610  
 game_key        = getSeasonGameKey()
 [leagueSettings, statInfo] = getLeagueSettings()
-blankStatsArray = [[0] * (len(statInfo)+1)]
-#for i in range(len(statInfo[0])):
-#    print('{}\t{:>6.2f} \t {}'.format(i,statInfo[1][i],str(statInfo[0][i])))
-roster_size     = leagueSettings.About.roster_size
+temp = getLeagueSettings()
+blankStatsArray = [0] * (len(statInfo[0]))
 
+#for i in range(len(statInfo[0])):
+#    print('{}|{}|{}'.format(i,statInfo[1][i],str(statInfo[0][i])))
+
+roster_size     = leagueSettings.About.roster_size
 
 week            = leagueSettings.Dates.current_week
 team_id         = 1
 
+statName       = \
+['active','pass_att','pass_comp','pass_miss','pass_yds','pass_td','pass_int',
+'Field7','rush_att','rush_yds','rush_td','rec','rec_yds','rec_td','Field14',
+'ret_td','two_pt','fum','fum_lost','fg_0_19','fg_20_29','fg_30_39','fg_40_49',
+'fg_50_plus','Field24','Field25','Field26','Field27','Field28','pat_made','pat_miss',
+'def_pa','def_sack','def_int','def_fum_rec','def_td','def_sfty','def_blk_kick',
+'idp_s_tkl','idp_a_tkl','idp_sack','Field41','Field42','Field43','Field44',
+'Field45','idp_pass_def','Field47','def_ret_yds','ko_pr_ret_td','def_pa_0',
+'def_pa_1_6','def_pa_7_13','def_pa_14_20','def_pa_21_27','def_pa_28_34',
+'def_pa_35_plus','off_fum_ret_td','Field58','Field59','Field60','Field61',
+'Field62','Field63','Field64','def_tkl_fl','Field66','def_4d_stop','Field68',
+'Field69','Field70','Field71','Field72','Field73','Field74','Field75','Field76',
+'Field77','targets','Field79','Field80','Field81','xpr',
+'player_id','team_id','position','name','team_abbr','fpts']
 
 
 
