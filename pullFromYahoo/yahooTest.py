@@ -30,7 +30,7 @@ for i in range(len(teamRoster)):
 
 
 ####https://machinelearningmastery.com/feature-selection-machine-learning-python/
-
+####https://www.kaggle.com/mashimo/features-selection-for-multiple-linear-regression
 
 
 #newText = pdb.selectEntryFromTable(match_column='player_id',match_value=teamRoster[0][0])
