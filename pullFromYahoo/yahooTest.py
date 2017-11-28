@@ -28,6 +28,13 @@ text    = pdb.selectEntryFromTable(match_value=pid)[83:]
 [statsArray,fpts]    = yq.updatePlayerStatsQuery(pid)
 pdb.updateTableEntry(match_value=pid, index_column='fpts', num=fpts)
 newText = pdb.selectEntryFromTable(match_value=pid)[83:]
+
+
+
+####https://machinelearningmastery.com/feature-selection-machine-learning-python/
+
+
+
 #newText = pdb.selectEntryFromTable(match_column='player_id',match_value=teamRoster[0][0])
 
 #ls.week = 1

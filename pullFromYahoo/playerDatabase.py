@@ -57,13 +57,11 @@ def getTableColumnNames(table_name):
     return tmp
 
 def updateTableEntry(table_name = table_name, index_column = index_column, \
-                     match_column = match_column, match_value=match_value,num=0):
-    
+                     match_column = match_column, match_value=match_value,num=0):   
     match_value=str(match_value)
     c.execute('UPDATE {tn} SET {ic}={num} WHERE {mc}={mv}'.\
         format(ic=index_column, tn=table_name, mc=match_column, mv=match_value, num=num))
-    print('UPDATE {tn} SET {ic}={num} WHERE {mc}={mv}'.\
-        format(ic=index_column, tn=table_name, mc=match_column, mv=match_value, num=num))
+
 
 
 
