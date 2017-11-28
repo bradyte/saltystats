@@ -8,7 +8,8 @@ def cleanPlayerData(d,i):
     d   = d['fantasy_content']['teams']['0']['team'][1]['roster']['0']['players'][str(i)]['player'] # strip the nonsense
     d0  = d[0] + [{'selected_position': d[1]['selected_position'][1]['position']}] # this makes a list entry     
     d0.append(dict(d[2])) # append the other two that are correct 
-    d0.append(dict(d[3]))
+    if len(d) > 3:
+        d0.append(dict(d[3]))   # for some reason they add an "is_editable" field for the current user
     
     return d0
 

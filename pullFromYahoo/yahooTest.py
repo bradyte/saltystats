@@ -6,28 +6,26 @@ import time
 import playerDatabase as pdb
 
 
+
 ## https://developer.yahoo.com/yql/console/
 ## http://jsonviewer.stack.hu/
 ## https://jsonformatter.curiousconcept.com/
 
 #teamInfo    = yq.getTeamManagerInfoQuery(ls.team_id)
-#teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id)
-#for i in range(len(teamRoster)):
-#    data = pdb.selectEntryFromTable(match_column='player_id',match_value=teamRoster[i][0])
-#    
-#    print(data[83:])
-#text = pdb.selectEntryFromTable(match_column='player_id',match_value=teamRoster[0][0])
-#info = text[83:]
-#fpts = yq.updatePlayerStatsQuery(teamRoster[0][0])
-#newText = pdb.selectEntryFromTable(match_column='player_id',match_value=teamRoster[0][0])
-#newInfo = newText[83:]
 
-#pdb.querySQLdatabase()
-pid=6762
-text    = pdb.selectEntryFromTable(match_value=pid)[83:]
-[statsArray,fpts]    = yq.updatePlayerStatsQuery(pid)
-pdb.updateTableEntry(match_value=pid, index_column='fpts', num=fpts)
-newText = pdb.selectEntryFromTable(match_value=pid)[83:]
+ls.week     = 12
+ls.team_id  = 4
+teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id)
+for i in range(len(teamRoster)):
+    data = pdb.selectEntryFromTable(match_column='player_id',match_value=teamRoster[i][0])
+    print(data)
+#    yq.updatePlayerStatsQuery(teamRoster[i][0])
+
+
+
+
+
+
 
 
 

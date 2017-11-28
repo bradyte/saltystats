@@ -32,6 +32,7 @@ match_value = '30199'
 
 
 def closeDatabase():
+    conn.commit()
     conn.close()
 
 def selectEntryFromTable(table_name = table_name, index_column = index_column, \
@@ -44,8 +45,9 @@ def selectEntryFromTable(table_name = table_name, index_column = index_column, \
         c.execute('SELECT {ic} FROM {tn} WHERE {mc}="{mv}"'.\
             format(ic=index_column, tn=table_name, mc=match_column, mv=match_value))
     all_rows = c.fetchall()
-    print(('SELECT {ic} FROM {tn} WHERE {mc}={mv}'.\
-            format(ic=index_column, tn=table_name, mc=match_column, mv=match_value)))
+#    print(('SELECT {ic} FROM {tn} WHERE {mc}={mv}'.\
+#            format(ic=index_column, tn=table_name, mc=match_column, mv=match_value)))
+
     return all_rows[0]
 
 
