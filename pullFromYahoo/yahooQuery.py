@@ -1,7 +1,9 @@
 import cleaning
 import settings as ls
-
+import time
+import sys
 import playerDatabase as pdb
+
 
 
 
@@ -34,8 +36,10 @@ def beginOauth2Session(filePath):
 ##
 ###############################################################################  
 def jsonQuery(url):
+
     response = oauthToken.session.get(url)
     jsondata =json.loads(str(response.content,'utf-8'))
+
 #    print(json.dumps(jsondata, indent=2))
     return jsondata
 
@@ -173,7 +177,6 @@ def getPlayerStatsQuery(player_id):
     url         = baseURI + 'player/' \
                 + str(ls.game_key) + '.p.' + str(player_id) \
                 + '/stats;type=week;week=' + str(ls.week) +'?format=json'
-                
     jsondata = jsonQuery(url)
     
     byeWeek     = searchJSONObject(jsondata['fantasy_content']['player'][0], 'bye_weeks')
@@ -259,36 +262,45 @@ def updatePlayerStatsQuery(player_id):
     url         = baseURI + 'player/' \
                 + str(ls.game_key) + '.p.' + str(player_id) \
                 + '/stats;type=week;week=' + str(ls.week) +'?format=json'
-                
+ 
+    t0 = time.time()             
     jsondata    = jsonQuery(url)
+    t1 = time.time() - t0
     byeWeek     = searchJSONObject(jsondata['fantasy_content']['player'][0], 'bye_weeks')
     byeWeek     = int(byeWeek['week'])
     
     tmpStats    = jsondata['fantasy_content']['player'][1]['player_stats']['stats']
-    statsArray  = ls.blankStatsArray
-    fpts = 0
+    statsArray  = [0] * (len(ls.statInfo[0]))
+    fpts        = 0
 
     if ls.week == byeWeek:
         statsArray[0]  = 'BYE'
     else:
-        for i in range(0,len(tmpStats)): # update the individual stats column
-            stat_id         = int(tmpStats[i]['stat']['stat_id'])
-            statsArray[stat_id]    = int(tmpStats[i]['stat']['value'])
-            
-            pdb.updateTableEntry(index_column   = ls.statName[i],
+        t0 = time.time()
+        for j in range(1,len(ls.statInfo[0])): #
+            pdb.updateTableEntry(index_column   = ls.statName[j],
                                  match_column   = 'player_id',
                                  match_value    = player_id,
-                                 num            = statsArray[stat_id])
-        
+                                 num            = 0)
+          
+        for i in range(0,len(tmpStats)): # update the individual stats column
+            stat_id                             = int(tmpStats[i]['stat']['stat_id'])
+            statsArray[stat_id]                 = int(tmpStats[i]['stat']['value'])
+            pdb.updateTableEntry(index_column   = ls.statName[stat_id],
+                                 match_column   = 'player_id',
+                                 match_value    = player_id,
+                                 num            = statsArray[stat_id])                        
+       
         for i in range(len(ls.statInfo[1])): # update the fpts value
             fpts += ls.statInfo[1][i]*statsArray[i]
             pdb.updateTableEntry(index_column   = 'fpts',
                                  match_column   = 'player_id',
                                  match_value    = player_id, 
                                  num            = fpts)
-     
 
-    return fpts 
+        print('{}\t\tyahoo: {:.6f}\t\tsql: {:.6f}'.format(player_id,t1,time.time() - t0))
+
+    return [statsArray, fpts]
 
 
     

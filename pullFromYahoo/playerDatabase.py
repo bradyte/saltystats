@@ -50,6 +50,11 @@ def selectEntryFromTable(table_name = table_name, index_column = index_column, \
 
     return all_rows[0]
 
+def selectAllPlayerIDs(table_name = table_name, index_column = index_column):
+    c.execute('SELECT {ic} FROM {tn}'.format(ic=index_column, tn=table_name))
+    all_rows = c.fetchall()
+    return [x[83] for x in all_rows]
+
 
 def getTableColumnNames(table_name):
     c.execute('PRAGMA table_info({tn})'.\

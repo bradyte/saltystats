@@ -99,7 +99,7 @@ league_id       = 470610
 game_key        = getSeasonGameKey()
 [leagueSettings, statInfo] = getLeagueSettings()
 temp = getLeagueSettings()
-blankStatsArray = [0] * (len(statInfo[0]))
+
 
 #for i in range(len(statInfo[0])):
 #    print('{}|{}|{}'.format(i,statInfo[1][i],str(statInfo[0][i])))

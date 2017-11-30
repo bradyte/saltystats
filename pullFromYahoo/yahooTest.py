@@ -4,8 +4,9 @@ import matplotlib.pyplot as plt
 import pprint
 import time
 import playerDatabase as pdb
+import os
 
-
+tsys = time.time()
 
 ## https://developer.yahoo.com/yql/console/
 ## http://jsonviewer.stack.hu/
@@ -15,18 +16,35 @@ import playerDatabase as pdb
 
 ls.week     = 12
 ls.team_id  = 4
-teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id)
-for i in range(len(teamRoster)):
-    data = pdb.selectEntryFromTable(match_column='player_id',match_value=teamRoster[i][0])
-    print(data)
-#    yq.updatePlayerStatsQuery(teamRoster[i][0])
+#teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id)
+
+#for i in range(len(teamRoster)):
+#    data = pdb.selectEntryFromTable(match_column='player_id',match_value=teamRoster[i][0])
+#    print(data)
+#   
+#29399
+#9317
+#30199 hunt downward trend
+#6762 fitzgerald inconsistent
+#29236 wentz very good
+#28461 coleman consistent
+ls.week = 12
+#pid = 8565
+#data = pdb.selectEntryFromTable(match_column='player_id',match_value=pid)[len(ls.statInfo[0]):]
+#[sa, fpts] = yq.updatePlayerStatsQuery(pid)
+#newData = pdb.selectEntryFromTable(match_column='player_id',match_value=pid)[len(ls.statInfo[0]):]
+#for i in range(len(ls.statInfo[0])):
+#    print('{}\t{}\t{:>}\t{:>}    \t{}'.format(i,sa[i],str(ls.statInfo[1][i]),str(ls.statName[i]),str(ls.statInfo[0][i])))
+
+ids = pdb.selectAllPlayerIDs()
+for i in range(1001,len(ids)):
+    if ids[i] < 100000: # protect against defense ids
+        yq.updatePlayerStatsQuery(ids[i])
+#        if i % 10 == 0:
+#            print('|',end='')
 
 
-
-
-
-
-
+#pdb.updateTableEntry(index_column=ls.statName[0],match_column='player_id',match_value=pid,num=1)
 
 
 ####https://machinelearningmastery.com/feature-selection-machine-learning-python/
@@ -110,6 +128,7 @@ for i in range(len(teamRoster)):
 #
 #plt.subplots_adjust(wspace=0.8, hspace=0.8)
 #plt.show()
-
+ 
+print('Execution time: {}'.format(time.time() - tsys))
 pdb.closeDatabase()
 
