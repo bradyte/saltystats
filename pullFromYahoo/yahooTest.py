@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pprint
 import time
 import playerDatabase as pdb
-import os
+
 
 tsys = time.time()
 
@@ -22,7 +22,7 @@ tsys = time.time()
 #28461 coleman consistent
 #pid = 8565
 
-ls.week     = 2
+ls.week     = 7
 #ls.team_id  = 4
 #teamInfo    = yq.getTeamManagerInfoQuery(ls.team_id)
 #teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id)
@@ -40,16 +40,17 @@ ls.week     = 2
 
 
 table_name = 'stats_s' + str(ls.season) + 'w' + str(ls.week) 
-#pdb.createSQLTable(table_name)
+pdb.createSQLTable(table_name)
 #pdb.executeSQL('DROP TABLE IF EXISTS {tn}'.format(tn=table_name))
 ids = pdb.selectAllPlayerIDs()
-idx = 1001
-inc = 200
-for i in range(idx, len(ids)):
+#idx = 1001
+#inc = 200
+for i in range(len(ids)):
     if int(ids[i]) < 100000: # protect against defense ids
         [statsArray, fpts] = yq.updatePlayerStatsQuery(ids[i], table_name)
         perc = ((i+1)/len(ids))*100
-        print('\t{:.3f}%'.format(perc))
+        print('\t{:.3f}%'.format(perc),end='\r')
+        time.sleep(0.1)
 
 
 

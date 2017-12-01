@@ -301,7 +301,7 @@ def updatePlayerStatsQuery(player_id, table_name):
                                  match_value    = player_id, 
                                  num            = fpts)
 
-        print('{}\t\tyahoo: {:.6f}\t\tsql: {:.6f}'.format(player_id,t1,time.time() - t0),end='')
+        print('\r{}\tyahoo: {:.4f}\tsql: {:.4f}'.format(player_id,t1,time.time() - t0),end='')
 
     return [statsArray, fpts]
 
