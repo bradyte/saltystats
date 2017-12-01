@@ -29,7 +29,8 @@ with open(playerFile, 'r') as f:
 
 
 
-
+def executeSQL(sql_string):
+    c.execute(sql_string)
 
 
 def closeDatabase():
@@ -71,7 +72,7 @@ def updateTableEntry(table_name = table_name, index_column = index_column, \
 
 
 def createSQLTable(table_name):
-    c.execute('CREATE TABLE "{tn}" ( \
+    c.execute('CREATE TABLE IF NOT EXISTS "{tn}" ( \
         {d00} INTEGER, {d01} INTEGER, {d02} INTEGER, {d03} INTEGER, {d04} INTEGER,  \
         {d05} INTEGER, {d06} INTEGER, {d07} INTEGER, {d08} INTEGER, {d09} INTEGER,  \
         {d10} INTEGER, {d11} INTEGER, {d12} INTEGER, {d13} INTEGER, {d14} INTEGER,  \
@@ -89,8 +90,7 @@ def createSQLTable(table_name):
         {d70} INTEGER, {d71} INTEGER, {d72} INTEGER, {d73} INTEGER, {d74} INTEGER,  \
         {d75} INTEGER, {d76} INTEGER, {d77} INTEGER, {d78} INTEGER, {d79} INTEGER,  \
         {d80} INTEGER, {d81} INTEGER, {d82} INTEGER, \
-        {d83} INTEGER, {d84} INTEGER, {d85} TEXT, {d86} TEXT, {d87} TEXT, {d88} REAL,\
-        PRIMARY KEY(player_id))'.\
+        {d83} INTEGER, {d84} INTEGER, {d85} TEXT, {d86} TEXT, {d87} TEXT, {d88} REAL)'.\
         format(tn=table_name,
         d00=ls.statName[0],  d01=ls.statName[1],  d02=ls.statName[2],  d03=ls.statName[3],  d04=ls.statName[4], 
         d05=ls.statName[5],  d06=ls.statName[6],  d07=ls.statName[7],  d08=ls.statName[8],  d09=ls.statName[9], 
@@ -163,9 +163,6 @@ def createSQLTable(table_name):
             d85=ls.statName[85], d86=ls.statName[86], d87=ls.statName[87], d88=ls.statName[88],
             pid=pInfo[i][0],     team_id=pInfo[i][1],     pos=pInfo[i][2],    name=pInfo[i][3], team_abbr=pInfo[i][4]))
 
-    
-def executeSQL(sql_string):
-    c.execute(sql_string)
     
     
 

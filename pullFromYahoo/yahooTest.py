@@ -20,33 +20,39 @@ tsys = time.time()
 #6762 fitzgerald inconsistent
 #29236 wentz very good
 #28461 coleman consistent
-pid = 8565
+#pid = 8565
 
-ls.week     = 1
-ls.team_id  = 4
+ls.week     = 2
+#ls.team_id  = 4
 #teamInfo    = yq.getTeamManagerInfoQuery(ls.team_id)
 #teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id)
+
+
 
 #for i in range(len(teamRoster)):
 #    data = pdb.selectEntryFromTable(match_column='player_id',match_value=teamRoster[i][0])
 #    print(data)
 #   
 
-#sql_string = 'INSERT INTO stats_s2017w2(active, pass_att) VALUES(0,0)'
 
-#pdb.executeSQL(sql_string)
 
-pdb.createSQLTable('stats_s2017w2')
-#pdb.executeSQL('DROP TABLE stats_s2017w2')
 
-#ids = pdb.selectAllPlayerIDs()
-#for i in range(0,10):
-#    if int(ids[i]) < 100000: # protect against defense ids
-#        [statsArray, fpts] = yq.updatePlayerStatsQuery(ids[i])
-#
-#
-#
-#pdb.updateTableEntry(index_column=ls.statName[0],match_column='player_id',match_value=pid,num=1)
+
+
+table_name = 'stats_s' + str(ls.season) + 'w' + str(ls.week) 
+#pdb.createSQLTable(table_name)
+#pdb.executeSQL('DROP TABLE IF EXISTS {tn}'.format(tn=table_name))
+ids = pdb.selectAllPlayerIDs()
+idx = 1001
+inc = 200
+for i in range(idx, len(ids)):
+    if int(ids[i]) < 100000: # protect against defense ids
+        [statsArray, fpts] = yq.updatePlayerStatsQuery(ids[i], table_name)
+        perc = ((i+1)/len(ids))*100
+        print('\t{:.3f}%'.format(perc))
+
+
+
 
 
 

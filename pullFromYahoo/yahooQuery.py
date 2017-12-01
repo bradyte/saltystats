@@ -258,7 +258,7 @@ def getLeagueTransactionQuery():
 ## 
 ##
 ############################################################################### 
-def updatePlayerStatsQuery(player_id):
+def updatePlayerStatsQuery(player_id, table_name):
     url         = baseURI + 'player/' \
                 + str(ls.game_key) + '.p.' + str(player_id) \
                 + '/stats;type=week;week=' + str(ls.week) +'?format=json'
@@ -277,28 +277,31 @@ def updatePlayerStatsQuery(player_id):
         statsArray[0]  = 'BYE'
     else:
         t0 = time.time()
-#        for j in range(1,len(ls.statInfo[0])): #
-#            pdb.updateTableEntry(index_column   = ls.statName[j],
-#                                 match_column   = 'player_id',
-#                                 match_value    = player_id,
-#                                 num            = 0)
+        for j in range(1,len(ls.statInfo[0])): #
+            pdb.updateTableEntry(table_name     = table_name,
+                                 index_column   = ls.statName[j],
+                                 match_column   = 'player_id',
+                                 match_value    = player_id,
+                                 num            = 0)
           
         for i in range(0,len(tmpStats)): # update the individual stats column
             stat_id                             = int(tmpStats[i]['stat']['stat_id'])
             statsArray[stat_id]                 = int(tmpStats[i]['stat']['value'])
-            pdb.updateTableEntry(index_column   = ls.statName[stat_id],
+            pdb.updateTableEntry(table_name     = table_name,
+                                 index_column   = ls.statName[stat_id],
                                  match_column   = 'player_id',
                                  match_value    = player_id,
                                  num            = statsArray[stat_id])                        
        
         for i in range(len(ls.statInfo[1])): # update the fpts value
             fpts += ls.statInfo[1][i]*statsArray[i]
-            pdb.updateTableEntry(index_column   = 'fpts',
+            pdb.updateTableEntry(table_name     = table_name,
+                                 index_column   = 'fpts',
                                  match_column   = 'player_id',
                                  match_value    = player_id, 
                                  num            = fpts)
 
-        print('{}\t\tyahoo: {:.6f}\t\tsql: {:.6f}'.format(player_id,t1,time.time() - t0))
+        print('{}\t\tyahoo: {:.6f}\t\tsql: {:.6f}'.format(player_id,t1,time.time() - t0),end='')
 
     return [statsArray, fpts]
 
