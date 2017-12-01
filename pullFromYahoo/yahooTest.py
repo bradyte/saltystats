@@ -11,71 +11,71 @@ tsys = time.time()
 ## https://developer.yahoo.com/yql/console/
 ## http://jsonviewer.stack.hu/
 ## https://jsonformatter.curiousconcept.com/
+####https://machinelearningmastery.com/feature-selection-machine-learning-python/
+####https://www.kaggle.com/mashimo/features-selection-for-multiple-linear-regression
 
-#teamInfo    = yq.getTeamManagerInfoQuery(ls.team_id)
+#29399
+#9317
+#30199 hunt downward trend
+#6762 fitzgerald inconsistent
+#29236 wentz very good
+#28461 coleman consistent
+pid = 8565
 
-ls.week     = 12
+ls.week     = 1
 ls.team_id  = 4
+#teamInfo    = yq.getTeamManagerInfoQuery(ls.team_id)
 #teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id)
 
 #for i in range(len(teamRoster)):
 #    data = pdb.selectEntryFromTable(match_column='player_id',match_value=teamRoster[i][0])
 #    print(data)
 #   
-#29399
-#9317
-#30199 hunt downward trend
-#6762 fitzgerald inconsistent
-#29236 wentz very good
-#28461 coleman consistent
-ls.week = 12
-#pid = 8565
-#data = pdb.selectEntryFromTable(match_column='player_id',match_value=pid)[len(ls.statInfo[0]):]
-#[sa, fpts] = yq.updatePlayerStatsQuery(pid)
-#newData = pdb.selectEntryFromTable(match_column='player_id',match_value=pid)[len(ls.statInfo[0]):]
-#for i in range(len(ls.statInfo[0])):
-#    print('{}\t{}\t{:>}\t{:>}    \t{}'.format(i,sa[i],str(ls.statInfo[1][i]),str(ls.statName[i]),str(ls.statInfo[0][i])))
 
-ids = pdb.selectAllPlayerIDs()
-for i in range(1001,len(ids)):
-    if ids[i] < 100000: # protect against defense ids
-        yq.updatePlayerStatsQuery(ids[i])
-#        if i % 10 == 0:
-#            print('|',end='')
+#sql_string = 'INSERT INTO stats_s2017w2(active, pass_att) VALUES(0,0)'
 
+#pdb.executeSQL(sql_string)
 
+pdb.createSQLTable('stats_s2017w2')
+#pdb.executeSQL('DROP TABLE stats_s2017w2')
+
+#ids = pdb.selectAllPlayerIDs()
+#for i in range(0,10):
+#    if int(ids[i]) < 100000: # protect against defense ids
+#        [statsArray, fpts] = yq.updatePlayerStatsQuery(ids[i])
+#
+#
+#
 #pdb.updateTableEntry(index_column=ls.statName[0],match_column='player_id',match_value=pid,num=1)
 
 
-####https://machinelearningmastery.com/feature-selection-machine-learning-python/
-####https://www.kaggle.com/mashimo/features-selection-for-multiple-linear-regression
 
 
-#newText = pdb.selectEntryFromTable(match_column='player_id',match_value=teamRoster[0][0])
-
-#ls.week = 1
-#for i in range(1,ls.leagueSettings.Dates.current_week):
-#    ls.week = i
-#    tmp = f.getPlayerStats(teamRoster[0][0])
-#    print(tmp)
 
 
-#tmp = nfl.playerDB[0:10]
-#ls.week = 1
-#for i in range(len(tmp)):
-#f.updatePlayerStatsQuery(int(tmp[3][0]))
-
-#with open('db/outfile.csv','r') as csvfile:
-#    reader = csv.reader(csvfile)
-#    tmpList = list(reader)[0]
 
 
-#29399
-#9317
-#30199 hunt downward trend
-#6762 fitzgerald inconsistent
-#29236 wentz very good
-#28461 coleman consistent
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #fpts        = []

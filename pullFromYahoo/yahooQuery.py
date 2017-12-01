@@ -277,11 +277,11 @@ def updatePlayerStatsQuery(player_id):
         statsArray[0]  = 'BYE'
     else:
         t0 = time.time()
-        for j in range(1,len(ls.statInfo[0])): #
-            pdb.updateTableEntry(index_column   = ls.statName[j],
-                                 match_column   = 'player_id',
-                                 match_value    = player_id,
-                                 num            = 0)
+#        for j in range(1,len(ls.statInfo[0])): #
+#            pdb.updateTableEntry(index_column   = ls.statName[j],
+#                                 match_column   = 'player_id',
+#                                 match_value    = player_id,
+#                                 num            = 0)
           
         for i in range(0,len(tmpStats)): # update the individual stats column
             stat_id                             = int(tmpStats[i]['stat']['stat_id'])
