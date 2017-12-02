@@ -23,8 +23,8 @@ tsys = time.time()
 #28461 coleman consistent
 #pid = 8565
 
-ls.week     = 12
-ls.team_id  = 10
+#ls.week     = 12
+ls.team_id  = 9
 teamInfo    = yq.getTeamManagerInfoQuery(ls.team_id)
 teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id)
 
@@ -45,39 +45,53 @@ teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id)
 #weeks = [d[0] for d in info]
 #stats = [d[1] for d in info]
 
-for i in range(1,13):
-    table_name = 'stats_s' + str(ls.season) + 'w' + str(i)
-    pdb.createNewRowSQL(table_name)
+#for i in range(1,ls.week):
+#    table_name = 'stats_s' + str(ls.season) + 'w' + str(i)
+#    pdb.createNewRowSQL(table_name)
+
+names = []
+totFpts = []
+totCV = []
+print('{:<20} {}\t{}\t{}'.format('Name','Avg','SD','CV'))
+
+for j in range(len(teamRoster)):
+    if teamRoster[j][1] != 'DEF' and teamRoster[j][2] != 'IR' and teamRoster[j][2] != 'BN':
+        perf = []
+        for i in range(1,ls.week):
+            arr =    pdb.getWeeklyPositionPerformanceSQL(\
+                    index_column='fpts', match_column='position', match_value=teamRoster[j][1], week=i)
+            player = pdb.getWeeklyPlayerPerformanceSQL(\
+                    index_column='fpts', match_column='player_id', match_value=teamRoster[j][0], week=i)
+           
+            if player != 'null':
+                perf.append([i,player/np.max(arr)])
+                
+        pname = pdb.selectEntryFromTable(\
+                    index_column='name',match_column='player_id',match_value=teamRoster[j][0])        
+        names.append(pname)
+        weeks = [d[0] for d in perf]
+        stats = [d[1] for d in perf]
+        #plt.plot(weeks,stats)
+        #plt.axis([0, 17, 0, 1])
+        #plt.title(pname)
+        
+        avg     = np.mean(stats)
+        sd      = np.std(stats)
+        cv      = sd/avg
+
+        plt.scatter(cv,avg,color='red')
+        plt.annotate(j+1,xy=(cv,avg),textcoords='offset points',xytext=(-10, 5),ha='right',\
+                     arrowprops = dict(arrowstyle = 'fancy'))
+        print('{:<3} {:<20} {:.3f}\t{:.3f}\t{:.3f}'.format(j+1,pname,avg,sd,cv))
 
 
-#print('{:<20} {}\t{}\t{}'.format('Name','Avg','SD','CV'))
-#for j in range(len(teamRoster)):
-#    if teamRoster[j][1] != 'DEF' and teamRoster[j][2] != 'BN' and teamRoster[j][2] != 'IR':
-#        perf = []
-#        for i in range(1,13):
-#            arr =    pdb.getWeeklyPositionPerformanceSQL(index_column='fpts',match_column='position',\
-#                                                     match_value=teamRoster[j][1],week=i)
-#            player = pdb.getWeeklyPlayerPerformanceSQL(index_column='fpts', match_column='player_id',\
-#                                                   match_value=teamRoster[j][0], week=i)
-#            if player != 'null':
-#                perf.append([i,player/np.max(arr)])
-#        pname = pdb.selectEntryFromTable(index_column='name',match_column='player_id',match_value=teamRoster[j][0])        
-#        weeks = [d[0] for d in perf]
-#        stats = [d[1] for d in perf]
-#        #plt.plot(weeks,stats)
-#        #plt.axis([0, 17, 0, 1])
-#        #plt.title(pname)
-#        
-#        avg     = np.mean(stats)
-#        sd      = np.std(stats)
-#        cv      = sd/avg
-#        plt.scatter(cv,avg,color='red')
-#        print('{:<20} {:.3f}\t{:.3f}\t{:.3f}'.format(pname,avg,sd,cv))
-#
-#
-#
-#plt.axis([0,1,0,1])
-#plt.show()
+
+plt.axis([0,1,0,1])
+plt.show()
+
+
+
+
 #perf = []
 #for i in range(1,13):
 #    arr =    pdb.getWeeklyPositionPerformanceSQL(index_column='fpts',match_column='position',\

@@ -14,7 +14,7 @@ sqliteFile      = 'db/sql/playerDatabase.db'
 playerFile      = 'db/csv/playerInfo.csv'
 
 conn            = sqlite3.connect(sqliteFile)
-#conn.row_factory = lambda cursor, row: row[0]
+conn.row_factory = lambda cursor, row: row[0]
 c               = conn.cursor()
 
 table_name      = 'stats_s2017w1'
