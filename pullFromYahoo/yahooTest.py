@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import pprint
 import time
 import playerDatabase as pdb
+import numpy as np
 
 
 tsys = time.time()
@@ -22,10 +23,10 @@ tsys = time.time()
 #28461 coleman consistent
 #pid = 8565
 
-ls.week     = 7
-#ls.team_id  = 4
-#teamInfo    = yq.getTeamManagerInfoQuery(ls.team_id)
-#teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id)
+ls.week     = 12
+ls.team_id  = 10
+teamInfo    = yq.getTeamManagerInfoQuery(ls.team_id)
+teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id)
 
 
 
@@ -37,46 +38,62 @@ ls.week     = 7
 
 
 
+#info = pdb.getSeasonPerformanceSQL(index_column = ls.statName[88], \
+#                         match_column = ls.statName[83], match_value=teamRoster[0][0])
+#
+#
+#weeks = [d[0] for d in info]
+#stats = [d[1] for d in info]
+
+for i in range(1,13):
+    table_name = 'stats_s' + str(ls.season) + 'w' + str(i)
+    pdb.createNewRowSQL(table_name)
 
 
-table_name = 'stats_s' + str(ls.season) + 'w' + str(ls.week) 
-pdb.createSQLTable(table_name)
-#pdb.executeSQL('DROP TABLE IF EXISTS {tn}'.format(tn=table_name))
-ids = pdb.selectAllPlayerIDs()
-#idx = 1001
-#inc = 200
-for i in range(len(ids)):
-    if int(ids[i]) < 100000: # protect against defense ids
-        [statsArray, fpts] = yq.updatePlayerStatsQuery(ids[i], table_name)
-        perc = ((i+1)/len(ids))*100
-        print('\t{:.3f}%'.format(perc),end='\r')
-        time.sleep(0.1)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#print('{:<20} {}\t{}\t{}'.format('Name','Avg','SD','CV'))
+#for j in range(len(teamRoster)):
+#    if teamRoster[j][1] != 'DEF' and teamRoster[j][2] != 'BN' and teamRoster[j][2] != 'IR':
+#        perf = []
+#        for i in range(1,13):
+#            arr =    pdb.getWeeklyPositionPerformanceSQL(index_column='fpts',match_column='position',\
+#                                                     match_value=teamRoster[j][1],week=i)
+#            player = pdb.getWeeklyPlayerPerformanceSQL(index_column='fpts', match_column='player_id',\
+#                                                   match_value=teamRoster[j][0], week=i)
+#            if player != 'null':
+#                perf.append([i,player/np.max(arr)])
+#        pname = pdb.selectEntryFromTable(index_column='name',match_column='player_id',match_value=teamRoster[j][0])        
+#        weeks = [d[0] for d in perf]
+#        stats = [d[1] for d in perf]
+#        #plt.plot(weeks,stats)
+#        #plt.axis([0, 17, 0, 1])
+#        #plt.title(pname)
+#        
+#        avg     = np.mean(stats)
+#        sd      = np.std(stats)
+#        cv      = sd/avg
+#        plt.scatter(cv,avg,color='red')
+#        print('{:<20} {:.3f}\t{:.3f}\t{:.3f}'.format(pname,avg,sd,cv))
+#
+#
+#
+#plt.axis([0,1,0,1])
+#plt.show()
+#perf = []
+#for i in range(1,13):
+#    arr =    pdb.getWeeklyPositionPerformanceSQL(index_column='fpts',match_column='position',\
+#                                             match_value='WR',week=i)
+#    player = pdb.getWeeklyPlayerPerformanceSQL(index_column='fpts', match_column='player_id',\
+#                                           match_value=27624, week=i)
+#    if player != 'null':
+#        val = player/np.max(arr)
+#        if val < 0: val = 0
+#        perf.append([i,val])
+#pname = pdb.selectEntryFromTable(index_column='name',match_column='player_id',match_value=27624)        
+#weeks = [d[0] for d in perf]
+#stats = [d[1] for d in perf]
+#plt.plot(weeks,stats)
+#plt.axis([0, 17, 0, 1])
+#plt.title(pname)
 
 
 
@@ -136,6 +153,6 @@ for i in range(len(ids)):
 #plt.subplots_adjust(wspace=0.8, hspace=0.8)
 #plt.show()
  
-print('Execution time: {}'.format(time.time() - tsys))
+print('\nExecution time: {}'.format(time.time() - tsys))
 pdb.closeDatabase()
 

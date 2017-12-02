@@ -110,8 +110,8 @@ week            = leagueSettings.Dates.current_week
 team_id         = 1
 
 statName       = \
-[   'active',
-    'pass_att',
+[   'active',       # 0
+    'pass_att',     # 1
     'pass_comp',
     'pass_miss',
     'pass_yds',
@@ -193,12 +193,12 @@ statName       = \
     'Field80',
     'Field81',
     'xpr',
-    'player_id',
-    'team_id',
-    'position',
-    'name',
-    'team_abbr',
-    'fpts']
+    'player_id',        # 83
+    'team_id',          # 84
+    'position',         # 85
+    'name',             # 86
+    'team_abbr',        # 87
+    'fpts']             # 88
 
 
 
