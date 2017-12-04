@@ -12,10 +12,13 @@ import csv
 
 sqliteFile      = 'db/sql/playerDatabase.db'
 playerFile      = 'db/csv/playerInfo.csv'
+try:
+    conn            = sqlite3.connect(sqliteFile)
+#    conn.row_factory = lambda cursor, row: row[0]
+    c               = conn.cursor()
+except Error as e:
+    print(e)
 
-conn            = sqlite3.connect(sqliteFile)
-conn.row_factory = lambda cursor, row: row[0]
-c               = conn.cursor()
 
 table_name      = 'stats_s2017w1'
 index_column    = '*'
@@ -91,6 +94,7 @@ def executeSQL(sql_string):
 
 
 def closeDatabase():
+#    conn  = sqlite3.connect(sqliteFile)
     conn.commit()
     conn.close()
 
@@ -126,6 +130,16 @@ def updateTableEntry(table_name = table_name, index_column = index_column, \
     match_value=str(match_value)
     c.execute('UPDATE {tn} SET {ic}={num} WHERE {mc}={mv}'.\
         format(ic=index_column, tn=table_name, mc=match_column, mv=match_value, num=num))
+
+
+
+
+
+def createSQLHistoryTable(table_name):
+    c.execute('CREATE TABLE {tn}(s2017 INTEGER)'.format(tn=table_name))
+
+
+
 
 def createNewRowSQL(table_name): 
     c.execute('INSERT INTO {tn}(\
@@ -179,7 +193,7 @@ def createNewRowSQL(table_name):
         d85=ls.statName[85], d86=ls.statName[86], d87=ls.statName[87], d88=ls.statName[88],
         pid=pInfo[0][0],     team_id=pInfo[0][1],     pos=pInfo[0][2],    name=pInfo[0][3], team_abbr=pInfo[0][4]))
     
-def createSQLTable(table_name):
+def createSQLStatsTable(table_name):
     c.execute('CREATE TABLE IF NOT EXISTS "{tn}" ( \
         {d00} INTEGER, {d01} INTEGER, {d02} INTEGER, {d03} INTEGER, {d04} INTEGER,  \
         {d05} INTEGER, {d06} INTEGER, {d07} INTEGER, {d08} INTEGER, {d09} INTEGER,  \
