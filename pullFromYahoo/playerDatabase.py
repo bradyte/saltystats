@@ -9,41 +9,75 @@ Created on Mon Nov 27 10:30:49 2017
 import sqlite3
 import settings as ls
 import csv
+import time
+import yahooQuery as yq
 
 sqliteFile      = 'db/sql/playerDatabase.db'
 playerFile      = 'db/csv/playerInfo.csv'
-try:
-    conn            = sqlite3.connect(sqliteFile)
-#    conn.row_factory = lambda cursor, row: row[0]
-    c               = conn.cursor()
-except Error as e:
-    print(e)
+
+
+conn            = sqlite3.connect(sqliteFile)
+conn.row_factory = lambda cursor, row: row[0]
+c               = conn.cursor()
+
 
 
 table_name      = 'stats_s2017w1'
 index_column    = '*'
 match_column    = 'player_id'
-match_value     = '3288'
+match_value     = '5288'
 
 
 with open(playerFile, 'r') as f:
     reader  = csv.reader(f)
     pInfo   = list(reader)
 
-#table_name = 'stats_s' + str(ls.season) + 'w' + str(ls.week) 
-#pdb.createSQLTable(table_name)
-##pdb.executeSQL('DROP TABLE IF EXISTS {tn}'.format(tn=table_name))
-#ids = pdb.selectAllPlayerIDs()
-##idx = 1001
-##inc = 200
-#for i in range(len(ids)):
-#    if int(ids[i]) < 100000: # protect against defense ids
-#        [statsArray, fpts] = yq.updatePlayerStatsQuery(ids[i], table_name)
-#        perc = ((i+1)/len(ids))*100
-#        print('\r{:.3f}% '.format(perc),end='')
-#        time.sleep(0.1)
 
 
+
+def executeSQL(sql_string):
+    c.execute(sql_string)
+
+def closeDatabase():
+    conn.commit()
+    conn.close()
+
+
+
+
+
+
+
+def createAndUpdateWeekSQL(week):
+    table_name = 'stats_s' + str(ls.season) + 'w' + str(week) 
+#    c.execute('DROP TABLE IF EXISTS {tn}'.format(tn=table_name))
+#    createSQLStatsTable(table_name)
+#    ids = selectAllPlayerIDs()
+
+#    for i in range(len(ids)):
+#        if int(ids[i]) < 100000: # protect against defense ids
+#            [statsArray, fpts] = yq.updatePlayerStatsQuery(ids[i], table_name)
+#            perc = ((i+1)/len(ids))*100
+#            print('\r{:.3f}% '.format(perc),end='')
+#            time.sleep(0.1)
+#    return ids
+
+def getWeeklyPlayerPerformanceSQL(index_column, match_column, match_value, week):
+    try:
+        table_name = 'stats_s' + str(ls.season) + 'w' + str(week)
+        tmp = c.execute('SELECT {ic} FROM {tn} WHERE {mc}="{mv}" AND active=1'.\
+            format(ic=index_column, tn=table_name, mc=match_column, mv=match_value)).fetchall()
+        return tmp[0]
+    except IndexError:
+        return 'null'
+
+def getWeeklyPositionPerformanceSQL(index_column, match_column, match_value, week):
+    table_name = 'stats_s' + str(ls.season) + 'w' + str(week)
+    arr = c.execute('SELECT {ic} FROM {tn} WHERE {mc}="{mv}" AND active=1'.\
+        format(ic=index_column, tn=table_name, mc=match_column, mv=match_value)).fetchall()
+    arr.sort(reverse=True)
+    return arr
+    
 def getSeasonPerformanceSQL(table_name = table_name, index_column = index_column, \
                          match_column = match_column, match_value=match_value):
     stats = []
@@ -56,21 +90,9 @@ def getSeasonPerformanceSQL(table_name = table_name, index_column = index_column
         stats.append([i,c.fetchall()[0]])
     return stats
         
-def getWeeklyPositionPerformanceSQL(index_column, match_column, match_value, week):
-    table_name = 'stats_s' + str(ls.season) + 'w' + str(week)
-    arr = c.execute('SELECT {ic} FROM {tn} WHERE {mc}="{mv}" AND active=1'.\
-        format(ic=index_column, tn=table_name, mc=match_column, mv=match_value)).fetchall()
-    arr.sort(reverse=True)
-    return arr
 
-def getWeeklyPlayerPerformanceSQL(index_column, match_column, match_value, week):
-    try:
-        table_name = 'stats_s' + str(ls.season) + 'w' + str(week)
-        tmp = c.execute('SELECT {ic} FROM {tn} WHERE {mc}="{mv}" AND active=1'.\
-            format(ic=index_column, tn=table_name, mc=match_column, mv=match_value)).fetchall()
-        return tmp[0]
-    except IndexError:
-        return 'null'
+
+
 
 #def checkForBYESQL(table_name = table_name, index_column = index_column, \
 #                         match_column = match_column, match_value=match_value, week):
@@ -89,14 +111,7 @@ def getWeeklyPlayerPerformanceSQL(index_column, match_column, match_value, week)
 #    table_name = 'schedule_s2017'
     
 
-def executeSQL(sql_string):
-    c.execute(sql_string)
 
-
-def closeDatabase():
-#    conn  = sqlite3.connect(sqliteFile)
-    conn.commit()
-    conn.close()
 
 def selectEntryFromTable(table_name = table_name, index_column = index_column, \
                          match_column = match_column, match_value=match_value):
@@ -119,24 +134,19 @@ def selectAllPlayerIDs(table_name = table_name, index_column = index_column):
     return [x[83] for x in all_rows]
 
 
+
 def getTableColumnNames(table_name):
     c.execute('PRAGMA table_info({tn})'.format(tn=table_name))
     tmp = c.fetchall()
-
     return tmp
+
+
 
 def updateTableEntry(table_name = table_name, index_column = index_column, \
                      match_column = match_column, match_value=match_value,num=0):   
     match_value=str(match_value)
     c.execute('UPDATE {tn} SET {ic}={num} WHERE {mc}={mv}'.\
         format(ic=index_column, tn=table_name, mc=match_column, mv=match_value, num=num))
-
-
-
-
-
-def createSQLHistoryTable(table_name):
-    c.execute('CREATE TABLE {tn}(s2017 INTEGER)'.format(tn=table_name))
 
 
 
