@@ -5,7 +5,7 @@ import sys
 import playerDatabase as pdb
 
 
-
+filePath        = '/Users/tombrady/drive/sw/json/yahoo/oauth2.json'
 
 
 ###############################################################################
@@ -56,7 +56,7 @@ def searchJSONObject(jsondata, string):
 
 
 
-filePath        = '/Users/tbrady/drive/sw/json/yahoo/oauth2.json'
+
 oauthToken      = beginOauth2Session(filePath)
 
 baseURI         = 'https://fantasysports.yahooapis.com/fantasy/v2/'
