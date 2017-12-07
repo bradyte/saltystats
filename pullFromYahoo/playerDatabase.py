@@ -22,6 +22,7 @@ c               = conn.cursor()
 
 
 
+
 table_name      = 'stats_s2017w1'
 index_column    = '*'
 match_column    = 'player_id'
@@ -39,9 +40,9 @@ def executeSQL(sql_string):
     c.execute(sql_string)
 
 def closeDatabase():
+    c.close()
     conn.commit()
     conn.close()
-
 
 
 
@@ -52,15 +53,15 @@ def createAndUpdateWeekSQL(week):
     table_name = 'stats_s' + str(ls.season) + 'w' + str(week) 
 #    c.execute('DROP TABLE IF EXISTS {tn}'.format(tn=table_name))
 #    createSQLStatsTable(table_name)
-#    ids = selectAllPlayerIDs()
+    ids = selectAllPlayerIDs(table_name=table_name, index_column='player_id')
 
-#    for i in range(len(ids)):
-#        if int(ids[i]) < 100000: # protect against defense ids
-#            [statsArray, fpts] = yq.updatePlayerStatsQuery(ids[i], table_name)
-#            perc = ((i+1)/len(ids))*100
-#            print('\r{:.3f}% '.format(perc),end='')
-#            time.sleep(0.1)
-#    return ids
+    for i in range(len(ids)):
+        if int(ids[i]) < 100000: # protect against defense ids
+            [statsArray, fpts] = yq.updatePlayerStatsQuery(ids[i], table_name)
+            perc = ((i+1)/len(ids))*100
+            print('\r{:.3f}% '.format(perc),end='')
+            time.sleep(0.1)
+
 
 def getWeeklyPlayerPerformanceSQL(index_column, match_column, match_value, week):
     try:
@@ -69,7 +70,7 @@ def getWeeklyPlayerPerformanceSQL(index_column, match_column, match_value, week)
             format(ic=index_column, tn=table_name, mc=match_column, mv=match_value)).fetchall()
         return tmp[0]
     except IndexError:
-        return 'null'
+        return 0.0
 
 def getWeeklyPositionPerformanceSQL(index_column, match_column, match_value, week):
     table_name = 'stats_s' + str(ls.season) + 'w' + str(week)
@@ -131,7 +132,7 @@ def selectEntryFromTable(table_name = table_name, index_column = index_column, \
 def selectAllPlayerIDs(table_name = table_name, index_column = index_column):
     c.execute('SELECT {ic} FROM {tn}'.format(ic=index_column, tn=table_name))
     all_rows = c.fetchall()
-    return [x[83] for x in all_rows]
+    return all_rows
 
 
 
@@ -301,3 +302,4 @@ def createSQLStatsTable(table_name):
 
 
 
+#closeDatabase()

@@ -5,7 +5,7 @@ import sys
 import playerDatabase as pdb
 
 
-filePath        = '/Users/tombrady/drive/sw/json/yahoo/oauth2.json'
+filePath        = '/Users/tbrady/drive/sw/json/yahoo/oauth2.json'
 
 
 ###############################################################################
@@ -99,9 +99,11 @@ def getTeamManagerInfoQuery(team_id):
     mi.waiver_priority  = searchJSONObject(tmp0, 'waiver_priority')  
     mi.faab_balance     = searchJSONObject(tmp0, 'faab_balance')   
     mi.number_of_moves  = searchJSONObject(tmp0, 'number_of_moves')
-    mi.nickname         = searchJSONObject(tmp0, 'nickname')  
+    manager             = searchJSONObject(tmp0, 'managers') 
+    mi.nickname         = manager[0]['manager']['nickname']
+         
   
-    return mi;
+    return mi
 
 
 
