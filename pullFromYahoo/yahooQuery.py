@@ -42,12 +42,7 @@ def searchJSONObject(jsondata, string):
     for d in jsondata:
         if string in d:
             return d[string]
-
-
-
-
-
-
+        
 
 ###############################################################################
 ## getTeamManagerInfo
@@ -180,7 +175,7 @@ def getPlayerStatsQuery(player_id):
             value   = float(tmpStats[i]['stat']['value'])
             fpts = round(fpts + value * ls.statInfo[1][stat_id], 2) 
         
-        return fpts;
+        return tmpStats
 
     
 ###############################################################################
@@ -218,9 +213,7 @@ def getPlayerInfoQuery(player_id):
                 tmp = tmp.split('.')
                 team_id = int(tmp[2])
         return [player_id, team_id, str(position), str(name), str(team_abbr)]
-    
 
-    
     
 ###############################################################################
 ## getLeagueTransactionQuery
@@ -244,9 +237,10 @@ def getLeagueTransactionQuery():
 ##
 ############################################################################### 
 def updatePlayerStatsQuery(player_id, table_name):
-    url         = baseURI + 'player/' \
-                + str(ls.game_key) + '.p.' + str(player_id) \
-                + '/stats;type=week;week=' + str(ls.week) +'?format=json'
+    url         = baseURI + 'player/'\
+                + str(ls.game_key) + '.p.' + str(player_id)\
+                + '/stats;week=' + str(ls.week)\
+                +'?format=json'
  
             
     jsondata    = jsonQuery(url)

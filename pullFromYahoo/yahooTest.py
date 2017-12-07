@@ -39,24 +39,28 @@ tsys = time.time()
 
 
 
+#
+#ls.team_id  = 3
+#teamInfo    = yq.getTeamManagerInfoQuery(ls.team_id)
+#teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id,ls.week)
+#[mu1, sigma1] = ps.plotTeamPDF(teamRoster)
+#
+#ls.team_id  = 10
+#teamInfo    = yq.getTeamManagerInfoQuery(ls.team_id)
+#teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id,ls.week)
+#[mu2, sigma2] = ps.plotTeamPDF(teamRoster)
+#ps.getOutcomeProbabilities(mu1, mu2, sigma1, sigma2)
+#
+#
+#plt.xlabel('Team Mean Points')
+#plt.ylabel('PDF')
+#plt.ylim([0,0.1])
+#plt.show()
 
-ls.team_id  = 3
-teamInfo    = yq.getTeamManagerInfoQuery(ls.team_id)
-teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id,ls.week)
-[mu1, sigma1] = ps.plotTeamPDF(teamRoster)
+ls.week = 1
+tmp = yq.getPlayerInfoQuery(26456)
 
-ls.team_id  = 10
-teamInfo    = yq.getTeamManagerInfoQuery(ls.team_id)
-teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id,ls.week)
-[mu2, sigma2] = ps.plotTeamPDF(teamRoster)
-ps.getOutcomeProbabilities(mu1, mu2, sigma1, sigma2)
-
-
-plt.xlabel('Team Mean Points')
-plt.ylabel('PDF')
-plt.ylim([0,0.1])
-plt.show()
-
+#matchups = pdb.defCalcDefensivePerformance(1)
 
 
 

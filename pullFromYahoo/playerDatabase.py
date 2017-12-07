@@ -8,6 +8,7 @@ Created on Mon Nov 27 10:30:49 2017
 
 import sqlite3
 import settings as ls
+import numpy as np
 import csv
 import time
 import yahooQuery as yq
@@ -18,6 +19,7 @@ playerFile      = 'db/csv/playerInfo.csv'
 
 conn            = sqlite3.connect(sqliteFile)
 conn.row_factory = lambda cursor, row: row[0]
+#conn.row_factory = sqlite3.Row
 c               = conn.cursor()
 
 
@@ -100,23 +102,33 @@ def getSeasonPerformanceSQL(table_name = table_name, index_column = index_column
         
 
 
+def defCalcDefensivePerformance(week):
+    statsArray  = [0] * (len(ls.statInfo[0])) #create blank array
+    defArray = []
+    for i in range(35):
+        defArray.append(statsArray)
+    index_column = 'w' + str(week)
+    table_name = 'schedule_s2017'
+    tmp = c.execute('SELECT {ic} FROM {tn} '.\
+            format(ic=index_column, tn=table_name)).fetchall()
+    # for handling away statistics
+    for i in range(len(tmp)):
+        if not tmp[i].isnumeric() and tmp[i] != 'BYE':
+            tmp[i] = tmp[i][2:]
+    
+    
+    defStats = []
+    table_name      = 'stats_s' + str(ls.season) + 'w' + str(1)
+    match_column    = 'team_id'
+    match_value     = str(tmp[1])
+    for i in range(83):
+        index_column    = ls.statName[i]
+        c.execute('SELECT {ic} FROM {tn} WHERE {mc}={mv} and active=1'.\
+                format(ic=index_column, tn=table_name, mc=match_column, mv=match_value))
+        defStats.append(np.sum(c.fetchall()))
+    return defStats
 
 
-#def checkForBYESQL(table_name = table_name, index_column = index_column, \
-#                         match_column = match_column, match_value=match_value, week):
-#    index_column = statName[84] # get team_id
-#    table_name = 'stats_s' + str(ls.season) + 'w' + str(week)
-#    
-#    conn.row_factory = lambda cursor, row: row[0]
-#    c = conn.cursor()
-#    
-#    c.execute('SELECT {ic} FROM {tn} WHERE {mc}={mv}'.\
-#            format(ic=index_column, tn=table_name, mc=match_column, mv=match_value))
-#    
-#    
-#    
-#    
-#    table_name = 'schedule_s2017'
     
 
 
@@ -141,12 +153,6 @@ def selectAllPlayerIDs(table_name = table_name, index_column = index_column):
     all_rows = c.fetchall()
     return all_rows
 
-
-
-def getTableColumnNames(table_name):
-    c.execute('PRAGMA table_info({tn})'.format(tn=table_name))
-    tmp = c.fetchall()
-    return tmp
 
 
 
