@@ -91,20 +91,25 @@ teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id)
 #plt.axis([0,1,0,1])
 #plt.show()
 
-perf = []
+plt.figure()
 team_mu = []
 team_sigma = []
 
 idx = 1
 for idx in range(len(teamRoster)):
     if teamRoster[idx][1] != 'DEF' and teamRoster[idx][2] != 'IR' and teamRoster[idx][2] != 'BN':
+        mu      = 0
+        sigma   = 0
+        weeks   = []
+        stats   = []
+        perf    = []
         for i in range(1,ls.week):
+            
             arr = pdb.getWeeklyPositionPerformanceSQL(index_column='fpts',match_column='position',\
                                                      match_value=teamRoster[idx][1],week=i)
             player = pdb.getWeeklyPlayerPerformanceSQL(index_column='fpts', match_column='player_id',\
                                                    match_value=teamRoster[idx][0], week=i)
             if player != 'null':
-            #        if val < 0: val = 0
                 perf.append([i,player])
             pname = pdb.selectEntryFromTable(index_column='name',match_column='player_id',match_value=teamRoster[idx][0])        
         weeks = [d[0] for d in perf]
@@ -120,30 +125,30 @@ for idx in range(len(teamRoster)):
         x = np.linspace(mu - 3*sigma, mu + 3*sigma, 100)
         plt.plot(x,mlab.normpdf(x, mu, sigma), color='red')
 
-#mu = np.mean(team_mu)
-#sigma = np.mean(sigma)
-
-#x = np.linspace(mu - 3*sigma, mu + 3*sigma, 100)
-#plt.plot(x,mlab.normpdf(x, mu, sigma))
-#plt.show()
+mu1 = np.sum(team_mu)
+sigma1 = np.sum(sigma)
 
 
-
-teamRoster  = yq.getTeamWeeklyRosterQuery(5)
-perf = []
 team_mu = []
 team_sigma = []
 
-idx = 1
+
+teamRoster  = yq.getTeamWeeklyRosterQuery(5)
+
 for idx in range(len(teamRoster)):
     if teamRoster[idx][1] != 'DEF' and teamRoster[idx][2] != 'IR' and teamRoster[idx][2] != 'BN':
+        mu      = 0
+        sigma   = 0
+        weeks   = []
+        stats   = []
+        perf    = []
         for i in range(1,ls.week):
+            
             arr = pdb.getWeeklyPositionPerformanceSQL(index_column='fpts',match_column='position',\
                                                      match_value=teamRoster[idx][1],week=i)
             player = pdb.getWeeklyPlayerPerformanceSQL(index_column='fpts', match_column='player_id',\
                                                    match_value=teamRoster[idx][0], week=i)
             if player != 'null':
-            #        if val < 0: val = 0
                 perf.append([i,player])
             pname = pdb.selectEntryFromTable(index_column='name',match_column='player_id',match_value=teamRoster[idx][0])        
         weeks = [d[0] for d in perf]
@@ -159,25 +164,24 @@ for idx in range(len(teamRoster)):
         x = np.linspace(mu - 3*sigma, mu + 3*sigma, 100)
         plt.plot(x,mlab.normpdf(x, mu, sigma), color='blue')
 
-#mu = np.mean(team_mu)
-#sigma = np.mean(sigma)
-#
-#x = np.linspace(mu - 3*sigma, mu + 3*sigma, 100)
-#plt.plot(x,mlab.normpdf(x, mu, sigma))
-plt.show()
+
+mu2 = np.sum(team_mu)
+sigma2 = np.sum(sigma)
 
 
 
 
+plt.figure()
+x1 = np.linspace(mu1 - 3*sigma1, mu1 + 3*sigma1, 100)
+plt.plot(x1,mlab.normpdf(x1, mu1, sigma1), color='green')
+
+x2 = np.linspace(mu2 - 3*sigma2, mu2 + 3*sigma2, 100)
+plt.plot(x2,mlab.normpdf(x2, mu2, sigma2), color='red', linestyle='--')
 
 
 
 
-
-
-
-
-
+plot.show()
 
 
 
