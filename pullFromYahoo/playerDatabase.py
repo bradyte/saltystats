@@ -21,7 +21,14 @@ conn.row_factory = lambda cursor, row: row[0]
 c               = conn.cursor()
 
 
-
+# Updates player
+#for i in range (1,13):
+##    ls.week = i
+##    table_name = 'stats_s' + str(ls.season) + 'w' + str(i) 
+##    yq.updatePlayerStatsQuery(player_id, table_name)
+#    player = pdb.getWeeklyPlayerPerformanceSQL(index_column='fpts', match_column='player_id',\
+#                                                       match_value=player_id, week=i)   
+#    print(player)
 
 table_name      = 'stats_s2017w1'
 index_column    = '*'

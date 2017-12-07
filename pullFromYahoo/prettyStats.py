@@ -26,7 +26,7 @@ def plotTeamPDF(teamRoster):
             weeks   = []
             stats   = []
             perf    = []
-            for i in range(1,ls.week):
+            for i in range(1,ls.week-1):
                 arr = pdb.getWeeklyPositionPerformanceSQL(index_column='fpts',match_column='position',\
                                                          match_value=teamRoster[idx][1],week=i)
                 player = pdb.getWeeklyPlayerPerformanceSQL(index_column='fpts', match_column='player_id',\
@@ -54,7 +54,7 @@ def plotTeamPDF(teamRoster):
     plt.plot(x,pdf)
     plt.annotate(teamInfo.nickname,
                  xy=(mu,max(pdf)),
-                 xytext=(mu*0.95,max(pdf)*1.1),
+                 xytext=(mu*0.9,mu/1000),
                  arrowprops=dict(arrowstyle='-'))
     return [mu, sigma]
 
@@ -83,7 +83,7 @@ def getOutcomeProbabilities(mu1, mu2, sigma1, sigma2):
     elif((rts[1] > mu1 and rts[1] < mu2) or (rts[1] > mu2 and rts[1] < mu1)):
         x0 = rts[1]
     
-    plt.axvline(x=x0)
+    plt.axvline(x=x0,color='r')
     
     
     

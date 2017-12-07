@@ -23,34 +23,39 @@ tsys = time.time()
 #28461 coleman consistent
 #pid = 8565
 
-ls.week     = 13
-ls.team_id  = 5
+
+
+
+#week=ls.leagueSettings.Dates.current_week
+
+
+#for i in range(1,11):
+#    ls.team_id  = i
+#    teamInfo    = yq.getTeamManagerInfoQuery(ls.team_id)
+#    teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id,week)
+#    ps.plotTeamPDF(teamRoster)
+#    print('.', end='')
+
+
+
+
+
+ls.team_id  = 3
 teamInfo    = yq.getTeamManagerInfoQuery(ls.team_id)
-teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id)
+teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id,ls.week)
+[mu1, sigma1] = ps.plotTeamPDF(teamRoster)
 
-player_id =3727
-
-for i in range (1,13):
-#    ls.week = i
-#    table_name = 'stats_s' + str(ls.season) + 'w' + str(i) 
-#    yq.updatePlayerStatsQuery(player_id, table_name)
-    player = pdb.getWeeklyPlayerPerformanceSQL(index_column='fpts', match_column='player_id',\
-                                                       match_value=player_id, week=i)   
-    print(player)
+ls.team_id  = 10
+teamInfo    = yq.getTeamManagerInfoQuery(ls.team_id)
+teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id,ls.week)
+[mu2, sigma2] = ps.plotTeamPDF(teamRoster)
+ps.getOutcomeProbabilities(mu1, mu2, sigma1, sigma2)
 
 
-
-
-#[mu1, sigma1] = ps.plotTeamPDF(teamRoster)
-#
-#ls.team_id  = 7
-#teamRoster  = yq.getTeamWeeklyRosterQuery(ls.team_id)
-#[mu2, sigma2] = ps.plotTeamPDF(teamRoster)
-#ps.getOutcomeProbabilities(mu1, mu2, sigma1, sigma2)
-#
-#
-#plt.ylim([0,0.1])
-#plt.show()
+plt.xlabel('Team Mean Points')
+plt.ylabel('PDF')
+plt.ylim([0,0.1])
+plt.show()
 
 
 

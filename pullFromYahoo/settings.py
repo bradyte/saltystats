@@ -98,7 +98,7 @@ season          = 2017
 league_id       = 470610  
 game_key        = getSeasonGameKey()
 [leagueSettings, statInfo] = getLeagueSettings()
-temp = getLeagueSettings()
+
 
 
 #for i in range(len(statInfo[0])):
