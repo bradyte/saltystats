@@ -99,8 +99,8 @@ idx = 1
 for idx in range(len(teamRoster)):
     if teamRoster[idx][1] != 'DEF' and teamRoster[idx][2] != 'IR' and teamRoster[idx][2] != 'BN':
         for i in range(1,ls.week):
-            arr = pdb.getWeeklyPositionPerformanceSQL(index_column='fpts',match_column='position',\
-                                                     match_value=teamRoster[idx][1],week=i)
+#            arr = pdb.getWeeklyPositionPerformanceSQL(index_column='fpts',match_column='position',\
+#                                                     match_value=teamRoster[idx][1],week=i)
             player = pdb.getWeeklyPlayerPerformanceSQL(index_column='fpts', match_column='player_id',\
                                                    match_value=teamRoster[idx][0], week=i)
             if player != 'null':
@@ -115,6 +115,9 @@ for idx in range(len(teamRoster)):
             
         mu = np.mean(stats)
         sigma = np.std(stats)
+        
+        
+        
         team_mu.append(mu)
         team_sigma.append(sigma)
         x = np.linspace(mu - 3*sigma, mu + 3*sigma, 100)
