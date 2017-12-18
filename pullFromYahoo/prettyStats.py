@@ -12,43 +12,46 @@ import matplotlib.pyplot as plt
 import matplotlib.mlab as mlab
 import yahooQuery as yq
 from scipy.stats import norm
+from operator import itemgetter
+import history as hs
 
 def plotTeamPDF(teamRoster):
-
-    team_mu     = []
-    team_var    = []
-    teamInfo    = yq.getTeamManagerInfoQuery(ls.team_id)
+    team_mu = []
+    team_var = []
+    teamInfo = yq.getTeamManagerInfoQuery(ls.team_id)
     for idx in range(len(teamRoster)):
         if  teamRoster[idx][1] != 'DEF' and\
             teamRoster[idx][2] != 'IR'  and\
             teamRoster[idx][2] != 'BN':
-            mu      = 0
-            weeks   = []
-            stats   = []
-            perf    = []
+            mu = 0
+            weeks = []
+            stats = []
+            perf = []
             for i in range(1,ls.week-1):
-                arr = pdb.getWeeklyPositionPerformanceSQL(index_column='fpts',match_column='position',\
-                                                         match_value=teamRoster[idx][1],week=i)
-                player = pdb.getWeeklyPlayerPerformanceSQL(index_column='fpts', match_column='player_id',\
-                                                       match_value=teamRoster[idx][0], week=i)
+#                arr = pdb.getWeeklyPositionPerformanceSQL(
+#                        index_column = 'fpts', match_column = 'position',
+#                        match_value = teamRoster[idx][1], week = i)
+                player = pdb.getWeeklyPlayerPerformanceSQL(
+                        index_column = 'fpts', match_column ='player_id',
+                        match_value = teamRoster[idx][0], week = i)
                 if player != 'null':
 #                   val = player/max(arr)
 #                   if val < 0: val = 0
-                    perf.append([i,player])
-#                pname = pdb.selectEntryFromTable(index_column='name',match_column='player_id',match_value=teamRoster[idx][0])        
+                    perf.append([i, player])
+#                pname = pdb.selectEntryFromTable(index_column='name',match_column='player_id',match_value=teamRoster[idx][0])
             weeks = [d[0] for d in perf]
             stats = [d[1] for d in perf]
-                
+
             mu = np.mean(stats)
             var = np.var(stats)
-            
+
             team_mu.append(mu)
             team_var.append(var)
 
-    
+
     mu = np.sum(team_mu)
     sigma = np.sqrt(np.mean(team_var))
-    
+
     x       = np.linspace(mu - 3*sigma, mu + 3*sigma, 100)
     pdf     = mlab.normpdf(x, mu, sigma)
     plt.plot(x,pdf)
@@ -58,14 +61,14 @@ def plotTeamPDF(teamRoster):
                  arrowprops=dict(arrowstyle='-'))
     return [mu, sigma]
 
-    
+
 def getOutcomeProbabilities(mu1, mu2, sigma1, sigma2):
     A =          1/(sigma2**2) -        1/(sigma1**2)
     B =      2*mu1/(sigma1**2) -    2*mu2/(sigma2**2)
     C =   (mu2**2)/(sigma2**2) - (mu1**2)/(sigma1**2) - 2*np.log(sigma1/sigma2)
-    
+
     rts = np.roots([A, B, C])
-    
+
     if mu1 > mu2:
         muW = mu1
         sigmaW = sigma1
@@ -76,34 +79,58 @@ def getOutcomeProbabilities(mu1, mu2, sigma1, sigma2):
         sigmaW = sigma2
         muL = mu1
         sigmaL = sigma1
-    
-    
+
+
     if ((rts[0] > mu1 and rts[0] < mu2) or (rts[0] > mu2 and rts[0] < mu1)):
         x0 = rts[0]
     elif((rts[1] > mu1 and rts[1] < mu2) or (rts[1] > mu2 and rts[1] < mu1)):
         x0 = rts[1]
-    
+
     plt.axvline(x=x0,color='r')
-    
-    
-    
-    
-    w_error    = norm.cdf(x0, muW, sigmaW)    
+
+    w_error    = norm.cdf(x0, muW, sigmaW)
     w_perc     = 1-w_error
     l_perc = norm.cdf(x0, muL, sigmaL)
-    
+
     print('Winner Probability: {}'.format(w_perc))
 
-    
-    
-    
-    
-    
-#for i in range(len(teamRoster)):
-#    data = pdb.selectEntryFromTable(match_column='player_id',match_value=teamRoster[i][0])
-#    print(data)
-#   
+def plotPositionRanges(position):
+    vmean = hs.getHistArray(position.lower())
+    plt.axhspan(vmean[0], vmean[10], facecolor='g', alpha=0.25)
+    plt.axhspan(vmean[10], vmean[20], facecolor='y', alpha=0.25)
+    plt.axhspan(vmean[20], vmean[30], facecolor='r', alpha=0.25)
+    plt.axhspan(vmean[30], 0, facecolor='k', alpha=0.25)
 
+
+
+def braggingLists(rev = True):
+    arr = []
+    for w in range(1, ls.leagueSettings.Dates.current_week):
+        ls.week = w
+        tmp = yq.getWeeklyMatchups()
+        for i in range(len(tmp)):
+            if tmp[i][1] < tmp[i][3]:
+                w0 = tmp[i][2]
+                pts = tmp[i][3]
+                tmp[i][2] = tmp[i][0]
+                tmp[i][3] = tmp[i][1]
+                tmp[i][0] = w0
+                tmp[i][1] = pts
+            diff = float(tmp[i][1]) - float(tmp[i][3])
+            tmp[i].append(diff)
+            tmp[i].append(w)
+            arr.append(tmp[i])
+
+    newArr = sorted(arr, key = itemgetter(4), reverse = rev)
+
+    for k in range(10):
+        w = yq.getTeamManagerInfoQuery(newArr[k][0])
+        l = yq.getTeamManagerInfoQuery(newArr[k][2])
+        print('#{n:<2} Week: {wk:<2}  {wn:12}{wpts:>8.2f}\t{lo:12}{lopts:>8.2f}\t{df:.2f}'.format(
+                n=k+1, wk=newArr[k][5],
+                wn = w.nickname, wpts = newArr[k][1],
+                lo = l.nickname, lopts = newArr[k][3],
+                df = newArr[k][4]))
 
 
 
@@ -131,19 +158,19 @@ def getOutcomeProbabilities(mu1, mu2, sigma1, sigma2):
 #                    index_column='fpts', match_column='position', match_value=teamRoster[j][1], week=i)
 #            player = pdb.getWeeklyPlayerPerformanceSQL(\
 #                    index_column='fpts', match_column='player_id', match_value=teamRoster[j][0], week=i)
-#           
+#
 #            if player != 'null':
 #                perf.append([i,player/np.max(arr)])
-#                
+#
 #        pname = pdb.selectEntryFromTable(\
-#                    index_column='name',match_column='player_id',match_value=teamRoster[j][0])        
+#                    index_column='name',match_column='player_id',match_value=teamRoster[j][0])
 #        names.append(pname)
 #        weeks = [d[0] for d in perf]
 #        stats = [d[1] for d in perf]
 #        #plt.plot(weeks,stats)
 #        #plt.axis([0, 17, 0, 1])
 #        #plt.title(pname)
-#        
+#
 #        avg     = np.mean(stats)
 #        sd      = np.std(stats)
 #        cv      = sd/avg
@@ -157,7 +184,7 @@ def getOutcomeProbabilities(mu1, mu2, sigma1, sigma2):
 #
 #plt.axis([0,1,0,1])
 #plt.show()
-    
+
     #priors = [15.37, 12.11, 10.18, 8.9]
 #t1 = []
 #t2 = []
@@ -177,8 +204,8 @@ def getOutcomeProbabilities(mu1, mu2, sigma1, sigma2):
 #        t4.append([weeks[i], stats[i]])
 #    if val <= priors[3]:
 #        tsp.append([weeks[i], stats[i]])
-#            
-#        
+#
+#
 #Pt1 = len(t1)/len(stats)
 #Pt2 = len(t2)/len(stats)
 #Pt3 = len(t3)/len(stats)
@@ -200,10 +227,10 @@ def getOutcomeProbabilities(mu1, mu2, sigma1, sigma2):
 #    msd = 0
 #    for i in range(len(stats)):
 #    msd += stats[i] - np.mean(stats)
-#    
+#
 #    msd /= len(stats)
-    
-#    
+
+#
 #plt.plot(x,mlab.normpdf(x, mu, sigma))
 #plt.show()
 
@@ -222,7 +249,7 @@ def getOutcomeProbabilities(mu1, mu2, sigma1, sigma2):
 #confLimits  = 0.0
 
 
-#print('Week:     Fpts      Average   Stdev     CV        ROC       Margin+/-') 
+#print('Week:     Fpts      Average   Stdev     CV        ROC       Margin+/-')
 #for i in range(1, int(leagueSettings.Dates.current_week)):
 #    fpts.append(getPlayerStats(season, player_id, i, leagueSettings.Scoring.statInfo.value, oauthToken))
 #    if fpts[i-1] != 'BYE':
@@ -238,23 +265,23 @@ def getOutcomeProbabilities(mu1, mu2, sigma1, sigma2):
 #            fptsROC     = round(fpts[i-1]/fptsMean, 2)
 #            fptsSE      = round(confInt*fptsStdev/numpy.sqrt(i),2)
 ##            fptsVar     = round(fptsROC/fptsStdev,3)
-#        plt.subplot(211)    
+#        plt.subplot(211)
 #        plt.scatter(i, fpts[i-1])
 #        plt.xlabel('Week')
 #        plt.title(title)
-#        plt.axis([0, 17, 0, 40]) 
+#        plt.axis([0, 17, 0, 40])
 #        plt.grid(True)
-#        
-#        plt.subplot(212) 
+#
+#        plt.subplot(212)
 #        plt.scatter(i, fptsVar)
 #        plt.xlabel('Week')
 #        plt.title('CV')
-#        plt.axis([0, 17, 0, 0.6]) 
+#        plt.axis([0, 17, 0, 0.6])
 #        plt.grid(True)
 #    print('{:<10}{:<10}{:<10}{:<10}{:<10}{:<10}{:<10}'.format(\
 #          i,fpts[i-1], fptsMean, fptsStdev, fptsCV, fptsROC, fptsSE))
 #
-# 
+#
 #
 #plt.subplots_adjust(wspace=0.8, hspace=0.8)
 #plt.show()
