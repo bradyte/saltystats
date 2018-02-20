@@ -5,7 +5,7 @@ Created on Tue Nov 21 12:48:29 2017
 
 @author: tbrady
 """
-import yahooQuery as yq
+import jsonParsing as jp
 import cleaning
 
 ###############################################################################
@@ -14,33 +14,34 @@ import cleaning
 ## Made by Yahoo but I had to brute force to get most of these numbers
 ##
 ############################################################################### 
-def getSeasonGameKey():
+def getSeasonGameKey(season):
     ids = [ 57,  49,  79, 101, 124, 153, 175, 199, 222, \
            242, 257, 273, 314, 331, 348, 359, 371]
     return ids[season - 2001]
 
- ###############################################################################
+###############################################################################
 ## getLeagueSettings
 ## Similar to the getWeeklyRoster function, I am just picking through the messy
 ## JSON structure and looking for the only data relevant to me
 ##
 ############################################################################### 
-def getLeagueSettings():   
-    url         = yq.baseURI + 'leagues;league_keys=' \
-                + str(game_key) + '.l.' + str(league_id) + '/settings?format=json'
+def getLeagueSettings(season, league_id, game_key):   
+    url = jp.baseURI + 'leagues;league_keys=' \
+        + str(game_key) + '.l.' \
+        + str(league_id) + '/settings?format=json'
                 
-    jsondata = yq.jsonQuery(url) 
+    jsondata = jp.jsonQuery(url) 
     
     class LeagueSettings(object):
         class About(object):
             def __init__(self, name=None, num_teams=None, game_code=None,   \
-                         url=None, roster_positions=None, rosterSize=None):
+                         url=None, roster_positions=None, roster_size=None):
                 self.name                   = name
                 self.num_teams              = num_teams
                 self.game_code              = game_code
                 self.url                    = url
                 self.roster_positions       = roster_positions
-                self.rosterSize             = rosterSize
+                self.roster_size            = roster_size
         class Dates(object):
             def __init__(self, season=None, start_week=None, start_date=None,\
                          end_week=None, end_date=None, current_week=None):
@@ -79,12 +80,16 @@ def getLeagueSettings():
     leagueSettings.Dates.end_date       = ld0['end_date']
     
     ##scoring
-    leagueSettings.Scoring.uses_fractional_points   = yq.searchJSONObject(ld1, 'uses_fractional_points')
-    leagueSettings.Scoring.uses_negative_points     = yq.searchJSONObject(ld1, 'uses_negative_points')
+    leagueSettings.Scoring.uses_fractional_points   = \
+        jp.searchJSONObject(ld1, 'uses_fractional_points')
+    leagueSettings.Scoring.uses_negative_points     = \
+        jp.searchJSONObject(ld1, 'uses_negative_points')
 
-    statInfo  = cleaning.cleanStats(ld1[0]['stat_categories']['stats'], ld1[0]['stat_modifiers']['stats'])
+    statInfo  = cleaning.cleanStats(ld1[0]['stat_categories']['stats'], \
+                                    ld1[0]['stat_modifiers']['stats'])
     
-    return [leagueSettings, statInfo]
+#    return [leagueSettings, statInfo]
+#    return jsondata
 
     
 
@@ -94,16 +99,15 @@ def getLeagueSettings():
 ## 2015 - 898971
 ## 2016 - 247388
 ## 2017 - 470610
-season          = 2017
-league_id       = 470610  
-game_key        = getSeasonGameKey()
-[leagueSettings, statInfo] = getLeagueSettings()
-temp = getLeagueSettings()
+#season          = 2017
+#league_id       = 470610  
+#game_key        = getSeasonGameKey()
+#[leagueSettings, statInfo] = getLeagueSettings()
 
 
-roster_size     = leagueSettings.About.roster_size
+#roster_size     = leagueSettings.About.roster_size
 
-week            = leagueSettings.Dates.current_week
+#week            = leagueSettings.Dates.current_week
 team_id         = 1
 
 statName       = \
@@ -196,31 +200,3 @@ statName       = \
     'name',             # 86
     'team_abbr',        # 87
     'fpts']             # 88
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
