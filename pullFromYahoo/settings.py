@@ -13,7 +13,7 @@ import cleaning
 ## This is the key that identifies the fantasy season and fantasy sport
 ## Made by Yahoo but I had to brute force to get most of these numbers
 ##
-############################################################################### 
+###############################################################################
 def getSeasonGameKey():
     ids = [ 57,  49,  79, 101, 124, 153, 175, 199, 222, \
            242, 257, 273, 314, 331, 348, 359, 371]
@@ -24,13 +24,13 @@ def getSeasonGameKey():
 ## Similar to the getWeeklyRoster function, I am just picking through the messy
 ## JSON structure and looking for the only data relevant to me
 ##
-############################################################################### 
-def getLeagueSettings():   
+###############################################################################
+def getLeagueSettings():
     url         = yq.baseURI + 'leagues;league_keys=' \
                 + str(game_key) + '.l.' + str(league_id) + '/settings?format=json'
-                
-    jsondata = yq.jsonQuery(url) 
-    
+
+    jsondata = yq.jsonQuery(url)
+
     class LeagueSettings(object):
         class About(object):
             def __init__(self, name=None, num_teams=None, game_code=None,   \
@@ -55,12 +55,12 @@ def getLeagueSettings():
                          uses_negative_points=None):
                 self.uses_fractional_points = uses_fractional_points
                 self.uses_negative_points   = uses_negative_points
-     
+
     leagueSettings = LeagueSettings()
     statInfo = []
     ld0 = jsondata['fantasy_content']['leagues']['0']['league'][0]
     ld1 = jsondata['fantasy_content']['leagues']['0']['league'][1]['settings']
-    
+
     ##about
     leagueSettings.About.name           = ld0['name']
     leagueSettings.About.num_teams      = ld0['num_teams']
@@ -77,16 +77,16 @@ def getLeagueSettings():
     leagueSettings.Dates.season         = ld0['season']
     leagueSettings.Dates.start_date     = ld0['start_date']
     leagueSettings.Dates.end_date       = ld0['end_date']
-    
+
     ##scoring
     leagueSettings.Scoring.uses_fractional_points   = yq.searchJSONObject(ld1, 'uses_fractional_points')
     leagueSettings.Scoring.uses_negative_points     = yq.searchJSONObject(ld1, 'uses_negative_points')
 
     statInfo  = cleaning.cleanStats(ld1[0]['stat_categories']['stats'], ld1[0]['stat_modifiers']['stats'])
-    
+
     return [leagueSettings, statInfo]
 
-    
+
 
 
 ## For my personal history:
@@ -95,14 +95,14 @@ def getLeagueSettings():
 ## 2016 - 247388
 ## 2017 - 470610
 season          = 2017
-league_id       = 470610  
+league_id       = 470610
 game_key        = getSeasonGameKey()
 [leagueSettings, statInfo] = getLeagueSettings()
-temp = getLeagueSettings()
+
 
 
 roster_size     = leagueSettings.About.roster_size
-
+num_teams = leagueSettings.About.num_teams
 week            = leagueSettings.Dates.current_week
 team_id         = 1
 
